@@ -69,7 +69,7 @@ class IntervalModel
 }
 ```
 
-View the repository to see the example code in action - I used visual studio community to build it and .NET 5. Modify as you please.
+View the repository to see the example code in action - I used visual studio community, C#, and .NET 5. Modify as you please.
 
 The example app shows one way how you could use MVC. The purist may take it further by starting the controller not the view. You may not want to use the update view function. Its up to you. I would investigate he MVC model further, it could transform your style.  
 
