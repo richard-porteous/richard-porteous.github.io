@@ -1,15 +1,30 @@
 
-### Reasons to refactor
+### Refactoring
+  1. If your code needs refactoring write some tests before you begin.
+  2. If you can't test because of the mess, then you *really* need to refactor.
 
+Catch 22. Yes, which is why reading a refactoring book is important. It should show you a slow step by step processes.
+
+There is not 'One right way' to code. If you think this you are delusional.
+Your team may agree on one standard - this is good - but not what I'm talking about. Refactoring gives you the ability to decide where to place your code and to move it again if it no longer makes sense to be there later in the project.
+
+Technically Refactoring can be done on a 'higher level'. The need to determine everything before the project is started is NOT the best way to start. Problems have a way of getting in the way.
+
+Making high level goals is important, but remember if you are inflexible you or your project will eventually break or go bust. I often hear managers or engineers trying to pin down common programming languages, protocols, etc., before they start. If a team A has X as its strength, and team B has Y as its strength, isn't it better to check if X and Y can communicate and then simply let them use their strengths. (Unless the business has another agenda to get one team to maintain them when done).
+
+
+### Reasons to refactor
 I'm including this **real** code because its a good example of why its so important to refactor. Its part of windows form partial class which is 4000 lines of code long.
 
-I chopped pieces out so your device doesn't lag.
+I move fast to show why you want to refactor. It is a slow process. Please be aware that if you do this to similar code - you will introduce bugs. Testing will save headaches.
+
+I chopped pieces out of the code so your device doesn't lag. Most code removed was almost identical to the code above.
 
 This function Calculates totals, updates the UI form, and the Grid, and it is called from 18 different places in the app.
 
 I included it all now as I only show smaller pieces while I'm explaining a step by step process. This process is mine, if you want something more detailed then take a look at Martin Fowlers book [Refactoring, improving the design of existing code](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599 "Refactoring") or look around for a cheaper copy or earlier edition off amazon.
 
-
+Note the code is from a real project I inherited.
 ```
 private void CalculateTotals()
 {
@@ -224,9 +239,9 @@ So the *first thing* to do is simply remove the commented out code. It doesn't c
 
 *Next Step* simply shorten each line that is too long or use a format you are more comfortable reading. C# allows code lines to wrap in most cases. Re-build the code to test for errors.
 
->If you have tests already for your code run them first and then after each change. If you don't have any then consider writing as you go.
+>If you have tests already for your code run them first and then after each change. Again - If you don't have any then consider writing as you go.
 
-Create a new variable wherever an existing function variable is repurposed. Its almost impossible to move these if you don't. You can see them by the = operator (reassigned) being used often, and they often have a name like tmp. I missed or found it hard to follow some before so I address this shortly.
+Create a new variable wherever an existing function variable is repurposed. Its almost impossible to move these if you don't. You can see them by the = operator (reassigned) being used often, and they often have a name like tmp. I missed or found it hard to follow some, so delayed dealing with them.
 
 ```
 int tmp;
@@ -235,30 +250,30 @@ var3 = tmp;
 tmp = var4 + var5;
 etc...
 ```
-> Global variables need to be turned into local variables (i.e. passed in as a parameter), but be careful if an assignment is made - to keep the existing behavior be sure to reassign the Global. I deal with Global variables later, when I plan on moving the Calculations out of the class into another that makes more sense.  
+> Global variables need to be turned into local variables (i.e. passed in as a parameter), but be careful if an assignment is made - to keep the existing behavior be sure to reassign the Global. I deal with Global variables later, when I plan on moving the Calculations out of one class into another class.
 
 #### 1:
 I choose to separate the code as best I can *without* making logical changes.
-I called the first part **Bubble-Up** as it reminds me of a bubble sort.
+I called the first part **Bubble-Up**. It reminds me of a bubble sort.
 
-> If a variable is changed anything below the assignment that uses that variable must remain below and everything above the assignment that uses it must remain above.
+> If a variable is assigned, anything below the assignment that uses the same variable must remain below and everything above the assignment that uses it must remain above.
 
-1. So first I needed to identify where the first time UI is written to. Writing to the UI will go last - makes sense as this function calculates data into totals and write them to the UI.
-2. BUT, reading from the UI is likely to be part of the data we need first.
+1. So first I needed to identify where the UI is first *updated*. Writing to the UI will go last - makes sense as this function calculates data into totals and then writes them to the UI.
+2. *Reading* from the UI (UI variable is on the right i.e. = textBox.Text) is likely to be part of the data we need first. So we move that to the top.
 3. Calculating totals will go in the middle.
 
-I found a place where the logic seems to divide.
+Add extra spaces where you will be moving the code to - perhaps mark start and end with comments.
 
 In this example just after the comment
 ```
 //now we have everything totaled. Figure out the GST/PST and sub total info
 ```
-is the best place to start. To keep it obvious I replaced it with
+I found a place to start. To keep it obvious I replaced it with
 ```
 //BUBBLE UP
 //end BUBBLE UP
 ```
-Then from the code below we search out the code that is calculated from *untouched* variables.
+Then from the code below we search out the code that is calculated using *untouched* variables, i.e. variables that are assigned above the comment but not again before the wanted code.
 
 A few lines down in the code we find
 > currentTicket.TotalLabour = labourTotalReg + labourTotalOT;
@@ -268,7 +283,10 @@ Both labourTotalReg and labourTotalOT are used but not assigned to just before t
 We can move it up between our new comments.
 Lets do the same for the rest.
 
-Ok I spent some time and identified the code below could all be safely move together without changing behavior
+Ok I spent some time and identified the code below could all be safely move together without changing behavior.
+
+Note I left in the confusing susTotal and subTotal - you can rename the susTotal if you are confident you can do it without problems. I'm going to wait till later.
+
 ```
 //BUBBLE UP
 currentTicket.TotalLabour = labourTotalReg + labourTotalOT;
@@ -358,9 +376,10 @@ decimal totalWithTax = subTotal + gst + pst + hst;
 
 
 Woah! would you explain that?
-Well I just did, each bit has been extracted and moved up in the same order as I found it. It took me an hour or so to do. Plus I did one change at a time, recompiled and ran the app looking at the fields updated to see any visible display differences.
 
-There is some code after this which uses some of the calculate variables which can now be replaced by the calculated values. i.e.
+Well I just did, each bit has been extracted and moved up in the same order as I found it. It does take a while. I changed one variable at a time, recompiled and ran the app looking at the fields updated to see any visible display differences.
+
+There is some code after this which uses some of the calculate variables which can now be replaced by the calculated values, if they can be moved without problems. i.e.
 ```
 Value = labourTotalReg + labourTotalOT
 //with
@@ -418,7 +437,7 @@ private void CreateAndAddActualRows(DataGridView actualTable, string name, decim
 
 }
 ```
-Then I made changes to call the new code. Each one was tested by simply running the code/app and viewing the results. (unit testing would be faster and less bug prone)
+Then I made changes to call the new code. Each one was tested by simply running the code/app and viewing the results. 
 
 ```
 //UI BUILD ROWS OF TOTALS/ACTUALS
