@@ -54,7 +54,7 @@ public partial class IntervalView : Form
 
 ```
 
-In the Controller - we add and initialize the model, and use the passed view. We could use object for the view if sharing or use a separate constructor. Be careful, only share if it will make things better.
+In the Controller - we add and initialize the model, and use the passed view. We could use an object for the view or an Interface. In a later commit I make an 'interface' and that exposes the WinForms method 'update' and nothing else.
 
 ```
 class IntervalController
