@@ -45,16 +45,16 @@ I'm using this as an example. We focus on making a town, a player, an NPC, and s
 
 If you haven't already created an empty project lets run godot an do this - we will name it HeroRPG and create the project.
 
-![](session1-images/create_project.png)
+![](/img/session1-images/create_project.png)
 
 This will open the project. If you have closed Defold since you created the project you can open it from this screen. Look for the one you just created and open it.
 
-![](session1-images/opening_existing_project.png)
+![](/img/session1-images/opening_existing_project.png)
 
 
 Then we adjust the screen size in our project settings. The file is *game.project*. look on the left you can double click the file. Scroll down till you find the Display settings and can change the size like so. This is an old common size used for the iPad. You can skip this, but notice that all the settings you need to cange to match the device you want to target should be found here.
 
-![](session1-images/adjust_the_screensize.png)
+![](/img/session1-images/adjust_the_screensize.png)
 
 ### Add Assets
 
@@ -64,7 +64,7 @@ Let's Add the art to defold and get prepared to start actually building the game
 
 So I'm not an artist. I simply need something for this book. I used paint3d (it has transperancy and 2D shapes) and I made the buildings. I used Gimp to fix the one.
 
-![](session1-images/save_a_few_assets.png)
+![](/img/session1-images/save_a_few_assets.png)
 
 You will notice I went and downloaded Bevouliin Free Game Background for Game Developers from Open-Game-Art (Page Links at the end of the session).
 
@@ -78,7 +78,7 @@ This is where we will place all our unmodified png and jpg files. When naming an
 
 Drag the downloaded images (png or jpg) into the assets folder. If you dont have an assets folder create one now.
 
-![](session1-images/assets_folder.png)
+![](/img/session1-images/assets_folder.png)
 
 
 ### BUILD THE FIRST SCENE
@@ -87,7 +87,7 @@ As promised lets build the first scene.
 
 I did metion where you can get artwork for free to build your prototypes. But for simplicity copy the extracted files and folders into your newly created assets folder. You will have enough to build the scene.
 
-![](session1-images/open_main_collection.png)
+![](/img/session1-images/open_main_collection.png)
 
 Single click on Main and double-click on the main collection to open it. Notice on the right window we see in the *Outline* the Collection. (function key f8 toggles the outline view).
 We need to add our background, buildings etc here.
@@ -96,45 +96,45 @@ I will spend a few minutes explaining what is happening in the next session, for
 
 first we need to create an atlas so we can use the images. Right-click the main folder and select new atlas.
 
-![](session1-images/create_an_atlas.png)
+![](/img/session1-images/create_an_atlas.png)
 
 We are only using one atlas for this scene so lets just call it assets.
 
-![](session1-images/name_atlas.png)
+![](/img/session1-images/name_atlas.png)
 
 on the right of the editor (with the assets.atlas selected) right-click Atlas and select *Add Images*
 
-![](session1-images/add_images_to_atlas.png)
+![](/img/session1-images/add_images_to_atlas.png)
 
 Select All the background images and click ok
 
-![](session1-images/add_background_images_to_atlas.png)
+![](/img/session1-images/add_background_images_to_atlas.png)
 
 We now have serveral individual images to use for our scene.
 
-![](session1-images/our_atlas_with_background.png)
+![](/img/session1-images/our_atlas_with_background.png)
 
 Lets reselect our main selection. It still is open so you can simply select its tab.
 
-![](session1-images/reselect_the_main_collection.png)
+![](/img/session1-images/reselect_the_main_collection.png)
 
 Right-click the collection on the right and select *Add game Object*. In the **Id** box rename it *background*.
 
-![](session1-images/first_game_object.png)
+![](/img/session1-images/first_game_object.png)
 
 For now always use lower case names and use *underscore_to_seperate_words* known as *snake case*. If the editor creates things using the first character as uppercase its ok.
 
 Right-click the background game-object and create a sprite as a child component.
 
-![](session1-images/add_a_sprite.png)
+![](/img/session1-images/add_a_sprite.png)
 
 Add the atlas as the sprite image.
 
-![](session1-images/add_atlas_to_sprite.png)
+![](/img/session1-images/add_atlas_to_sprite.png)
 
 Select the layer_1 image as Default Animation.
 
-![](session1-images/select_the_image_for_the_sprite.png)
+![](/img/session1-images/select_the_image_for_the_sprite.png)
 
 
 *Taken directly from the editor manual*
@@ -150,7 +150,7 @@ The Editor pane
 A first look at our new background. You likely have to **zoom** out. Click on the main view and use the scroll wheel to zoom in or out. It may start too close so zoom out to get this view.
 
 
-![](session1-images/background_sprite.png)
+![](/img/session1-images/background_sprite.png)
 
 Using the order or furthest to closest we can add the various sprites as we go.
 
@@ -161,7 +161,7 @@ Using the order or furthest to closest we can add the various sprites as we go.
 
 Add the sprites - you can name them to make it easier to know which sprites they are and because you cant have the same name for each component in an object.
 
-![](session1-images/add_remaining_background_objects.png)
+![](/img/session1-images/add_remaining_background_objects.png)
 
 ### OK WHY CANT I SEE THE OTHER SPRITES?
 
@@ -169,30 +169,30 @@ We need to change the z position of the game object. Its how we can see the othe
 
 Lets move the background back. Change its Z in Position to -1.
 
-![](session1-images/change_background_z.png)
+![](/img/session1-images/change_background_z.png)
 
 Lets change buildings to -0.6
 and street to -0.7
 
 Now select buildings and grab its vertical (green) arrow and drag it down, and select each building sprite. move hospital left using the red arrow (horizontal) and move the store right, leaving the library in the middle.
 
-![](session1-images/move_buildings.png)
+![](/img/session1-images/move_buildings.png)
 
 Ok Zoom in, and recenter. See editor section for navigating in a scene or use the middle mouse scroll wheel as a button. 
 
 We put the street slightly behind the buildings as we want thier fronts to appear on the sidewalk. Lets move the sidewalk and the pavement down. Movethe group then move the individual sprites to get them positioned correctly. a sligth overlap of the sidewalk over the pavement. set pavement z -0.1. 
 
-![](session1-images/move_street_down.png)
+![](/img/session1-images/move_street_down.png)
 
 and scale the street 2x them to cover half the scene.
 
-![](session1-images/scale_street.png)
+![](/img/session1-images/scale_street.png)
 
 Now we need to duplicate and flip it on the Y rotation and move it to the right side. We flip it because of the lines on the sidewalk give an idea of perspective and it would be odd not to keep that in mind.
 
 Select both sprites of the street object. Use Ctrl-C and Ctrl-V (copy & paste) to duplicate them. with the copies selected drag them both over to the right until they ony slightly overlap. rename them, by changing thier y rotation to 180.
 
-![](session1-images/street_sprites_copied_and_rotated.png)
+![](/img/session1-images/street_sprites_copied_and_rotated.png)
 
 
 We have a scene. Its very basic, but good for our needs.

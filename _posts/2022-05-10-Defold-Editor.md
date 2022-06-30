@@ -4,12 +4,12 @@ Let's take a Quick look at the Defold editor and the various panes. I wont spend
 
 Open defold, open the HeroRPG project in "Recents". When ready, Click on game.project.
 
-![](editor-images/DesktopGameProjectSettings.png)
+![](/img/editor-images/DesktopGameProjectSettings.png)
 
 There is a long list of settings. I want you to be aware of this as you will need to make changes here at some point. Usually on the display size. For now we will leave it alone as we are happy with the default for the Desktop project.
 
 *Taken directly from the editor manual*
-![](editor-images/db003a.png)
+![](/img/editor-images/db003a.png)
 
 The defold editor has everything you need but is not very intuitive. So to help you a little *F6, F7, F8* can be used to toggle panes to give more space. When searching with Ctrl-F etc. *note* click the search box and press *ESC* to close it. 
 
@@ -21,7 +21,7 @@ There are several panes or panels in the editor.
 + Tools - mostly we'll focus on the console output
 + Editor - This is where we view our scene and view our code.
 
-![](editor-images/firstLookAtMainCollection.png)
+![](/img/editor-images/firstLookAtMainCollection.png)
 
 ### **Important keys**
 + use CTRL+Space for auto completion in the code view.

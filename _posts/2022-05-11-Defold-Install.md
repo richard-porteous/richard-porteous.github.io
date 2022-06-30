@@ -23,33 +23,33 @@ see [defold.com/faq/faq/](https://defold.com/faq/faq/)
 
 Run the newly installed app. It should take less than a minute and you will have a screen like the following displayed. 
 
-![](install-images/db000.png)
+![](/img/install-images/db000.png)
 
 No recent projects yet, but soon you will have.
  
 Click on New Project on the left side, then click on Desktop Game. Take note where the project will be saved, perhaps create a folder called repos under you home folder and put all your projects in there. You will use this info for Git etc.
 
-![](install-images/CreateDesktopProject.png)
+![](/img/install-images/CreateDesktopProject.png)
 
 Change the circled Title to be *HeroRPG* and click *Create New Project*.
 
 If you don't see that screen similar to the above then go back to [defold.com/learn/](https://defold.com/learn/) where you can find a youtube video or written instructions from the manual which goes into much greater detail.
 
-![](install-images/HeroRPGfirstrun.png)
+![](/img/install-images/HeroRPGfirstrun.png)
 
 Select Project from the Top menu and then Build (or Ctrl B). The project will build and run the game showing what has been set up.
 
-![](install-images/HeroRPG-EMPTY-Run.png)
+![](/img/install-images/HeroRPG-EMPTY-Run.png)
  
 Note the name on the top left - if that shows something else on your screen its likely you forgot to name your project, or named it something else.
 To close, click on the x, or just close the editor.
 When running defold again if you closed the editor you will see the newly created project in the Recents tab.
 
-![](install-images/HeroRPG-Open2ndTime.png)
+![](/img/install-images/HeroRPG-Open2ndTime.png)
 
 ### Files, saving, version control
 
-![](install-images/HeroRPG-EMPTY-Folder.png)
+![](/img/install-images/HeroRPG-EMPTY-Folder.png)
 
 This is how the folder and files look like on a windows PC. 
 

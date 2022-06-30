@@ -5,11 +5,11 @@
 
 OK last chaper we added an animation to our player atlas
 
-![](session3-images/player_animation_atlas.png)
+![](/img/session3-images/player_animation_atlas.png)
 
 We forgot to change the animation speed, lets do that quickly.
 
-![](session3-images/frame_rate_for_player.png)
+![](/img/session3-images/frame_rate_for_player.png)
 
 Open the player.atlas and select the animation we created. Set the Fps (frames-per-second) to 8. It was 60 and which would make our animation too fast.
 
