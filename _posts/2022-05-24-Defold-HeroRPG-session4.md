@@ -132,15 +132,20 @@ Well it simply means we are using a variable in self (the gameobject this code b
 PS. ***local*** means not persistant beyond the block we are in.
 
 
-### **OK next problem.**
+### **END OF SESSIONS FOR DEFOLD**
+
+**NOTE** - *Many things are easy in Defold, but some things are just not good ideas in general. I get stuck on this problem for a while. It may be a good idea to keep your point and click logic seperate for now. Use one of the tutorials on thier web-site.*
 
 + we can't use point and click
++ the camera doesn't follow the player and all the examples assume a stationary camera - should we use script or a 3rd party camera?
 
 We can't actually use our Key code for mouse or touch, and to top it off moving to a ***clicked or touch*** position give you more than 8 possible directions.
 
 So gameplay using a mouse or touch screen is going to be different.
 
-Also if you try writing code to get the position of the mouse click your character will likely move off in a direction that doesn't make sense.
+Also if you try writing code to get the position of the mouse click your character will likely move off in a direction that doesn't make sense. For most examples you need to keep the camera stationary and the world needs to map to the camera i.e. 0,0 in the world need to be 0,0 on the camera. This is not what we want.
+
+
 
 So to quickly explain - the 2D Orthographic camera in defold needs a little work, and they will get to it someday, but for now they have given us 3 options.
 
@@ -151,9 +156,6 @@ So to quickly explain - the 2D Orthographic camera in defold needs a little work
 Well that is difficult, you may say. Well guess what, it is simpler than it sounds and it gives you a huge advantage that allows you to change the way a game works. But ... that doesn't help you now ... so we will :
 + download the orthographic camera
 + using file explorer or your systems file manager extract it.
-
-
-
 
 
 For simplicity lets move directly to where the mouse wants.
@@ -169,5 +171,4 @@ They have *move_to* and *follow* examples. The *move_to* increases speed if the 
 
 ***NOTE*** although both these choices would be the wrong ones in a competitive game as it may give one player an advantage. Our game doesn't need to be concered about that, not yet!
 
-
-
+** Sorry if you are enjoying this. I switch to Godot next. I really like Defold, some things are incredibly easy, but some things lack decent examples even in the documentation, while others things are well covered. Not the best place for a beginner. **

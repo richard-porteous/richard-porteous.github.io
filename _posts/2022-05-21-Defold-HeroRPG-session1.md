@@ -1,9 +1,9 @@
 ## Hero RPG a Role Playing Game
 
 ### What we will do this Lesson:
-o	Design and Layout how the game scene will look.
-o	Create or download some art work.
-o	Build the first scene.
++	Design and Layout how the game scene will look.
++	Create or download some art work.
++	Build the first scene.
 
 ### Let's design the Game
 
