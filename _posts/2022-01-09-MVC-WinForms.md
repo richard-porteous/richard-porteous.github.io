@@ -1,6 +1,8 @@
-Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, "This app needs to be re-written". Well rewriting is one way, here I show you another.
+Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, "This app needs to be re-written". Well rewriting is not the only option.
 
-The **MVC** I show you here is the easiest to follow if you are new to this. It allows you split the code out of a WinForms app with minimal impact. You can do one small part at a time. You may want to implement the full MVC pattern, then simply continue from where this leaves off. My plan is to make the code easier to maintain and even replace the UI to something more modern.
+Note: **MVC is not the only way**. Lets face it, MVC is a big change from your current mess and if your bugs are too many events firing (and you use datagridview) you will likely find someone its trying to step through the grid instead of the data. A rookie mistake. This will need to be fixed first anyway. It increases the events by 9 times and creates thread bugs. If you have to step through selected data use the copyTo and step through that instead. Never update the data-grid-view front end programatically - (i.e. don't use code to step through and change the values in the grid to update the data. A very bad idea) - instead update the datasource and refresh the binding. 
+
+The **MVC** I show you here is the easiest to follow if you are new to this. It is a drastic departure from what you are likely to have. It allows you split the code out of a WinForms app with minimal impact. You can do one small part at a time. You may want to implement the full MVC pattern, then simply continue from where this leaves off. My plan is to make the code easier to maintain and even replace the UI to something more modern.
 
 **WHY?** The reason to refactor becomes apparent when you look at an old WinForms app. Ok some are beautiful, but its rare.
 
@@ -95,9 +97,9 @@ The example app shows one way how you could implement MVC. You may find followin
 
 *NOTE*
 WinForms for .NET 5 & 6 no longer supports the SQL reporting.
-But I suggest you have your reports in a separate project as it helps keep the code separate and allows for various options.
+If you use reports, I suggest you have your reports in a separate project as it helps keep the code separate and allows for various options, including changing to something else.
 
-If you want to keep your older reports, you could try [FASTREPORT](https://fastreports.github.io/FastReport.Documentation/ "Fast-Report") which has a community version and is available via NuGet. Not all reports convert well and there may be need for some manual adjustments.
+If you want to keep your older reports, you could try [FASTREPORT](https://fastreports.github.io/FastReport.Documentation/ "Fast-Report") which has a community version and is available via NuGet. Most reports convert well, there may be need for some manual adjustments before the conversion will work.
 
 That's it for today. If you see any bugs in the repository feel free to drop me a note. The code is free to use, the repository can be forked or downloaded.
 
