@@ -99,7 +99,9 @@ The example app shows one way how you could implement MVC. You may find followin
 WinForms for .NET 5 & 6 no longer supports the SQL reporting.
 If you use reports, I suggest you have your reports in a separate project as it helps keep the code separate and allows for various options, including changing to something else.
 
-If you want to keep your older reports, you could try [FASTREPORT](https://fastreports.github.io/FastReport.Documentation/ "Fast-Report") which has a community version and is available via NuGet. Most reports convert well, there may be need for some manual adjustments before the conversion will work.
+If you want to keep your older reports, 
++ you could try [FASTREPORT](https://fastreports.github.io/FastReport.Documentation/ "Fast-Report") which has a community version and is available via NuGet. Most reports convert well, there may be need for some manual adjustments before the conversion will work.
++ You could use Power BI, keep your rdl's and rename your rdlc's to rdl
 
 That's it for today. If you see any bugs in the repository feel free to drop me a note. The code is free to use, the repository can be forked or downloaded.
 
