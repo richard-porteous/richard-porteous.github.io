@@ -1,5 +1,10 @@
 ## Player and NPC
 
+---
+Defold tutorial has been put on hold. I will get back to it but I need to get past the lack of useful documentation they provide. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
+---
+
+
 We are ready to add some characters. Our NPC will be simple. Our player will move and be animated.
 
 Open Defold and open the main collection.

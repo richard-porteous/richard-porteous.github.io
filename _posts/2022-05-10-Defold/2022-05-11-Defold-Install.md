@@ -1,5 +1,10 @@
 ## Install Defold
 
+---
+Defold tutorial has been put on hold. I will get back to it but I need to get past the lack of useful documentation they provide. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
+---
+
+
 Requirements are listed in the introduction in this book and on the following platforms.
 
 There are a few ways to get Defold and its editor. The two most common and easiest ways are listed here. (links at the bottom of the page)

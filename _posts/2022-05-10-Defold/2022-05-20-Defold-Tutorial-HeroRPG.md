@@ -1,12 +1,8 @@
 ## Introduction
 
-### PLEASE JUMP TO THE GODOT Sessions
-
-**ONLY USE THIS IF YOU WANT TO EXPERIMENT WITH DEFOLD**.
-Skip the next few blogs with Defold and head on over to the Godot lessons that start in June
-
-
-I **abandon** Defold with these beginner Tutorials, but I like the engine and am considering comming back to it at some point, for more advanced lessons.
+---
+Defold tutorial has been put on hold. I will get back to it but I need to get past the lack of useful documentation they provide. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
+---
 
 Learning to make games is not memorization, its understanding and creativity. Like Lego with more options.
 

@@ -1,5 +1,10 @@
 ## Lets finish the remaining tasks for HeroRPG
 
+---
+Defold tutorial has been put on hold. I will get back to it but I need to get past the lack of useful documentation they provide. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
+---
+
+
 In the last chapter we got the animation working for the player and spent time trying to understand what we have done.
 
 We have the following still to do
@@ -134,41 +139,10 @@ PS. ***local*** means not persistant beyond the block we are in.
 
 ### **END OF SESSIONS FOR DEFOLD**
 
-**NOTE** - *Many things are easy in Defold, but some things are just not good ideas in general. I get stuck on this problem for a while. It may be a good idea to keep your point and click logic seperate for now. Use one of the tutorials on thier web-site.*
+**NOTE** - *Many things are easy in Defold and many things are well documented - but some things just lack sufficient examples and documentation, so it is very easy to get stuck*
 
-+ we can't use point and click
-+ the camera doesn't follow the player and all the examples assume a stationary camera - should we use script or a 3rd party camera?
+I plan on continuing this in the future. 
++ I managed to use the camera as a library. The reson for this is to get the screen to world co-ordinates that sadly lacks on the standard Defold camera for 2D. Its the only way to get point and click to work when your world and screen coordinates differ.
 
-We can't actually use our Key code for mouse or touch, and to top it off moving to a ***clicked or touch*** position give you more than 8 possible directions.
-
-So gameplay using a mouse or touch screen is going to be different.
-
-Also if you try writing code to get the position of the mouse click your character will likely move off in a direction that doesn't make sense. For most examples you need to keep the camera stationary and the world needs to map to the camera i.e. 0,0 in the world need to be 0,0 on the camera. This is not what we want.
-
-
-
-So to quickly explain - the 2D Orthographic camera in defold needs a little work, and they will get to it someday, but for now they have given us 3 options.
-
-1. We can copy the default.renderer and default.renderer_script to a folder in main and modify the render_render script. We then have to go into the build settings and change the render settings to our new renderer and change our new renderer to use our new renderer_script. The script change is provided [here](https://defold.com/manuals/camera/#converting-mouse-to-world-coordinates), but I found it difficult to find how to use it. The docs are good, just not that good.
-2. [Rendercam](https://defold.com/assets/rendercam/) (2D & 3D) by Ross Grams ~ use the bottom link at defold.com/assets/rendercam/
-3.  [Ortographic camera](https://defold.com/assets/orthographic/) (2D only) by Björn Ritzl. ~once again use the bottom link at defold.com/assets/orthographic/
-
-Well that is difficult, you may say. Well guess what, it is simpler than it sounds and it gives you a huge advantage that allows you to change the way a game works. But ... that doesn't help you now ... so we will :
-+ download the orthographic camera
-+ using file explorer or your systems file manager extract it.
-
-
-For simplicity lets move directly to where the mouse wants.
-
-Ok one more problem, the current code moves us as long as we are pressing the keys, do we want the same? Do we want to move to where we clicked? how do we control the speed if we choose the second way?
-
-Good questions! The fact you asked them means you are thinking about what you are doing.
-
-Click and hold follows what we do currently do. I like click and release better, it gives a little more accuracy.
-
-Take a look at the ***Learn examples*** for ***movement*** on the Defold.com website.
-They have *move_to* and *follow* examples. The *move_to* increases speed if the distance is further, not what we want. *follow* is not what we want either. Lets use the ***move_to*** but fix the speed.
-
-***NOTE*** although both these choices would be the wrong ones in a competitive game as it may give one player an advantage. Our game doesn't need to be concered about that, not yet!
 
 ** Sorry if you are enjoying this. I switch to Godot next. I really like Defold, some things are incredibly easy, but some things lack decent examples even in the documentation, while others things are well covered. Not the best place for a beginner. **
