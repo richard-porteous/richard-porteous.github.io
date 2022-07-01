@@ -1,7 +1,9 @@
 ## Introduction
 
 ---
+
 Defold tutorial has been put on hold. I will get back to it but I need to get past the lack of useful documentation they provide. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
+
 ---
 
 Learning to make games is not memorization, its understanding and creativity. Like Lego with more options.
