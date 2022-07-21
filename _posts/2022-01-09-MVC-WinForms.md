@@ -1,15 +1,19 @@
+### MVC/MVP - Winforms
+
 Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, "This app needs to be re-written". Well rewriting is not the only option.
 
-Note: **MVC is not the only way**. Lets face it, MVC is a big change from your current mess and if your bugs are too many events firing (and you use datagridview) you will likely find someone its trying to step through the grid instead of the data. A rookie mistake. This will need to be fixed first anyway. It increases the events by 9 times and creates thread bugs. If you have to step through selected data use the copyTo and step through that instead. Never update the data-grid-view front end programatically - (i.e. don't use code to step through and change the values in the grid to update the data. A very bad idea) - instead update the datasource and refresh the binding. 
+### Note: **MVC is not the only way**. 
+MVVM, MVP etc.
+Lets face it, MVC is a big change from your current mess and if your bugs have too many events firing (and you use datagridview) you will likely find some code is trying to step through the grid instead of the data. A rookie mistake. This will need to be fixed first anyway. It increases the events by 9 times and creates thread bugs. If you have to step through selected data use the copyTo and step through that instead. Never update the data-grid-view front end programatically - (i.e. don't use code to step through and change the values in the grid to update the data. Unless your list is very short, it's a very bad idea) - instead update the datasource and refresh the binding. Also your code may not acknowlege the fact that there may be more than 1 user. But that is for another time. 
 
-The **MVC** I show you here is the easiest to follow if you are new to this. It is a drastic departure from what you are likely to have. It allows you split the code out of a WinForms app with minimal impact. You can do one small part at a time. You may want to implement the full MVC pattern, then simply continue from where this leaves off. My plan is to make the code easier to maintain and even replace the UI to something more modern.
+The **MVC** I show you here is the easiest to follow if you are new to this. There are other ways to implemnt this. This is a drastic departure from what you are likely to have. It allows you split the code out of a WinForms app with minimal impact. i.e. break dependencies. You can do one small part at a time. You may want to implement the full MVC pattern, then simply continue from where this leaves off. My plan is to make the code easier to maintain and even replace the UI to something more modern.
 
-**WHY?** The reason to refactor becomes apparent when you look at an old WinForms app. Ok some are beautiful, but its rare.
+**WHY?** The reason to refactor becomes apparent when you look at an old WinForms app. Ok some are beautiful, but its VERY rare.
 
 This small project [interval refactor project](https://github.com/richard-porteous/interval-refactor-project ".net C# WinForms MVC style") takes a WinForms C# app called Interval and adds MVC design to it. The app has a very simple UI. It doesn't use a database, so you wont see much in the model.
 
-1. The project start the 2nd commit (step 0) with IntervalView which is the code we will modify.
-2. The next commit adds the IntervalModel and IntervalController
+1. The project starts with the 2nd commit (step 0) with IntervalView which is the code we will modify.
+2. The next commit adds the IntervalModel and IntervalController etc.
 
 The objective here is to separate UI code from logic and from database queries.
 
@@ -116,4 +120,6 @@ Test every step.
 
 Read a book on refactoring if you need to.
 
-Code should be easy to read and self explanatory. Comments should not say the same as what the code does, but rather explain why. Function names should say what the code is intended for and the function should only do one thing.
+Code should be easy to read and self explanatory. Comments should not say the same as what the code does, but rather explain why. Function names should say what the code is intended for and the function should only do that one thing.
+
+Avoid being clever in your code. Either you will come back in a years time and wonder why you did it that way or some other programmer will come along and run you down for being cryptic and simply rewrite that code.
