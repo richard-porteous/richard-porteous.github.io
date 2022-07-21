@@ -1,8 +1,8 @@
-## Lets finish the remaining tasks for HeroRPG
+## Defold - Lets finish the remaining tasks for HeroRPG
 
 ---
 
-Defold tutorial has been put on hold. I will get back to it but I need to get past the lack of useful documentation they provide. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
+Defold tutorial has been put on hold. I will get back to it some time in the future. I don't believe that I have a good way to present this to beginners at the moment. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
 
 ---
 
