@@ -100,8 +100,8 @@ For tools: I used visual studio community, C#, and .NET 6. Modify as you please.
 The example app shows one way how you could implement MVC. You may find following the pattern closely makes for easier to read code. Investigate he MVC model further, it could transform your style.
 
 *NOTE*
-WinForms for .NET 5 & 6 no longer supports the SQL reporting.
-If you use reports, I suggest you have your reports in a separate project as it helps keep the code separate and allows for various options, including changing to something else.
+WinForms for .NET 5 & 6 no longer supports the winforms reporting. That may change but it seems unlikely.
+If you use winforms reports, I suggest you have your reports in a seperate project as it helps keep the code separate and allows for various options, including changing to something else.
 
 If you want to keep your older reports, 
 + you could try [FASTREPORT](https://fastreports.github.io/FastReport.Documentation/ "Fast-Report") which has a community version and is available via NuGet. Most reports convert well, there may be need for some manual adjustments before the conversion will work.
