@@ -4,7 +4,7 @@
 
 Defold tutorial has been put on hold. I will get back to it some time in the future. I don't believe that I have a good way to present this to beginners at the moment. Untill then I'll be writing on other Game engines and other topics. This has been left in the blog simply as a reference.
 
-Code can be found at !["the repository on GitHub"](https://github.com/richard-porteous/MakeGamesWithDefold_projects)
+Code can be found at https://github.com/richard-porteous/MakeGamesWithDefold_projects
 
 ---
 
