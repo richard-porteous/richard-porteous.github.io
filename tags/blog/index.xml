@@ -37,6 +37,13 @@
       <description>Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around. First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.&#xA;I&amp;rsquo;m going to use individual 2d png files for each item to start.</description>
     </item>
     <item>
+      <title>Our first pygame - part 1</title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
+      <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
+      <description>Refer to Using Python to get python installed and set up a virtial environment.&#xA;Once python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame dont type the $ or the &amp;raquo; if you have no errors you can quit</description>
+    </item>
+    <item>
       <title>Our first pygame - part 2</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</link>
       <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>

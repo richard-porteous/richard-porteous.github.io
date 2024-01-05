@@ -44,6 +44,13 @@
       <description>Game experiments is related to tasks I do when trying to learn something new. I hope there is something helpful for you here.&#xA;Hi I&amp;rsquo;m Richard Porteous and I&amp;rsquo;m a software developer. I&amp;rsquo;ve used a tutorial format for this site to share these notes with you. We are learning here, so the posts may miss some things. I do fully intend to keep them updated. If I find things that I was confused about, or an unknown, I will share them to make the journey easier.</description>
     </item>
     <item>
+      <title>Our first pygame - part 1</title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
+      <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
+      <description>Refer to Using Python to get python installed and set up a virtial environment.&#xA;Once python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame dont type the $ or the &amp;raquo; if you have no errors you can quit</description>
+    </item>
+    <item>
       <title>Our first pygame - part 2</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</link>
       <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
