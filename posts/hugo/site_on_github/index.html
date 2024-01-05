@@ -212,15 +212,22 @@
 
 
   <h2 id="steps-we-follow">Steps we follow</h2>
-<pre><code>1. create 2 github repositories. name.github.io and hugoblog
-2. Get Hugo and git
-3. Create the hugo site locally
-4. init git for hugoblog and add public as a git submodule
-5. Add a theme (possibly as a submodule)
-6. Test and fix site or theme
-7. Add a post and about
-10. Publish
-</code></pre>
+<ul>
+<li><a href="#create-the-github-repositories">create 2 github repositories. name.github.io and hugoblog</a></li>
+<li><a href="#get-hugo-and-git">Get Hugo and git</a></li>
+<li><a href="#create-hugo-site-locally">Create the hugo site locally</a></li>
+<li><a href="#init-git-for-hugoblog-and-add-public-as-a-git-submodule">init git for hugoblog and add public as a git submodule</a></li>
+<li><a href="#add-a-theme">Add a theme (possibly as a submodule)</a></li>
+<li><a href="#go-to-the-example-site-folder-and-copy-the-files">go to the example site folder and copy the files</a></li>
+<li><a href="#rename-config.toml-to-hugo.toml">if necessary, rename config.toml to hugo.toml</a></li>
+<li><a href="#if-the-posts-use-the-yaml-----format-not-toml-add-a-posts-archetype">if the posts use the yaml (&mdash;) format not toml add a posts archetype</a></li>
+<li><a href="#can-create-your-first-post">can create your first post</a></li>
+<li><a href="#run-hugo-server-and-take-a-look">## Run hugo server and take a look</a></li>
+<li><a href="#check-any-existing-content-for-image-links-etc-check-the-paths-are-correct">check existing content</a></li>
+<li><a href="#remove-default-content">remove or replace default content</a></li>
+<li><a href="#test-and-fix-site-content">Test and fix site</a></li>
+<li>Publish</li>
+</ul>
 <h2 id="create-the-github-repositories">Create the github repositories</h2>
 <p>Go to github.com and if you dont have an account create a free one (for now).</p>
 <pre><code>select the repositories tab and create two new repositories. 
@@ -284,21 +291,18 @@ git clone https://github.com/geschke/hugo-tikva.git
 cd ..
 git submodule add -f https://github.com/geschke/hugo-tikva themes/hugo-tikva
 </code></pre>
-<p>next we should configure hugo.toml - I find it easier to start with the themes toml. Tikva calls it config.toml which is an older way, so delete the current one and</p>
+<p>next we need to run this command to set our theme.</p>
+<pre><code>hugo -t &quot;hugo-tikva&quot;
+</code></pre>
+<h2 id="go-to-the-example-site-folder-and-copy-the-files">go to the example site folder and copy the files</h2>
+<p>
+<img src="/img/blog/site-from-theme-example/theme-example-folder.png" alt=""  /></p>
+<p>Copy the example, usually this is the content, layouts, and static folder to the top-level folder (my-themed-site) overwriting the <!-- raw HTML omitted -->empty<!-- raw HTML omitted --> folders there.</p>
+<h2 id="rename-configtoml-to-hugotoml">rename config.toml to hugo.toml</h2>
+<p>copy the config.toml to the same folder, remove the default hugo.toml. Then rename config.toml to hugo.toml
+or use</p>
 <pre><code>cp themes\hugo-tikva\exampleSite\config.toml hugo.toml
 </code></pre>
-<p>the default values for hugo.toml are:</p>
-<pre><code>baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-</code></pre>
-<p>We will change baseURL, title, and add themes.</p>
-<pre><code>baseURL = 'https://your-account.github.io/'
-languageCode = 'en-us'
-title = 'the name of your blog'
-theme = &quot;hugo-tikva&quot;
-</code></pre>
-<p>so</p>
 <p>
 <img src="/img/blog/site-from-theme-example/add-images-icons-posts.png" alt=""  /></p>
 <p>Notice the header_background.jpg and the folder structure. I found that this works with some minor changes to our hugo.toml file</p>
@@ -316,9 +320,33 @@ theme = &quot;hugo-tikva&quot;
     bootstrapTheme = &#39;signa&#39; #use one of the examples here
 6. and in [params.theme.header] change image = &#39;img/header_background.jpg&#39;
 7. check the theme readme for additional notes
-</code></pre><p>next we need to run this command to set our theme.</p>
-<pre><code>hugo -t &quot;hugo-tikva&quot;
+</code></pre><h2 id="if-the-posts-use-the-yaml-----format-not-toml-add-a-posts-archetype">if the posts use the yaml (&mdash;) format not toml add a posts archetype</h2>
+<p>When creating new posts the top meta of the posts should be the same i.e. yaml or toml etc. I found adding a <!-- raw HTML omitted -->posts.md<!-- raw HTML omitted --> in archetypes as explained in <a href="https://gohugo.io/content-management/archetypes/," title="archetypes">archetypes</a>to be the best.</p>
+<pre tabindex="0"><code>---
+date: &#39;{{ .Date }}&#39;
+title: &#39;{{ replace .File.ContentBaseName `-` ` ` | title }}&#39;
+tags: [&#34;Text&#34;,&#34;Blog&#34;,&#34;Post&#34;]
+author: &#34;Your Name&#34;
+---
+</code></pre><p>for more about the different formats check out <a href="https://gohugo.io/content-management/front-matter/#front-matter-formats">https://gohugo.io/content-management/front-matter/#front-matter-formats</a></p>
+<h2 id="can-create-your-first-post">can create your first post</h2>
+<pre><code>hugo new post/mypost.md
 </code></pre>
+<p>edit your new post with some markdown content.</p>
+<p>NOTE - have at least 3 non-draft posts before panicking. I found them to not always show up - very annoying. Once you have 3 posts even the drafts = true starts to work without removing existing posts.</p>
+<h2 id="run-hugo-server-and-take-a-look">Run hugo server and take a look</h2>
+<p>Its a good time to check the results.</p>
+<pre><code>hugo server
+</code></pre>
+<p>If there is an error please check what it is referring to.</p>
+<p>open the browser to the address http://localhost:1313/ which is the server you just started.</p>
+<h2 id="check-any-existing-content-for-image-links-etc-check-the-paths-are-correct">check any existing content for image links etc. Check the paths are correct</h2>
+<p>Remove the /Static/ in front of image links in your posts if you had them in your editor.
+The site removes the need for that so you need to find a plugin in for your editor that respects the hugo paths.</p>
+<h2 id="remove-default-content">Remove default content</h2>
+<p>Check all your content and read before deleting. <!-- raw HTML omitted -->html can be used for posts instead of markdown BUT can also be used for headless etc.<!-- raw HTML omitted --> so be careful.</p>
+<p>And finally we need to remove the additional content from the about, feedback, extra posts, and sections.</p>
+<p>Replace existing images with images you want to use.</p>
 <h2 id="test-and-fix-site-content">Test and fix site content</h2>
 <p>For this theme lets replace a few items.</p>
 <p>In the static folder we want to overide the themes icons and header image.</p>
@@ -335,45 +363,20 @@ the name is determined in the template.
 there are also two files favicon-32x32.jpg and favicon-16x16.jpg which could be placed in that folder for devices viewing the site.
 </code></pre>
 <p>Some themes has a hardcoded nav-bar. This one is dynamic.</p>
-<p>in your main folder change dir to archetypes and create a posts.md with the following text</p>
-<pre tabindex="0"><code>---
-date: &#39;{{ .Date }}&#39;
-title: &#39;{{ replace .File.ContentBaseName `-` ` ` | title }}&#39;
-tags: [&#34;Text&#34;,&#34;Blog&#34;,&#34;Post&#34;]
-author: &#34;Your Name&#34;
----
-</code></pre><p>check all your content - not read before deleting. <!-- raw HTML omitted -->html can be used for posts etc instead of markdown BUT can also be used for headless etc.<!-- raw HTML omitted --></p>
-<p>you can create your first post i.e.</p>
-<pre><code>hugo new post/mypost.md
+<h2 id="publish">Publish</h2>
+<p>to publish</p>
+<pre><code>hugo
+
+cd public
+
+git add .
+
+git commit -m &quot;commit message you understand&quot;
+
+git push -u origin main
 </code></pre>
-<p>edit your new post with some markdown content.</p>
-<p>If you chose a theme without a dynamic nav bar (i.e. silhouette-hugo), then to fix the nav-bar in this theme we actually need to edit one of the themes files.</p>
-<p>navigate to</p>
-<pre><code>themes\silhouette-hugo\layouts\partials
-</code></pre>
-<p>edit</p>
-<pre><code>top-nav-text-links.html
-</code></pre>
-<p>replace this</p>
-<pre><code>&lt;li class=&quot;nav-item&quot;&gt;
-    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;categories/development/&quot; | absURL }}&quot;&gt;Development&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class=&quot;nav-item&quot;&gt;
-    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;categories/golang/&quot; | absURL }}&quot;&gt;Golang&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class=&quot;nav-item&quot;&gt;
-    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;about/&quot; | absURL }}&quot;&gt;About&lt;/a&gt;
-&lt;/li&gt;
-</code></pre>
-<p>with</p>
-<pre><code>&lt;li class=&quot;nav-item&quot;&gt;
-    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;post/&quot; | absURL }}&quot;&gt;All posts&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class=&quot;nav-item&quot;&gt;
-    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;about/&quot; | absURL }}&quot;&gt;About&lt;/a&gt;
-&lt;/li&gt;
-</code></pre>
-<h3 id="note">NOTE</h3>
+<p>The last one only works if you have set your online reposity upstream and you have added a git user email and name</p>
+<h2 id="notes">NOTEs</h2>
 <p>images in hugo posts should not include the /static in the path. this can be confusing if you use an ide that doesn&rsquo;t check for this i.e. VSCode</p>
 <pre tabindex="0"><code>![image](/img/image.png)
 
@@ -423,11 +426,51 @@ git commit -m &quot;add initial site files, minus sub modules&quot;
 git push origin main
 </code></pre>
 <p>there are a few ways to automate things but for now we add posts, build the site (run hugo). We check by running hugo serve and viewing in <a href="http://localhost:1313/">browser</a>. Then in the public folder and site folder (check git status) and add files (git add .), commit to the main branch and push to origin.</p>
-<p>NOTE - have at least 3 non-draft posts before panicking. I found them to not alwys show up - very annoying.</p>
 <p>If your account-name.github.io site does not get the themes or some other change verify the above then check the pages tab for your site in your repository settings.</p>
 <p>
 <img src="/img/blog/setting-up-hugo/check-site-pages.png" alt="site-settings"  /></p>
 <p>if still nothing do the same git add/commit/push command on the hugoblog site</p>
+<h2 id="different-theme---menus-not-dynamic">different theme - menus not dynamic??</h2>
+<p>If you chose a theme without a dynamic nav bar (i.e. silhouette-hugo), then to fix the nav-bar in this theme we actually need to edit one of the themes files. The names of folders and files may differ.</p>
+<p>navigate to</p>
+<pre><code>themes\silhouette-hugo\layouts\partials
+</code></pre>
+<p>edit</p>
+<pre><code>top-nav-text-links.html
+</code></pre>
+<p>replace this</p>
+<pre><code>&lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;categories/development/&quot; | absURL }}&quot;&gt;Development&lt;/a&gt;
+&lt;/li&gt;
+&lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;categories/golang/&quot; | absURL }}&quot;&gt;Golang&lt;/a&gt;
+&lt;/li&gt;
+&lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;about/&quot; | absURL }}&quot;&gt;About&lt;/a&gt;
+&lt;/li&gt;
+</code></pre>
+<p>with</p>
+<pre><code>&lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;post/&quot; | absURL }}&quot;&gt;All posts&lt;/a&gt;
+&lt;/li&gt;
+&lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link active&quot; href=&quot;{{ &quot;about/&quot; | absURL }}&quot;&gt;About&lt;/a&gt;
+&lt;/li&gt;
+</code></pre>
+<p><!-- raw HTML omitted -->A quick note about compatability<!-- raw HTML omitted --> when placing an image from the static folder into a post,</p>
+<pre><code>1. please remove the word static from the internal link
+2. keep the name lowercase and match the case in the markdown
+3. tikva uses the img folder for site images not &quot;images&quot;
+</code></pre>
+<pre tabindex="0"><code>i.e. ![](/img/blog/site-from-theme-example/theme-example-folder.png)
+</code></pre><p>Using links to an anchor on the same page.
+so</p>
+<pre tabindex="0"><code>a link to
+## Create a new Hugo site
+would be
+[create a new hugo site](#create-a-new-hugo-site)
+replace any special character with the - (dash or minus whatever)
+</code></pre><h2 id="conculsion">conculsion</h2>
 <p>if still having problems check with hugo. it may be something simple that was overlooked, or there is a missing step here. If you find an easy way to solve it drop me a note. thanks.</p>
 
 

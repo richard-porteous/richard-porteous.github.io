@@ -212,19 +212,20 @@
 
 
   <h2 id="using-the-tikva-theme-example-site">Using the Tikva theme example site</h2>
-<p>If you want to start a site and have a definite theme in mind. If its not 100% compatible with what you have been doing, I find this method to be best.</p>
-<ol>
-<li>create your hugo site</li>
-<li>grab a theme from the theme store and clone it into themes</li>
-<li>go to its example site folder and copy the site into yours</li>
-<li>if an older theme, rename config.toml to hugo.toml</li>
+<p>If you want to start a new site and have a definite theme in mind.</p>
+<ul>
+<li>[create a new hugo site](#Create a new Hugo site)</li>
+<li>[grab a theme from the theme store and clone it into themes](#grab a theme from the theme store and clone it into themes)</li>
+<li>[go to the example site folder and copy the files](#go to the example site folder and copy the files)</li>
+<li>[if necessary, rename config.toml to hugo.toml](#if necessary, rename config.toml to hugo.toml)</li>
 <li>if the posts use the yaml (&mdash;) format not toml add a posts archetype</li>
 <li>check any existing content for internal links. Check the paths are correct</li>
-<li>run the hugo server</li>
-</ol>
+<li>run hugo then hugo server</li>
+</ul>
 <p>Replace the static files with files you want, set your header background image if you want one. If mutliple themes choose one.</p>
 <p>If post headers are different take care to use what they used, unless you know how to fix that. My first few attempts my hugo generated post headers failed. But in the end I have what I want so I am happy with the results. Ok let&rsquo;s get started!</p>
-<h2 id="create-your-hugo-site">Create your Hugo site</h2>
+<h2 id="create-a-new-hugo-site">Create a new Hugo site</h2>
+<p>Some themes provide everything you need in the example site, some don&rsquo;t.</p>
 <p>On your local device/pc change to the directory you want the site to keep the site code in. This could be the same as what you used in the last tutorial. In my case it is blog_repos and I want to call the site folder my-themed-site.</p>
 <p>Then create the hugo site from the terminal command line.</p>
 <pre><code>hugo new site my-themed-site
@@ -248,11 +249,11 @@ git add .
 git commit -m &#34;first commit&#34;
 git branch -M main
 </code></pre><p>You will see a warning about the git from the theme, its ok it wont include it, its optional and as long as you can access the original repository you are ok, but consider setting it as a submodule later.</p>
-<h2 id="go-to-its-example-site-folder-and-copy-the-site-into-yours">go to its example site folder and copy the site into yours</h2>
+<h2 id="go-to-the-example-site-folder-and-copy-the-files">go to the example site folder and copy the files</h2>
 <p>
 <img src="/img/blog/site-from-theme-example/theme-example-folder.png" alt=""  /></p>
 <p>Copy the example, usually this is the content, layouts, and static folder to the top-level folder (my-themed-site) overwriting the <!-- raw HTML omitted -->empty<!-- raw HTML omitted --> folders there.</p>
-<h2 id="if-an-older-theme-rename-configtoml-to-hugotoml">if an older theme, rename config.toml to hugo.toml</h2>
+<h2 id="if-necessary-rename-configtoml-to-hugotoml">if necessary, rename config.toml to hugo.toml</h2>
 <p>copy the config.toml to the same folder, remove the default hugo.toml. Then rename config.toml to hugo.toml
 or use</p>
 <pre><code>cp themes\hugo-tikva\exampleSite\config.toml hugo.toml
@@ -274,11 +275,7 @@ or use</p>
     bootstrapTheme = &#39;signa&#39; #use one of the examples here
 6. and in [params.theme.header] change image = &#39;img/header_background.jpg&#39;
 7. check the theme readme for additional notes
-</code></pre><p>And finally we need to remove the additional content from the about, feedback, extra posts, and sections.</p>
-<p>Test the site again - missing posts? check the post headers again!</p>
-<pre><code>Make sure you have a least 3 non-draft posts.
-I noticed less than three non draft posts failed to show up
-</code></pre>
+</code></pre><h2 id="if-the-posts-use-the-yaml-----format-not-toml-add-a-posts-archetype">if the posts use the yaml (&mdash;) format not toml add a posts archetype</h2>
 <p>When creating new posts the top meta of the posts should be the same i.e. yaml or toml etc. I found adding a <!-- raw HTML omitted -->posts.md<!-- raw HTML omitted --> in archetypes as explained in <a href="https://gohugo.io/content-management/archetypes/," title="archetypes">archetypes</a>to be the best.</p>
 <pre tabindex="0"><code>---
 date: &#39;{{ .Date }}&#39;
@@ -286,7 +283,12 @@ title: &#39;{{ replace .File.ContentBaseName `-` ` ` | title }}&#39;
 tags: [&#34;Text&#34;,&#34;Blog&#34;,&#34;Post&#34;]
 author: &#34;Your Name&#34;
 ---
-</code></pre><p>Finish testing and create another git commit.
+</code></pre><p>And finally we need to remove the additional content from the about, feedback, extra posts, and sections.</p>
+<p>Test the site again - missing posts? check the post headers again!</p>
+<pre><code>&lt;b&gt;Make sure you have a least 3 non-draft posts.&lt;/b&gt;
+I noticed less than three non draft posts failed to show up
+</code></pre>
+<p>Finish testing and create another git commit.
 It is likely time to set your &ldquo;theme&rdquo; and &ldquo;public&rdquo; folder as git submodules and set the git remote(s).
 refer to previous post</p>
 <p>Enjoy!</p>

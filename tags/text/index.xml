@@ -6,21 +6,14 @@
     <description>Recent content in Text on Game Experiments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Thu, 04 Jan 2024 11:10:13 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jan 2024 10:59:46 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/tags/text/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Use a Hugo theme example</title>
-      <link>https://richard-porteous.github.io/posts/hugo/site_from_example/</link>
-      <pubDate>Thu, 04 Jan 2024 11:10:13 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/hugo/site_from_example/</guid>
-      <description>Using the Tikva theme example site If you want to start a site and have a definite theme in mind. If its not 100% compatible with what you have been doing, I find this method to be best.&#xA;create your hugo site grab a theme from the theme store and clone it into themes go to its example site folder and copy the site into yours if an older theme, rename config.</description>
-    </item>
     <item>
       <title>Hugo site on github</title>
       <link>https://richard-porteous.github.io/posts/hugo/site_on_github/</link>
       <pubDate>Thu, 04 Jan 2024 10:59:46 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/hugo/site_on_github/</guid>
-      <description>Steps we follow 1. create 2 github repositories. name.github.io and hugoblog&#xD;2. Get Hugo and git&#xD;3. Create the hugo site locally&#xD;4. init git for hugoblog and add public as a git submodule&#xD;5. Add a theme (possibly as a submodule)&#xD;6. Test and fix site or theme&#xD;7. Add a post and about&#xD;10. Publish&#xD;Create the github repositories Go to github.com and if you dont have an account create a free one (for now).</description>
+      <description>Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&amp;mdash;) format not toml add a posts archetype can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Publish Create the github repositories Go to github.</description>
     </item>
     <item>
       <title>Our first pygame - Sprites - part 5</title>
