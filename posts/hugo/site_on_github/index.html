@@ -377,7 +377,11 @@ git push -u origin main
 </code></pre>
 <p>The last one only works if you have set your online reposity upstream and you have added a git user email and name</p>
 <h2 id="notes">NOTEs</h2>
-<p>images in hugo posts should not include the /static in the path. this can be confusing if you use an ide that doesn&rsquo;t check for this i.e. VSCode</p>
+<p>if you dont use submodules on public and themes you can use .gitignore in your main folder with the following. you could also leave it in if wanted. check the hugo site for suggestions.</p>
+<pre tabindex="0"><code>/public
+/themes
+.hugo_build.lock
+</code></pre><p>images in hugo posts should not include the /static in the path. this can be confusing if you use an ide that doesn&rsquo;t check for this i.e. VSCode</p>
 <pre tabindex="0"><code>![image](/img/image.png)
 
 not
