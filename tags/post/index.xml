@@ -37,13 +37,6 @@
       <description>Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around. First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.&#xA;I&amp;rsquo;m going to use individual 2d png files for each item to start.</description>
     </item>
     <item>
-      <title>Our first pygame - part 1</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
-      <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
-      <description>Refer to Using Python to get python installed and set up a virtial environment.&#xA;Once python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame dont type the $ or the &amp;raquo; if you have no errors you can quit</description>
-    </item>
-    <item>
       <title>Our first pygame - part 2</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</link>
       <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
@@ -51,18 +44,25 @@
       <description>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc. We will start building the common code while creating a game and we will refactor it into something reusable as we go.&#xA;Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment. Picture&#xA;I assume you know some python. However if you just read the python as English it will understandable.</description>
     </item>
     <item>
+      <title>Our first pygame - part 1</title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
+      <pubDate>Thu, 10 Aug 2023 13:19:30 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
+      <description>Refer to Using Python to get python installed and set up a virtial environment.&#xA;Once python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame dont type the $ or the &amp;raquo; if you have no errors you can quit</description>
+    </item>
+    <item>
+      <title>Using python</title>
+      <link>https://richard-porteous.github.io/posts/python/using_python/</link>
+      <pubDate>Sun, 30 Jul 2023 13:09:27 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/using_python/</guid>
+      <description>I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type cmd in the bar above.&#xA;Windows - python, py commands should work Linux/Mac python or python3 should work&#xA;run the following:&#xA;python --version&#xD;if the response is not python 3 or higher then i recommend you check the py command or the python3 command</description>
+    </item>
+    <item>
       <title>Resync Windows time with task scheduler</title>
       <link>https://richard-porteous.github.io/posts/windows/fix_windows_clock/</link>
       <pubDate>Tue, 28 Feb 2023 11:25:07 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/windows/fix_windows_clock/</guid>
       <description>NOTE: Time sync should be done as little as possible. See the recommendations on the time server sites. i.e. https://www.pool.ntp.org&#xA;Tired of forcing your time to resync manually?&#xA;If you dual boot or your computer just doesn&amp;rsquo;t keep time after it has been shut down for a while, you may be a little frustrated with the default setting for windows.&#xA;Linux when booted will set the system time clock to UTC and display your local time.</description>
-    </item>
-    <item>
-      <title>Using python</title>
-      <link>https://richard-porteous.github.io/posts/python/using_python/</link>
-      <pubDate>Mon, 30 Jan 2023 13:09:27 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/using_python/</guid>
-      <description>I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type cmd in the bar above.&#xA;Windows - python, py commands should work Linux/Mac python or python3 should work&#xA;run the following:&#xA;python --version&#xD;if the response is not python 3 or higher then i recommend you check the py command or the python3 command</description>
     </item>
     <item>
       <title>Using Git</title>
