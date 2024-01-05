@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Using Git | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Using Git</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-01-30T13:01:01-07:00">30.01.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <p>It is highly recommended that you use GIT so you keep track of your chnges and don&rsquo;t lose your work.</p>
+<h2 id="what-we-will-do-this-lesson">What we will do this Lesson</h2>
+<ul>
+<li>Learn to add your project to a git repository.</li>
+<li>Know how to use a free online host.</li>
+</ul>
+<h2 id="git-gui-sourcetree-etc">git-gui, Sourcetree, etc</h2>
+<p>Git is simple to learn. I suggest using a Git Client for viewing your history or everything else if you are a beginner.</p>
+<pre><code>We use the command line wherever we can. 
+</code></pre>
+<p>I use GitHub as my remote host, but choose whichever you tink is best. Some activity we do relies on GitHub pages so you may want to consider them.</p>
+<h2 id="gitignore">.gitignore</h2>
+<p>This file removes temporary files from your commits. It simply tells git what it can safely ignore.</p>
+<p>Godot can provide the .gitignore for you when you create the project.</p>
+<h2 id="create-the-repository">Create the repository</h2>
+<pre><code>you can do this with or without an online host.
+</code></pre>
+<p>I usually will create the host folder first then create the local repository and then link them. But you do not need the host for these projects we will do. For your projects, you should create an online account.</p>
+<h2 id="get-a-github-account">Get a GitHub account</h2>
+<p>If you are younger than 13 you will need permission.</p>
+<ul>
+<li>
+<p>Go to <a href="https://github.com/">https://github.com/</a> and create an account if you don&rsquo;t already have one.</p>
+</li>
+<li>
+<p>You may use/choose a name other than the default <em>master</em> for the main branch. Common choices are <em>main</em> or <em>develop</em>. Remember your choice. Once you have created your profile, you can do this from your profile icon top right. Select <em>Settings</em>. On the Settings page choose <em>Repositories</em> (on the left under <em>code planning and automation</em>). The top choice should be a way to change your default branch name.</p>
+</li>
+<li>
+<p>create an empty repository using the NEW REPOSITORY option. add the name HeroRPG (whatever) and keep it private (unless you plan to share).</p>
+</li>
+</ul>
+<p>Accept the changes</p>
+<p>
+<img src="/img/git/create_on_github.png" alt="Create on GitHub"  /></p>
+<p>Look near the bottom of the page you will get the same instructions with the correct URL from when you created the GitHub repository. you can simply use these to continue.</p>
+<p>(URL should look like <a href="https://github.com/YOUR_NAME/YOUR_PROJECT.git">https://github.com/YOUR_NAME/YOUR_PROJECT.git</a> &hellip; where YOUR_NAME is the name you chose during signup, and YOUR_PROJECT is the name of your project)</p>
+<h2 id="new">NEW</h2>
+<p>(if not empty zip it up just in case and keep that zip handy)</p>
+<pre><code>with git installed
+Open a command prompt window (cmd or your computers terminal app)
+go to your project folder (top level)
+
+git init
+git remote add origin https://github.com/YOUR_NAME/YOUR_PROJECT.git
+git pull
+git add .
+git checkout main
+git status
+</code></pre>
+<p>note main and master branch names depend on that used in your github repository.</p>
+<h2 id="how-do-we-save-all-future-changes">How do we save all future changes</h2>
+<p>When you start working on your project again you need to do regular commits (saves). Usually, every time you work on a new thing or more than a few hours of work you could save the changes in a commit.</p>
+<p>Stage all changed files: (without the quotes)</p>
+<ul>
+<li>&ldquo;git add .&rdquo;</li>
+</ul>
+<p>this adds all the changes to a staging area - only the staged changes are saved.</p>
+<p>Make sure all is good:0</p>
+<ul>
+<li>git status</li>
+</ul>
+<p>Once the status is checked we commit the changes</p>
+<ul>
+<li>git commit -m &ldquo;Message that describes what this change does&rdquo;</li>
+</ul>
+<p>Or to fix the commit message</p>
+<ul>
+<li>git commit &ndash;amend -m &ldquo;Put your corrected message here&rdquo;</li>
+</ul>
+<p>And finally, we want to push the repository (Sync) so all our changes are safe in our online host (GitHub etc)</p>
+<ul>
+<li>git push</li>
+</ul>
+<p>This will keep your work safe if you do it at the end of each session - but may not be neat. I highly recommend any git client app. remember to (stage, commit, and push) &hellip; git Clients will often show the list of changed files and all you need to do is push a button for staging, for committing, and to finally push the changes.
+or sticking with command line - here are two starting points.
+<a href="https://github.com/git-guides">https://github.com/git-guides</a>
+<a href="https://git-scm.com/docs">https://git-scm.com/docs</a></p>
+<h2 id="built-in">Built in</h2>
+<p>You can use git directly from a lot of tools and ide&rsquo;s these days. if you can i suggest you do that or the command line.</p>
+<p><!-- raw HTML omitted -->VSCode<!-- raw HTML omitted --> which I suggest you use in many tutorials has Git Support with a few plugins which give you extra features. I like <!-- raw HTML omitted -->git graph<!-- raw HTML omitted --> simply because I like to visualize the structure of my git repository. It adds almost everything you need, you just need to explore it a bit.</p>
+<h2 id="git-client">Git client</h2>
+<p>These are really useful when you have more than one source repository and are trying to more than the ordinary (command line is still better). There focus is to help you manage your git repositories, use branches, and many other things almost all visually. Helps reduce the need to understand and memorise yet another tool.</p>
+<p>Of the Clients I currently recommend <!-- raw HTML omitted -->GitAhead<!-- raw HTML omitted -->. Followed by source-tree. There are many others, I suggest you try a few. I have had one or two git client apps really do a lot of damage but I was trying something stupid anyway.</p>
+<p><!-- raw HTML omitted -->Git Gui<!-- raw HTML omitted --> comes with git, not as intuitive but you dont have anything extra to install.</p>
+<p>On the cmd line type git-gui or search with the search bar to find the app ~ you&rsquo;ll have to select the new &ldquo;repository&rdquo; the first time, it will remember for the second time.</p>
+<p>In the app select &ldquo;Repository&rdquo;, then select &ldquo;visualize all branch history&rdquo;</p>
+<p>OK, that&rsquo;s all for now, see you in lesson 3.</p>
+<h2 id="free-pro-git-book">Free Pro Git Book</h2>
+<p>Git has a free book - a little technical but way more detail and it has a section intended for beginners.</p>
+<p><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
+<h2 id="links">Links</h2>
+<p>Pro Git Book (free) <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
+<p>Get Git <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<p>GitHub site <a href="https://github.com/">https://github.com/</a></p>
+<p>BitBucket site <a href="https://bitbucket.org/">https://bitbucket.org/</a></p>
+<p><a href="https://github.com/git-guides">https://github.com/git-guides</a>
+<a href="https://git-scm.com/docs">https://git-scm.com/docs</a></p>
+<p>Some Visual Git Client tools:</p>
+<p>Git lists clients on its site. You will find a more comprehensive list there.</p>
+<ul>
+<li>GitAhead - free - <a href="https://gitahead.github.io/gitahead.com/">https://gitahead.github.io/gitahead.com/</a> (my current favorite)</li>
+<li>SourceTree - free -  can find on BitBucket&rsquo;s site</li>
+<li>GitHub Desktop - free - <a href="https://docs.github.com/en/desktop">https://docs.github.com/en/desktop</a> (keeps it simple)</li>
+<li>git-gui we use it in this book, it is packaged with the git you downloaded earlier</li>
+<li>VSCode with git extention - you are still required to download git for your os but that is preferable anyway.</li>
+</ul>
+<h2 id="adding-git-to-your-project---github-instructions">Adding Git to your project - GitHub instructions</h2>
+<p><a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github</a></p>
+
+
+                </div>
+                    <aside class="col-md-3 tikva-sidebar">
+  
+
+
+    
+
+        <div class="col">
+    <div class="p-3 mb-3 bg-light rounded">
+    <h4>Coming Soon</h4>
+   
+    <p>    </p>
+   
+    </div>
+</div>
+
+    
+
+        <div class="col">
+    <div class="p-3 mb-3 bg-light rounded">
+    <h4>New(ish) Site</h4>
+   
+    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
+</p>
+   
+    </div>
+</div>
+
+    
+
+</aside>
+</div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

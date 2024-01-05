@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Our first pygame - Sprites - part 5 | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Our first pygame - Sprites - part 5</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:59-07:00">10.11.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <p>This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game. Each time we will make changes to the skeleton to improve reusability. Is that a word? Spell check thought so!</p>
+<p>Ok so lets get to sprites. Head over to pygame sprites after reading this and check what I have done so you can improve your version of the code.</p>
+<p>Ok the site says this is</p>
+<ul>
+<li>optional</li>
+<li>intended as a base class</li>
+<li>each sprite having a Surface.image attribute and a Surface.rect seems to be important for other functions.</li>
+<li>there are collision functions - we haven&rsquo;t addressed this yet.</li>
+<li>​currently Sprites do not clean up the trail left behind them.</li>
+</ul>
+<p>Traditional sprites allow an image to move across the screen without leaving a trail, by managing two buffers with hardware simply drawing one buffer over the other. Pygame may introduce a sprite with some super rendering, but for now, you either find a workaround, do things the common expected way or contribute to the pygame project.</p>
+<p>Despite my disappointment, we can still get some benefit from using Sprites. Besides keeping things in a nice little wrapper we can add the sprites to various groups and have a very efficient way of working with multiple sprites.
+Picture</p>
+<pre><code>If you haven't used git to stage and commit your last changes, its time to do it now. We also want to create a new branch and call it feature/sprites or something like that.
+ Picture 
+</code></pre>
+<p>If you installed git graph you can have a visual idea of what your repository looks like. Your development is currently at the main branch head. I added two branches test_file and feature/sprites. I checked out test_file and then found an example of using sprites that I liked from pygame. I placed it in the folder and staged and committed it to that branch. I can switch to that branch if I need to reference it. I then checked out “feature/sprites” and started to add the class and make changes to my existing code.
+note: the naming of commits for this small project doesn’t follow any convention.
+Ok, let’s add a sprite class for our player.</p>
+<pre tabindex="0"><code># REMOVE THIS CODE
+#load images
+player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+</code></pre><pre tabindex="0"><code>#AND REPLACE IT WITH
+​#create class for players
+class Player(pygame.sprite.Sprite):
+  velocity = (0,0)
+  def __init__(self, img, x, y):
+    pygame.sprite.Sprite.__init__(self)
+    self.image = pygame.image.load(img_path + img)
+    self.rect = self.image.get_rect()
+    self.rect.center = (x, y)
+
+
+  def update(self):
+    #player.rect = player.rect.move([-speed, 0])
+    self.rect.move_ip(self.velocity)
+
+
+  def set_velocity(self, velocity):
+      self.velocity = velocity
+
+
+#create groups
+players = pygame.sprite.Group()
+
+
+#load game-objects
+player = Player(&#34;blue_body_square.png&#34;, width/2, height/2)
+
+
+#Add game-objects to their respective groups
+players.add(player)
+</code></pre><p>So you removed some old code and replaced it with a player class. The nice thing about classes is that it helps clean up code in other places. Ok lets continue and finish the job.</p>
+<pre tabindex="0"><code>#Replace the movement code with this
+​    game_running = held_keys.getEvents()
+    x=0
+    y=0
+    if held_keys.leftkey:
+        x += -speed
+    if held_keys.rightkey:
+        x += speed
+    if held_keys.upkey:
+        y += -speed
+    if held_keys.downkey:
+        y += speed
+   
+    player.set_velocity((x,y))
+</code></pre><p>then finally replace the screen blit with the following
+​</p>
+<pre tabindex="0"><code>    #update sprite group
+    players.update()
+
+
+    #draw sprite group
+    players.draw(screen)
+</code></pre><p>and because I&rsquo;m picky we can avoid calling the move if the velocity is 0,0.
+Note: this is not always more efficient to avoid calls. you could do your tests by placing the calls in tight loops. i.e. a loop of 100,000 times and see which one finishes faster. Or use the tooling available.</p>
+<pre tabindex="0"><code>  def update(self):
+    if self.velocity != (0,0):
+        self.rect.move_ip(self.velocity)
+</code></pre><p>Final code should look like</p>
+<pre tabindex="0"><code># the pygame imports to make them usable in our game
+import pygame
+from pygame.locals import *
+# Initialize the pygame code
+pygame.init()
+#game globals
+img_path = &#39;images/&#39;
+# set window size
+size = width, height = (800, 600)
+screen = pygame.display.set_mode(size)
+black = (0,0,0)
+white = (255,255,255)
+screen.fill(black)
+# update the display to see what we set
+pygame.display.update()
+
+
+
+
+#create class for players
+class Player(pygame.sprite.Sprite):
+    velocity = (0,0)
+    def __init__(self, img, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(img_path + img)
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
+    def clear(surf, rect):
+        color = 255, 0, 0
+        surf.fill(color, rect)
+    # called on the group
+    def update(self):
+        if self.velocity != (0,0):
+            self.rect.move_ip(self.velocity)
+    def set_velocity(self, velocity):
+        self.velocity = velocity
+#create groups
+players = pygame.sprite.Group()
+#load game-objects
+player = Player(&#34;blue_body_square.png&#34;, width/2, height/2)
+#Add game-objects to their respective groups
+players.add(player)
+clock = pygame.time.Clock()
+FPS = 60
+# control variable
+game_running = True
+# time based movement requires delta time
+class deltatime():
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+# end of the class and code contiues​
+delta_time = deltatime()  # we initialize the class here and can now use it as an object
+class keyisdown():
+   
+    def __init__(self) -&gt; None:
+        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return False
+           
+            if event.type==pygame.KEYDOWN:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                if event.key in [K_w, K_UP]:
+                    self.upkey = True
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = True
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = True
+               
+            elif event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                if event.key in [K_w, K_UP]:
+                    self.upkey = False
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = False
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = False
+        return True
+held_keys = keyisdown()
+
+
+# GAME LOOP
+while game_running:
+    clock.tick(FPS)
+    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    speed = 1 * dt
+    print(dt) #remove this line when coding your game
+   
+ 
+    game_running = held_keys.getEvents()
+    x=0
+    y=0
+    if held_keys.leftkey:
+        x += -speed
+    if held_keys.rightkey:
+        x += speed
+    if held_keys.upkey:
+        y += -speed
+    if held_keys.downkey:
+        y += speed
+   
+    player.set_velocity((x,y))
+   
+    #clear screen
+    screen.fill(black)
+   
+    #update sprite group
+    players.update()
+    #draw sprite group
+    players.draw(screen)
+    # apply changes - can&#39;t be used on opengl
+    pygame.display.update()
+# quit the pygame window
+pygame.quit()
+#the app exits
+</code></pre><p>​
+Run the app and test.
+Yes we changed behaviour, so no not just refactoring. The input now gives us 8 directions, not just 4. Nice we now have sprites.</p>
+<p>​OK so other than slightly clear code there is no real benefit. Sprites only really start to get interesting once you use more of them together - and oh yes, they contain collisions which we explore soon.</p>
+
+
+                </div>
+                    <aside class="col-md-3 tikva-sidebar">
+  
+
+
+    
+
+        <div class="col">
+    <div class="p-3 mb-3 bg-light rounded">
+    <h4>Coming Soon</h4>
+   
+    <p>    </p>
+   
+    </div>
+</div>
+
+    
+
+        <div class="col">
+    <div class="p-3 mb-3 bg-light rounded">
+    <h4>New(ish) Site</h4>
+   
+    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
+</p>
+   
+    </div>
+</div>
+
+    
+
+</aside>
+</div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

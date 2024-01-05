@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Use a Hugo theme example | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Use a Hugo theme example</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-04T11:10:13-07:00">04.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <h2 id="using-the-tikva-theme-example-site">Using the Tikva theme example site</h2>
+<p>If you want to start a site and have a definite theme in mind. If its not 100% compatible with what you have been doing, I find this method to be best.</p>
+<ol>
+<li>create your hugo site</li>
+<li>grab a theme from the theme store and clone it into themes</li>
+<li>go to its example site folder and copy the site into yours</li>
+<li>if an older theme, rename config.toml to hugo.toml</li>
+<li>if the posts use the yaml (&mdash;) format not toml add a posts archetype</li>
+<li>check any existing content for internal links. Check the paths are correct</li>
+<li>run the hugo server</li>
+</ol>
+<p>Replace the static files with files you want, set your header background image if you want one. If mutliple themes choose one.</p>
+<p>If post headers are different take care to use what they used, unless you know how to fix that. My first few attempts my hugo generated post headers failed. But in the end I have what I want so I am happy with the results. Ok let&rsquo;s get started!</p>
+<h2 id="create-your-hugo-site">Create your Hugo site</h2>
+<p>On your local device/pc change to the directory you want the site to keep the site code in. This could be the same as what you used in the last tutorial. In my case it is blog_repos and I want to call the site folder my-themed-site.</p>
+<p>Then create the hugo site from the terminal command line.</p>
+<pre><code>hugo new site my-themed-site
+</code></pre>
+<p>Change directory to the directory my-themed-site and list the files.</p>
+<h2 id="grab-a-theme-from-the-theme-store-and-clone-it-into-themes">grab a theme from the theme store and clone it into themes</h2>
+<p>Next change to the themes folder. We will clone our theme here.</p>
+<p>Head over to <a href="https://themes.gohugo.io/">All Hugo Themes</a>. If you are following this step by step, then grab the Hugo Tikva them.</p>
+<p>Take a look at the readme (usually displayed below the repository) - they are an excellent source of info.</p>
+<pre><code>cd themes
+git clone https://github.com/geschke/hugo-tikva.git
+</code></pre>
+<blockquote>
+<p><!-- raw HTML omitted -->Note<!-- raw HTML omitted -->: The next instruction is to optionally create a submodule, we can&rsquo;t do that yet as we haven&rsquo;t initialized a git repository in our local top-level folder. Also I may refer to this as site folder or main, sorry old habits die hard. When I do refer to the one on github I will specifically say it is on github and not local.</p>
+</blockquote>
+<p>Ok back up to my-themed-site folder and type in the following.</p>
+<pre tabindex="0"><code>echo &#34;# build from a tikva example site&#34; &gt;&gt; README.md
+
+git init
+git add .
+git commit -m &#34;first commit&#34;
+git branch -M main
+</code></pre><p>You will see a warning about the git from the theme, its ok it wont include it, its optional and as long as you can access the original repository you are ok, but consider setting it as a submodule later.</p>
+<h2 id="go-to-its-example-site-folder-and-copy-the-site-into-yours">go to its example site folder and copy the site into yours</h2>
+<p>
+<img src="/img/blog/site-from-theme-example/theme-example-folder.png" alt=""  /></p>
+<p>Copy the example, usually this is the content, layouts, and static folder to the top-level folder (my-themed-site) overwriting the <!-- raw HTML omitted -->empty<!-- raw HTML omitted --> folders there.</p>
+<h2 id="if-an-older-theme-rename-configtoml-to-hugotoml">if an older theme, rename config.toml to hugo.toml</h2>
+<p>copy the config.toml to the same folder, remove the default hugo.toml. Then rename config.toml to hugo.toml</p>
+<p>
+<img src="/static/img/blog/site-from-theme-example/add-images-icons-posts.png" alt=""  /></p>
+<p>Notice the header_background.jpg and the folder structure. I found that this works with some minor changes to our hugo.toml file</p>
+<pre tabindex="0"><code>change the 
+1. baseurl
+2. title
+3. paginate = 10
+4. [params.meta]
+   description = &#34;Various coding tutorials&#34;
+   keywords = &#34;blog, site, tutorials, coding, software, programming&#34;
+   author = &#34;Your Name&#34;
+   #&#34;DC.Copyright&#34; = &#34;Your Name&#34;
+5. [params.theme]
+
+    bootstrapTheme = &#39;signa&#39; #use one of the examples here
+6. and in [params.theme.header] change image = &#39;img/header_background.jpg&#39;
+7. check the theme readme for additional notes
+</code></pre><p>And finally we need to remove the additional content from the about, feedback, extra posts, and sections.</p>
+<p>Test the site again - missing posts? check the post headers again!</p>
+<pre><code>Make sure you have a least 3 non-draft posts.
+I noticed less than three non draft posts failed to show up
+</code></pre>
+<p>When creating new posts the top meta of the posts should be the same i.e. yaml or toml etc. I found adding a <!-- raw HTML omitted -->posts.md<!-- raw HTML omitted --> in archetypes as explained in <a href="https://gohugo.io/content-management/archetypes/," title="archetypes">archetypes</a>to be the best.</p>
+<pre tabindex="0"><code>---
+date: &#39;{{ .Date }}&#39;
+title: &#39;{{ replace .File.ContentBaseName `-` ` ` | title }}&#39;
+tags: [&#34;Text&#34;,&#34;Blog&#34;,&#34;Post&#34;]
+author: &#34;Your Name&#34;
+---
+</code></pre><p>Finish testing and create another git commit.
+It is likely time to set your &ldquo;theme&rdquo; and &ldquo;public&rdquo; folder as git submodules and set the git remote(s).
+refer to previous post</p>
+<p>Enjoy!</p>
+<h2 id="notes">NOTES</h2>
+<p>for more about the different formats check out <a href="https://gohugo.io/content-management/front-matter/#front-matter-formats">https://gohugo.io/content-management/front-matter/#front-matter-formats</a></p>
+<p>Make sure you have a least 3 non-draft posts before trying to figure if there is a problem. Seems there is a bug, just not yours.</p>
+<p><!-- raw HTML omitted -->A quick note about compatability<!-- raw HTML omitted --> when placing an image from the static folder into a post,</p>
+<pre><code>1. please remove the word static from the internal link
+2. keep the name lowercase and match the case in the markdown
+3. tikva uses the img folder for site images not &quot;images&quot;
+</code></pre>
+<pre tabindex="0"><code>i.e. ![](/img/blog/site-from-theme-example/theme-example-folder.png) 
+</code></pre>
+
+                </div>
+                    <aside class="col-md-3 tikva-sidebar">
+  
+
+
+    
+
+        <div class="col">
+    <div class="p-3 mb-3 bg-light rounded">
+    <h4>Coming Soon</h4>
+   
+    <p>    </p>
+   
+    </div>
+</div>
+
+    
+
+        <div class="col">
+    <div class="p-3 mb-3 bg-light rounded">
+    <h4>New(ish) Site</h4>
+   
+    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
+</p>
+   
+    </div>
+</div>
+
+    
+
+</aside>
+</div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
