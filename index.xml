@@ -20,7 +20,7 @@
       <link>https://richard-porteous.github.io/posts/hugo/site_on_github/</link>
       <pubDate>Thu, 04 Jan 2024 10:59:46 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/hugo/site_on_github/</guid>
-      <description>Steps we follow 1. create 2 github repositories. name.github.io and hugoblog&#xD;2. Get Hugo and git&#xD;3. Create the hugo site locally&#xD;4. init git for hugoblog and add public as a git submodule&#xD;5. Add a theme (possibly as a submodule)&#xD;6. Test and fix site or theme&#xD;7. Add a post and about&#xD;10. Publish&#xD;Create the github repositories Go to github.com and if you dont have an account cretae a free one (for now).</description>
+      <description>Steps we follow 1. create 2 github repositories. name.github.io and hugoblog&#xD;2. Get Hugo and git&#xD;3. Create the hugo site locally&#xD;4. init git for hugoblog and add public as a git submodule&#xD;5. Add a theme (possibly as a submodule)&#xD;6. Test and fix site or theme&#xD;7. Add a post and about&#xD;10. Publish&#xD;Create the github repositories Go to github.com and if you dont have an account create a free one (for now).</description>
     </item>
     <item>
       <title>Our first pygame - Sprites - part 5</title>
@@ -48,7 +48,7 @@
       <link>https://richard-porteous.github.io/about/</link>
       <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
       <guid>https://richard-porteous.github.io/about/</guid>
-      <description>Game experiments is related to tasks I do when trying to learn something new. I hope there is something helpful you here.&#xA;Hi I&amp;rsquo;m Richard Porteous and I&amp;rsquo;m a software developer. I&amp;rsquo;ve made these notes as a reference for myself. I&amp;rsquo;ve used a tutorial format so I could share them with others. They may be missing something or even show a misunderstanding as I tend to make notes when I learn something new, however I do fully intend to keep them updated.</description>
+      <description>Game experiments is related to tasks I do when trying to learn something new. I hope there is something helpful for you here.&#xA;Hi I&amp;rsquo;m Richard Porteous and I&amp;rsquo;m a software developer. I&amp;rsquo;ve used a tutorial format so I could share these notes with others. They may be missing something, hey we are learning here. I do fully intend to keep them updated. If I find things that blocked me, I will share them so you find the journey easier.</description>
     </item>
     <item>
       <title>Our first pygame - part 2</title>
@@ -79,18 +79,18 @@
       <description>It is highly recommended that you use GIT so you keep track of your chnges and don&amp;rsquo;t lose your work.&#xA;What we will do this Lesson Learn to add your project to a git repository. Know how to use a free online host. git-gui, Sourcetree, etc Git is simple to learn. I suggest using a Git Client for viewing your history or everything else if you are a beginner.&#xA;We use the command line wherever we can.</description>
     </item>
     <item>
-      <title>Winforms_mvc</title>
+      <title>Winforms using mvc (almost)</title>
       <link>https://richard-porteous.github.io/posts/windows/winforms_mvc/</link>
       <pubDate>Sun, 09 Jan 2022 11:20:41 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/windows/winforms_mvc/</guid>
-      <description>Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, &amp;ldquo;This app needs to be re-written&amp;rdquo;. Well, rewriting is not the only option.&#xA;Get to know current practices I&amp;rsquo;m no expert on this topic. I had 15 years of experience before I started even looking at this.</description>
+      <description>Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, &amp;ldquo;This app needs to be re-written&amp;rdquo;. Well, rewriting is not the only option.&#xA;MVC, it&amp;rsquo;s not the only way The MVC I show you here is the easiest to follow if you are new to this. There are other ways to implement this.</description>
     </item>
     <item>
       <title>Feedback</title>
       <link>https://richard-porteous.github.io/feedback/</link>
       <pubDate>Sun, 04 Nov 2018 21:52:00 +0100</pubDate>
       <guid>https://richard-porteous.github.io/feedback/</guid>
-      <description>&#xD;Feel free to add some senseful content here.&#xD;</description>
+      <description>&#xD;I will be adding a feedback form.&#xD;</description>
     </item>
   </channel>
 </rss>

@@ -253,9 +253,12 @@ git branch -M main
 <img src="/img/blog/site-from-theme-example/theme-example-folder.png" alt=""  /></p>
 <p>Copy the example, usually this is the content, layouts, and static folder to the top-level folder (my-themed-site) overwriting the <!-- raw HTML omitted -->empty<!-- raw HTML omitted --> folders there.</p>
 <h2 id="if-an-older-theme-rename-configtoml-to-hugotoml">if an older theme, rename config.toml to hugo.toml</h2>
-<p>copy the config.toml to the same folder, remove the default hugo.toml. Then rename config.toml to hugo.toml</p>
+<p>copy the config.toml to the same folder, remove the default hugo.toml. Then rename config.toml to hugo.toml
+or use</p>
+<pre><code>cp themes\hugo-tikva\exampleSite\config.toml hugo.toml
+</code></pre>
 <p>
-<img src="/static/img/blog/site-from-theme-example/add-images-icons-posts.png" alt=""  /></p>
+<img src="/img/blog/site-from-theme-example/add-images-icons-posts.png" alt=""  /></p>
 <p>Notice the header_background.jpg and the folder structure. I found that this works with some minor changes to our hugo.toml file</p>
 <pre tabindex="0"><code>change the 
 1. baseurl

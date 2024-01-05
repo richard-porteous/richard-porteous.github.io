@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Winforms_mvc | Game Experiments</title>
+    <title>Winforms using mvc (almost) | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -204,7 +204,7 @@
 
 
 
-<h1>Winforms_mvc</h1>
+<h1>Winforms using mvc (almost)</h1>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -212,16 +212,14 @@
 
 
   <p>Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, &ldquo;This app needs to be re-written&rdquo;. Well, rewriting is not the only option.</p>
-<h2 id="get-to-know-current-practices">Get to know current practices</h2>
-<p>I&rsquo;m no expert on this topic. I had 15 years of experience before I started even looking at this. I&rsquo;m not inexperienced at coding, but I avoided refactoring &amp; clean code &amp; even testing, thinking it was for certain types of work etc. I was wrong, and a little stubborn. You don&rsquo;t need to be afraid of it. Try a bit here and a bit there, and soon this other concept starts making sense, then that concept, until eventually, you end up knowing quite a lot.</p>
 <h2 id="mvc-its-not-the-only-way">MVC, it&rsquo;s not the only way</h2>
-<p>The <strong>MVC</strong> I show you here is the easiest to follow if you are new to this. There are other ways to implement this. I only show VC not M but you get the point.</p>
-<p>MVC (mvvm etc) is a drastic departure from what you are likely to have. It allows you to split the code out of a (WinForms) app with minimal impact. i.e. break the dependencies. You can do one small part at a time. You may want to implement the full MVC pattern, then simply continue from where this leaves off. I plan to make the code easier to maintain and even replace the UI with something more modern.</p>
+<p>The <strong>MVC</strong> I show you here is the easiest to follow if you are new to this. There are other ways to implement this. I only show VC (view-controller) not M (model) but you get the point.</p>
+<p>MVC (mvvm etc) allows you to split the code out of a (WinForms) app with minimal impact. i.e. break some dependencies. You are able to do one small part at a time. Winforms apps can be well writen but more than often the programmer made a prototype and then simply kept adding to it to make the app fit the use. This is common.</p>
 <h2 id="deal-with-bugs-first">Deal with BUGS first</h2>
-<p>If using a datagridview you will likely find some code is trying to step through the grid instead of the data. A rookie mistake, which causes a lot of events to fire. These events will cause threading bugs. This will need to be fixed first.</p>
+<p>If using a datagridview you will likely find some code is trying to step through the grid instead of the data. A rookie mistake, which causes a lot of events to fire. These events will cause threading bugs. This will need to be fixed first as almost any change you make will break the code.</p>
 <h2 id="why-refactor">WHY Refactor?</h2>
 <p>Code becomes hard to fix, and a change here affects code in another part - OR - you simply want to add features to the app but are unable to do so.</p>
-<p>The reason to refactor becomes apparent when you look at an old WinForms app. Ok, some are beautiful, but it&rsquo;s VERY rare.</p>
+<p>The reason to refactor becomes apparent when you look at most WinForms apps.</p>
 <h2 id="example-project">EXAMPLE PROJECT</h2>
 <p>This small project <a href="https://github.com/richard-porteous/interval-refactor-project" title=".net C# WinForms MVC style">interval refactor project</a> takes a WinForms C# app called Interval and adds MVC design to it. Martin Fowler (2019) describes this process with a Java app.</p>
 <p>The app has a very simple UI. It doesn&rsquo;t use a database, so you won&rsquo;t see much in the model, a service, or dependency injection.</p>
@@ -284,7 +282,7 @@
 </span></span><span style="display:flex;"><span>      view.Update();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>And in the Model - we don&rsquo;t need to do anything, just yet.</p>
+</span></span></code></pre></div><p>And in the Model - ok we don&rsquo;t need to do anything, but you get the picture.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Csharp" data-lang="Csharp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IntervalModel</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> IntervalModel()
@@ -295,7 +293,7 @@
 For tools: I used visual studio community, C#, and .NET 6. Modify as you please.</p>
 <p>The example app shows one way how you could implement MVC. You may find following the pattern closely makes for easier-to-read code. Investigate the MVC model further, it could transform your style.</p>
 <p><em>NOTE</em>
-WinForms for .NET 5 &amp; 6 no longer supports the WinForms reporting. There is a decompiled &amp; recompiled NuGet package by the community that you can use. Power BI report viewer can be used to view or edit reports.</p>
+WinForms for .NET 5 &amp; 6 no longer supports the WinForms reporting. There is a decompiled &amp; recompiled NuGet package by the community that you can use. Power BI report viewer can be used to view or edit existing RDL reports.</p>
 <p>If you use WinForms reports, I suggest you have your reports in a separate project as it helps keep the code separate and allows for various options, including changing to an alternate printing option.</p>
 <p>If you want to keep your older reports,</p>
 <ul>
