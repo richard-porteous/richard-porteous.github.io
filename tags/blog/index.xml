@@ -6,56 +6,63 @@
     <description>Recent content in Blog on Game Experiments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Thu, 04 Jan 2024 10:59:46 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jan 2024 15:19:13 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Our_first_pygame_6</title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</link>
+      <pubDate>Sat, 06 Jan 2024 15:19:13 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</guid>
+      <description>A lot has happened. I decided to continue with app development without the sprites for now. I fixed input and movement as they were not doing what I wanted the way I wanted.&#xA;The input change was easy. Mostly a fix from moving the code to a class and being able to access the input. I need to add last key pressed and key order (key queue), yes and I could do more.</description>
+    </item>
     <item>
       <title>Hugo site on github</title>
       <link>https://richard-porteous.github.io/posts/hugo/site_on_github/</link>
       <pubDate>Thu, 04 Jan 2024 10:59:46 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/hugo/site_on_github/</guid>
-      <description>Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&amp;mdash;) format not toml add a posts archetype can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Publish Create the github repositories Go to github.</description>
+      <description>Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&amp;mdash;) format not toml add a posts archetype can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Publish Create the github repositories I have a post on using GIT.</description>
     </item>
     <item>
       <title>Our first pygame - Sprites - part 5</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</link>
       <pubDate>Fri, 10 Nov 2023 13:19:59 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</guid>
-      <description>This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game. Each time we will make changes to the skeleton to improve reusability. Is that a word? Spell check thought so!</description>
+      <description>CODE REPOSITORY branch &amp;lsquo;main&amp;rsquo; did not follow this step git clone https://github.com/richard-porteous/my-app.git If you look at the repository this step was on branch sprites-example You can skip if you want! we get back to doing it later.&#xA;This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game.</description>
     </item>
     <item>
       <title>Our first pygame - Refactoring - part 4</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_4/</link>
       <pubDate>Fri, 10 Nov 2023 13:19:53 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_4/</guid>
-      <description>I&amp;rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name&#xA;#Somewhere near the top of our code we will place the following&#xD;img_path = &amp;#39;images/&amp;#39;&#xD;#Then we replace our existing player load image code with the following concatenation&#xD;player = pygame.image.load(img_path + &amp;#34;blue_body_square.png&amp;#34;) Run the app and it does the same.&#xA;The reason for this change is that the choice for images (or assets) tends to change.</description>
+      <description>if you look at the git repository we are near the post 4 tag. if things dont look the same don&amp;rsquo;t worry too much.&#xA;I&amp;rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name&#xA;#Somewhere near the top of our code we will place the following&#xD;img_path = &amp;#39;images/&amp;#39;&#xD;#Then we replace our existing player load image code with the following concatenation&#xD;player = pygame.</description>
     </item>
     <item>
       <title>Our first pygame - moving images - part 3</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_3/</link>
       <pubDate>Mon, 11 Sep 2023 13:19:37 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_3/</guid>
-      <description>Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around. First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.&#xA;I&amp;rsquo;m going to use individual 2d png files for each item to start.</description>
+      <description>Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around.&#xA;First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.&#xA;I&amp;rsquo;m going to use individual 2d png files for each item to start.</description>
     </item>
     <item>
       <title>Our first pygame - part 2</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</link>
       <pubDate>Fri, 11 Aug 2023 13:19:30 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</guid>
-      <description>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc. We will start building the common code while creating a game and we will refactor it into something reusable as we go.&#xA;Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment. Picture&#xA;I assume you know some python. However if you just read the python as English it will understandable.</description>
+      <description>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc. We will start building the common code while creating a game and we will refactor it into something reusable as we go.&#xA;I&amp;rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE. If you prefer to use another go ahead.</description>
     </item>
     <item>
       <title>Our first pygame - part 1</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
       <pubDate>Thu, 10 Aug 2023 13:19:30 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
-      <description>Refer to Using Python to get python installed and set up a virtial environment.&#xA;Once python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame dont type the $ or the &amp;raquo; if you have no errors you can quit</description>
+      <description>Refer to Using Python to get python installed and set up a virtial environment.&#xA;If python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame dont type the $ or the &amp;raquo; if you have no errors you can quit</description>
     </item>
     <item>
       <title>Using python</title>
       <link>https://richard-porteous.github.io/posts/python/using_python/</link>
       <pubDate>Sun, 30 Jul 2023 13:09:27 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/using_python/</guid>
-      <description>I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type cmd in the bar above.&#xA;Windows - python, py commands should work Linux/Mac python or python3 should work&#xA;run the following:&#xA;python --version&#xD;if the response is not python 3 or higher then i recommend you check the py command or the python3 command</description>
+      <description>Do you already have python? I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type cmd in the bar above.&#xA;Windows - python, py commands should work Linux/Mac python or python3 should work&#xA;run the following:&#xA;python --version&#xD;if the response is not python 3 or higher then i recommend you check the py command or the python3 command</description>
     </item>
     <item>
       <title>Resync Windows time with task scheduler</title>
@@ -69,14 +76,14 @@
       <link>https://richard-porteous.github.io/posts/general/using_git/</link>
       <pubDate>Mon, 30 Jan 2023 13:01:01 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/general/using_git/</guid>
-      <description>It is highly recommended that you use GIT so you keep track of your chnges and don&amp;rsquo;t lose your work.&#xA;What we will do this Lesson Learn to add your project to a git repository. Know how to use a free online host. git-gui, Sourcetree, etc Git is simple to learn. I suggest using a Git Client for viewing your history or everything else if you are a beginner.&#xA;We use the command line wherever we can.</description>
+      <description>It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.&#xA;What we will do this Lesson Learn to add your project to a git repository. Know how to use a free online host. git-gui, Sourcetree, etc Git is simple to learn. We use the terminal here, though a Git Client (UI) can help visualize better.&#xA;I use GitHub as my remote host, but choose whichever you think is best.</description>
     </item>
     <item>
-      <title>Winforms using mvc (almost)</title>
+      <title>Refactoring - Winforms using mvc</title>
       <link>https://richard-porteous.github.io/posts/windows/winforms_mvc/</link>
       <pubDate>Sun, 09 Jan 2022 11:20:41 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/windows/winforms_mvc/</guid>
-      <description>Old apps are often useful but difficult to replace. Often they become this huge mess of tangled code that no one can fix without fear of introducing more bugs. You will hear programmers say, &amp;ldquo;This app needs to be re-written&amp;rdquo;. Well, rewriting is not the only option.&#xA;MVC, it&amp;rsquo;s not the only way The MVC I show you here is the easiest to follow if you are new to this. There are other ways to implement this.</description>
+      <description>This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.&#xA;I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.</description>
     </item>
   </channel>
 </rss>

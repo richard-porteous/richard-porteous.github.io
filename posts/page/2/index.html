@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Using python | Game Experiments</title>
+    <title>Posts | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -163,7 +163,7 @@
   
 
   
-  <li class="nav-item ">
+  <li class="nav-item active">
     <a class="nav-link" href="/posts/">
       
       Blog
@@ -199,49 +199,65 @@
     <div id="main">
         <div class="container">
             <div class="row"><div class="col-md" id="content">
+<main>
+    <article>
+        <header>
+            <h1>Posts</h1>
+        </header>
+        
+        
+    </article>
+
+    
+
+    
 
 
 
+<article class="mb-5 post">
+  <header>
 
+    <h2><a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'> Refactoring - Winforms using mvc</a> </h2>
 
-<h1>Using python</h1>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-07-30T13:09:27-07:00">30.07.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
+  </header>
+  This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.
+I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.
 
-
-  <h2 id="do-you-already-have-python">Do you already have python?</h2>
-<p>I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type <!-- raw HTML omitted -->cmd<!-- raw HTML omitted --> in the bar above.</p>
-<p>Windows - python, py commands should work
-Linux/Mac python or python3 should work</p>
-<p>run the following:</p>
-<pre><code>python --version
-</code></pre>
-<p>if the response is not python 3 or higher then i recommend you check the py command or the python3 command</p>
-<pre><code>py --version
-or
-python3 --version
-</code></pre>
-<p>if still not you will need to download a never version. I tend to like to get it directly from the vendor which would be <a href="https://www.python.org/downloads/">Python website</a> and look at thier <a href="https://wiki.python.org/moin/BeginnersGuide">install instructions if you still have problems</a>.</p>
-<p>Once you know how to get python 3 (or newer) we can continue. NOTE from now on I&rsquo;ll just refer to it as python but please use the command that works best for you.</p>
-<h2 id="where-do-i-put-this-code">Where do I put this code</h2>
-<p>I like to have a &ldquo;dev&rdquo; or &ldquo;source&rdquo; folder under my home folder. Then I create folders under that for each of my projects. You can group by language or if you have specific work requirements then follow those.</p>
-<p>Under the Home directory would be your <!-- raw HTML omitted -->source<!-- raw HTML omitted --> folder. Under that would be your project folder which can be anything you choose. We use <!-- raw HTML omitted -->my_project<!-- raw HTML omitted --> for this example.
-Under my_project we would create the venv/. In here we will create .git/ and .gitignore.
-If using an IDE like VSCode we would open on this folder and have the venv automatically recognised. A terminal and text editor are sufficient, though I find beginners may prefer the help like code completion etc.</p>
-<h2 id="creating-the-venv-folder">Creating the venv/ folder</h2>
-<p>We don&rsquo;t want to clutter the python global environment, nor do we want each project to use the global versions as changes to one projects dependancies may break another. We create a project level virtual environment to give us flexibility.</p>
-<pre><code>python -m venv venv
-</code></pre>
-<p>the first venv after the -m is the python module, the second is the folder name we chose.</p>
-<p>we activate it in windows with</p>
-<pre><code>venv\Scripts\activate
-</code></pre>
-<p>Linux and Mac will use</p>
-<pre><code>source venv/bin/activate
-</code></pre>
-<p>After it is activated then install with pip will place those files safely in the virtual environment (venv).</p>
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Refactoring - Winforms using mvc</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    
+   
+</main>
 
 
                 </div></div>

@@ -12,7 +12,7 @@
     <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
 
     
-    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
     
     <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
@@ -211,7 +211,11 @@
      </div>
 
 
-  <p>This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game. Each time we will make changes to the skeleton to improve reusability. Is that a word? Spell check thought so!</p>
+  <h2 id="code-repository-branch-main-did-not-follow-this-step">CODE REPOSITORY branch &lsquo;main&rsquo; did not follow this step</h2>
+<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git
+</code></pre><p>If you look at the repository this step was on branch sprites-example
+You can skip if you want! we get back to doing it later.</p>
+<p>This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game. Each time we will make changes to the skeleton to improve reusability. Is that a word? Spell check thought so!</p>
 <p>Ok so lets get to sprites. Head over to pygame sprites after reading this and check what I have done so you can improve your version of the code.</p>
 <p>Ok the site says this is</p>
 <ul>
@@ -223,10 +227,9 @@
 </ul>
 <p>Traditional sprites allow an image to move across the screen without leaving a trail, by managing two buffers with hardware simply drawing one buffer over the other. Pygame may introduce a sprite with some super rendering, but for now, you either find a workaround, do things the common expected way or contribute to the pygame project.</p>
 <p>Despite my disappointment, we can still get some benefit from using Sprites. Besides keeping things in a nice little wrapper we can add the sprites to various groups and have a very efficient way of working with multiple sprites.
-Picture</p>
-<pre><code>If you haven't used git to stage and commit your last changes, its time to do it now. We also want to create a new branch and call it feature/sprites or something like that.
- Picture 
-</code></pre>
+(Picture)</p>
+<p>If you haven&rsquo;t used git to stage and commit your last changes, its time to do it now. We also want to create a new branch and call it feature/sprites or something like that.
+(Picture)</p>
 <p>If you installed git graph you can have a visual idea of what your repository looks like. Your development is currently at the main branch head. I added two branches test_file and feature/sprites. I checked out test_file and then found an example of using sprites that I liked from pygame. I placed it in the folder and staged and committed it to that branch. I can switch to that branch if I need to reference it. I then checked out “feature/sprites” and started to add the class and make changes to my existing code.
 note: the naming of commits for this small project doesn’t follow any convention.
 Ok, let’s add a sprite class for our player.</p>
@@ -431,38 +434,7 @@ Yes we changed behaviour, so no not just refactoring. The input now gives us 8 d
 <p>​OK so other than slightly clear code there is no real benefit. Sprites only really start to get interesting once you use more of them together - and oh yes, they contain collisions which we explore soon.</p>
 
 
-                </div>
-                    <aside class="col-md-3 tikva-sidebar">
-  
-
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>Coming Soon</h4>
-   
-    <p>    </p>
-   
-    </div>
-</div>
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>New(ish) Site</h4>
-   
-    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
-</p>
-   
-    </div>
-</div>
-
-    
-
-</aside>
-</div>
+                </div></div>
         </div>
     </div>
 

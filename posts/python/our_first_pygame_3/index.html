@@ -12,7 +12,7 @@
     <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
 
     
-    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
     
     <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
@@ -212,16 +212,16 @@
 
 
   <p>Now we get to play a little.
-Lets simply draw a simple background and then download some premade shapes that we can move around.
-First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.</p>
+Lets simply draw a simple background and then download some premade shapes that we can move around.</p>
+<p>First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.</p>
 <ul>
 <li>I&rsquo;m going to use individual 2d png files for each item to start. This is simplest but not very efficient.</li>
 <li>We load the image only once outside the game loop, so that helps.</li>
 <li>we draw the image on the screen</li>
-<li>we try move the image
-Copy the files from the default folder and place them in the images folder. if your images folder doesn&rsquo;t exist, use VS Code to create the folder.
-Lets type the following code into our app above the first display update</li>
+<li>we try move the image</li>
 </ul>
+<p>Copy the files from the default folder and place them in the images folder. if your images folder doesn&rsquo;t exist, use VS Code to create the folder.
+Lets type the following code into our app above the first display update</p>
 <pre tabindex="0"><code>#load images
 player = pygame.image.load(&#34;images/blue_body_square.png&#34;)
 player_loc = player.get_rect()
@@ -244,9 +244,11 @@ player_loc.center = width/2, height/2
 </code></pre><p>As you see when running</p>
 <ul>
 <li>it will leave images across the screen as you move left or right.</li>
-<li>it requires to to press the key for each move
-Not exactly what we want. lets fix the image being left behind problem.</li>
+<li>it requires to to press the key for each move</li>
 </ul>
+<p>
+<img src="/img/blog/pygame/my-app/movement1.png" alt=""  /></p>
+<p>Not exactly what we want. lets fix the image being left behind problem.</p>
 <p>After setting the window size write the following code</p>
 <pre tabindex="0"><code>​black = (0,0,0)
 white = (255,255,255)
@@ -357,38 +359,7 @@ pygame.quit()
 </code></pre><p>See you in the next post</p>
 
 
-                </div>
-                    <aside class="col-md-3 tikva-sidebar">
-  
-
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>Coming Soon</h4>
-   
-    <p>    </p>
-   
-    </div>
-</div>
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>New(ish) Site</h4>
-   
-    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
-</p>
-   
-    </div>
-</div>
-
-    
-
-</aside>
-</div>
+                </div></div>
         </div>
     </div>
 

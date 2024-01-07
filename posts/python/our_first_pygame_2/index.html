@@ -12,7 +12,7 @@
     <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
 
     
-    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
     
     <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
@@ -213,11 +213,12 @@
 
   <p>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc.
 We will start building the common code while creating a game and we will refactor it into something reusable as we go.</p>
-<p>Assuming we are new to games or pygame or python we will begin simply  by creating an object that moves and interacts with the environment.
-Picture</p>
-<pre><code>I assume you know some python. However if you just read the python as English it will understandable. for now # is a comment for the rest of the line. Python relies on indentation to group code.
-Type the following into myapp.py
-</code></pre>
+<p>I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE. If you prefer to use another go ahead.</p>
+<p>Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment.</p>
+<p>
+<img src="/img/blog/pygame/my-app/screen-shot.png" alt="Our first game"  /></p>
+<p>I assume you know some python. However if you just read the python as English it will understandable. for now # is a comment for the rest of the line. Python relies on indentation to group code.
+Type the following into myapp.py</p>
 <p>(if you copy paste, past first into a plain text file as plain text to remove the extra invisible characters)</p>
 <pre tabindex="0"><code># the pygame imports to make them usable in our game
 import pygame
@@ -275,13 +276,13 @@ Most beginner tutorials do 2 things which I don&rsquo;t like.</p>
 <li>They take the simple way and re-draw everything each loop. Its not bad, but not always the best.</li>
 <li>They omit mentioning that movement will NOT be smooth when moving a game-object.</li>
 </ol>
-<p>We will address this now.
-Movement
-To move an object at a steady rate across the screen and make it the same for players on fast and slow computers we need to move it according to the speed it travels and that is usually measured in meters per second i.e. m/s. (convert back to an INT please, we don&rsquo;t want floating point numbers here)</p>
+<p>We will address this now.</p>
+<h2 id="movement">Movement</h2>
+<p>To move an object at a steady rate across the screen and make it the same for players on fast and slow computers we need to move it according to the speed it travels and that is usually measured in meters per second i.e. m/s. (convert back to an INT please, we don&rsquo;t want floating point numbers here)</p>
 <p>Most game engines and frameworks and even some libraries provide you with delta time. Delta time is the time taken from one loop to the next. There are a couple of ways to do this, I will use a class. Classes are not difficult and once you start using them they provide a way to group your code in nice little self contained packages/modules/whatever - well not always, but that argument is for overdoing it.</p>
-<p>Screen redrawing
-Screen redrawing is a very old method of removing images redrawn elsewhere on the screen by simply redrawing everything each time you loop around in the game loop.</p>
-<p>Sprites were introduced many many years ago to efficiently redraw only the small bit under the sprite and any small bits over the sprite. Pygame does support sprites - but we need to find out if they are true sprites or move of a convenience class. I plan to take a quick look at them in a post to see if they would be useful or not.</p>
+<h2 id="screen-redrawing">Screen redrawing</h2>
+<p>Screen redrawing is a very established method of removing images redrawn elsewhere on the screen by simply redrawing everything each time you loop around in the game loop.</p>
+<p>Sprites were introduced many many years ago to efficiently redraw only the small bit under the sprite and any small bits over the sprite. This is more efficient for a few objects, but not with many. Pygame does support sprites. I plan to take a quick look at them in a later post.</p>
 <p>​Lets add the delta time code just above the game loop.</p>
 <pre tabindex="0"><code># time based movement requires delta time
 class deltatime():
@@ -308,40 +309,11 @@ delta_time = deltatime()  # we initialize the class here and can now use it as a
     print(dt) #remove this line when coding your game
 </code></pre><p>If you run your code now, you&rsquo;ll see a lot of small integers being displayed to the terminal. That would be the time of each loop and because we aren&rsquo;t doing anything else the looping is fast i.e. in milliseconds or less.</p>
 <p>Its time to use git again and do your second stage and commit. Type something meaningful in the message starting with the word Update. If you add files you would start with the word Add, and if fixing a bug you would use the word Fix.</p>
+<h2 id="for-the-complete-code">For the complete code</h2>
+<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git
+</code></pre>
 
-
-                </div>
-                    <aside class="col-md-3 tikva-sidebar">
-  
-
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>Coming Soon</h4>
-   
-    <p>    </p>
-   
-    </div>
-</div>
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>New(ish) Site</h4>
-   
-    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
-</p>
-   
-    </div>
-</div>
-
-    
-
-</aside>
-</div>
+                </div></div>
         </div>
     </div>
 

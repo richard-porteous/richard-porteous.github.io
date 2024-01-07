@@ -12,7 +12,7 @@
     <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
 
     
-    <link href="https://richard-porteous.github.io/css/bootswatch/darkly.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
     
     <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
@@ -211,7 +211,9 @@
      </div>
 
 
-  <p>I&rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name</p>
+  <h2 id="if-you-look-at-the-git-repository-we-are-near-the-post-4-tag">if you look at the git repository we are near the post 4 tag.</h2>
+<p>if things dont look the same don&rsquo;t worry too much.</p>
+<p>I&rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name</p>
 <pre tabindex="0"><code>#Somewhere near the top of our code we will place the following
 img_path = &#39;images/&#39;
 #Then we replace our existing player load image code with the following concatenation
@@ -219,18 +221,17 @@ player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
 </code></pre><p>Run the app and it does the same.</p>
 <p>The reason for this change is that the choice for images (or assets) tends to change. I know some who are used to Game Engines and they like having a top-level Assets folder. Well as your app grows you may need to reorganize and this is one way to do it. You may want to have several variables based on the way you organize your game objects in which case it could be &ldquo;assets/images/player/&rdquo; or &ldquo;tokens/player/images&rdquo; etc. etc.</p>
 <p>If you still are writing the delta time to the terminal you will notice we are chewing up a lot of processor time and are updating our screen more than we need to. Let’s be nice to other apps and limit our frame rate maximum to 60 frames per second.</p>
-<pre tabindex="0"><code># near our game_running variable we can add
+<pre tabindex="0"><code># limit frame rate
+# near our game_running variable we can add
 clock = pygame.time.Clock()
 FPS = 60
 
 
 # and the top of our game loop we can add
 ​clock.tick(FPS)
-Our game should still look the same but the delta time should have increased to about 16 or 17.
-
-
-One more change - Let’s move the keypress code into its own class.
-class keyisdown():
+</code></pre><p>Our game should still look the same but the delta time should have increased to about 16 or 17.</p>
+<p>One more change - Let’s move the keypress code into its own class.</p>
+<pre tabindex="0"><code>class keyisdown():
    
     def __init__(self) -&gt; None:
         self.leftkey = False
@@ -279,135 +280,109 @@ And then make these changes to the game loop.
 ​```
 
 Here is how the final code should look
-</code></pre><h1 id="the-pygame-imports-to-make-them-usable-in-our-game">the pygame imports to make them usable in our game</h1>
-<p>import pygame
-from pygame.locals import *</p>
-<h1 id="initialize-the-pygame-code">Initialize the pygame code</h1>
-<p>pygame.init()
+</code></pre><pre tabindex="0"><code class="language-#" data-lang="#">import pygame
+from pygame.locals import *
+# Initialize the pygame code
+pygame.init()
 #game globals
-img_path = &lsquo;images/&rsquo;</p>
-<h1 id="set-window-size">set window size</h1>
-<p>size = width, height = (800, 600)
+img_path = &#39;images/&#39;
+# set window size
+size = width, height = (800, 600)
 screen = pygame.display.set_mode(size)
 black = (0,0,0)
 white = (255,255,255)
-screen.fill(black)</p>
-<h1 id="update-the-display-to-see-what-we-set">update the display to see what we set</h1>
-<p>pygame.display.update()
-#load images
-player = pygame.image.load(img_path + &ldquo;blue_body_square.png&rdquo;)
-player_loc = player.get_rect()
-player_loc.center = width/2, height/2</p>
-<p>clock = pygame.time.Clock()
-FPS = 60</p>
-<h1 id="control-variable">control variable</h1>
-<p>game_running = True</p>
-<h1 id="time-based-movement-requires-delta-time">time based movement requires delta time</h1>
-<p>class deltatime():
-def <strong>init</strong>(self):
-self.last_loop = pygame.time.get_ticks()
-self.dt = 0</p>
-<pre><code>def loop_time(self) -&gt; int:
-    time_now_ms = pygame.time.get_ticks()
-    dt = time_now_ms - self.last_loop
-    self.last_loop = time_now_ms
-    return dt
-</code></pre>
-<h1 id="end-of-the-class-and-code-contiues">end of the class and code contiues​</h1>
-<p>delta_time = deltatime()  # we initialize the class here and can now use it as an object
-class keyisdown():</p>
-<pre><code>def __init__(self) -&gt; None:
-    self.leftkey = False
-    self.rightkey = False
-    self.upkey = False
-    self.downkey = False
-def getEvents(self):
-   
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            return False
-       
-        if event.type==pygame.KEYDOWN:
-            if event.key in [K_s, K_DOWN]:
-                self.downkey = True
-            if event.key in [K_w, K_UP]:
-                self.upkey = True
-            if event.key in [K_d, K_RIGHT]:
-                self.rightkey = True
-            if event.key in [K_a, K_LEFT]:
-                self.leftkey = True
-           
-        elif event.type==pygame.KEYUP:
-            if event.key in [K_s, K_DOWN]:
-                self.downkey = False
-            if event.key in [K_w, K_UP]:
-                self.upkey = False
-            if event.key in [K_d, K_RIGHT]:
-                self.rightkey = False
-            if event.key in [K_a, K_LEFT]:
-                self.leftkey = False
-    return True
-</code></pre>
-<p>held_keys = keyisdown()</p>
-<h1 id="game-loop">GAME LOOP</h1>
-<p>while game_running:
-clock.tick(FPS)
-# indicating the number of miliseconds since the last time that piece of code was run
-dt = delta_time.loop_time()
-speed = 1 * dt
-print(dt) #remove this line when coding your game</p>
-<pre><code>game_running = held_keys.getEvents()
-if held_keys.leftkey:
-    player_loc = player_loc.move([-speed, 0])
-if held_keys.rightkey:
-    player_loc = player_loc.move([speed, 0])
-if held_keys.upkey:
-    player_loc = player_loc.move([0, -speed])
-if held_keys.downkey:
-    player_loc = player_loc.move([0, speed])
 screen.fill(black)
-# place image on the screen
-screen.blit(player, player_loc)
-# apply changes
+# update the display to see what we set
 pygame.display.update()
+#load images
+player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+
+
+clock = pygame.time.Clock()
+FPS = 60
+# control variable
+game_running = True
+# time based movement requires delta time
+class deltatime():
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+# end of the class and code contiues​
+delta_time = deltatime()  # we initialize the class here and can now use it as an object
+class keyisdown():
+   
+    def __init__(self) -&gt; None:
+        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return False
+           
+            if event.type==pygame.KEYDOWN:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                if event.key in [K_w, K_UP]:
+                    self.upkey = True
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = True
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = True
+               
+            elif event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                if event.key in [K_w, K_UP]:
+                    self.upkey = False
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = False
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = False
+        return True
+held_keys = keyisdown()
+
+
+# GAME LOOP
+while game_running:
+    clock.tick(FPS)
+    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    speed = 1 * dt
+    print(dt) #remove this line when coding your game
+   
+    game_running = held_keys.getEvents()
+    if held_keys.leftkey:
+        player_loc = player_loc.move([-speed, 0])
+    if held_keys.rightkey:
+        player_loc = player_loc.move([speed, 0])
+    if held_keys.upkey:
+        player_loc = player_loc.move([0, -speed])
+    if held_keys.downkey:
+        player_loc = player_loc.move([0, speed])
+    screen.fill(black)
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+# quit the pygame window
+
+pygame.quit()
+#the app exits
 </code></pre>
-<h1 id="quit-the-pygame-window">quit the pygame window</h1>
-<p>pygame.quit()
-#the app exits</p>
-<pre tabindex="0"><code></code></pre>
 
-                </div>
-                    <aside class="col-md-3 tikva-sidebar">
-  
-
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>Coming Soon</h4>
-   
-    <p>    </p>
-   
-    </div>
-</div>
-
-    
-
-        <div class="col">
-    <div class="p-3 mb-3 bg-light rounded">
-    <h4>New(ish) Site</h4>
-   
-    <p>    <p>I&rsquo;ve been busy moving the old sites content to these HUGO static pages. More will change soon.</p>
-</p>
-   
-    </div>
-</div>
-
-    
-
-</aside>
-</div>
+                </div></div>
         </div>
     </div>
 
