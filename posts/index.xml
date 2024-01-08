@@ -9,11 +9,18 @@
     <lastBuildDate>Sat, 06 Jan 2024 15:19:13 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Our_first_pygame_6</title>
+      <title>Our first pygame 6</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</link>
       <pubDate>Sat, 06 Jan 2024 15:19:13 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</guid>
-      <description>A lot has happened. I decided to continue with app development without the sprites for now. I fixed input and movement as they were not doing what I wanted the way I wanted.&#xA;The input change was easy. Mostly a fix from moving the code to a class and being able to access the input. I need to add last key pressed and key order (key queue), yes and I could do more.</description>
+      <description>I will come back to this series and fix it. I needed to spend time moving this to github. Its not its last stop, though I like GitHub as a host better than most others.&#xA;A lot has happened to the code too. I decided to continue with app development without the sprites for now. I fixed input and movement as the original design was not doing what I wanted, the way I wanted.</description>
+    </item>
+    <item>
+      <title>Warning</title>
+      <link>https://richard-porteous.github.io/posts/hosts/warning/</link>
+      <pubDate>Fri, 05 Jan 2024 12:22:45 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/hosts/warning/</guid>
+      <description>A difficult lesson My code for the last 10 or more years has been backed up using git. I&amp;rsquo;ve used both Bitbucket and Github hosts and have been very happy with the free offering for my small projects. Unfortunatley I&amp;rsquo;ve only started using git for content more recently. I don&amp;rsquo;t mean work related, I also don&amp;rsquo;t mean I wasn&amp;rsquo;t using a backup either.&#xA;My blog site was &amp;lsquo;accidently&amp;rsquo; deleted. I was trying various different free sites (I need to use what I teach).</description>
     </item>
     <item>
       <title>Hugo site on github</title>
