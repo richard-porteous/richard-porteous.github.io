@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Sections | Game Experiments</title>
+    <title>Our first pygame - Refactoring - part 4 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -199,91 +199,188 @@
     <div id="main">
         <div class="container">
             <div class="row"><div class="col-md" id="content">
-<main>
-    <article>
-        <header>
-            <h1>Sections</h1>
-        </header>
-        
-        
-    </article>
-
-    
-
-    
 
 
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/general/using_git/using_git/'> Using Git</a> </h2>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-01-30T13:01:01-07:00">30.01.2023</time> - 
+<h1>Our first pygame - Refactoring - part 4</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
-  </header>
-  It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.
-What we will do this Lesson Learn to add your project to a git repository. Know how to use a free online host. Git is simple to learn. We use the terminal here, though a Git Client (sourcetree, git-gui, etc.) can help visualize better.
-I use GitHub as my remote host, but choose whichever you think is best.
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/general/using_git/using_git/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Using Git</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
 
 
+  <h2 id="if-you-look-at-the-git-repository-we-are-near-the-post-4-tag">if you look at the git repository we are near the post 4 tag.</h2>
+<p>if things dont look the same don&rsquo;t worry too much.</p>
+<p>I&rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name</p>
+<pre tabindex="0"><code>#Somewhere near the top of our code we will place the following
+img_path = &#39;images/&#39;
+#Then we replace our existing player load image code with the following concatenation
+player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
+</code></pre><p>Run the app and it does the same.</p>
+<p>The reason for this change is that the choice for images (or assets) tends to change. I know some who are used to Game Engines and they like having a top-level Assets folder. Well as your app grows you may need to reorganize and this is one way to do it. You may want to have several variables based on the way you organize your game objects in which case it could be &ldquo;assets/images/player/&rdquo; or &ldquo;tokens/player/images&rdquo; etc. etc.</p>
+<p>If you still are writing the delta time to the terminal you will notice we are chewing up a lot of processor time and are updating our screen more than we need to. Let’s be nice to other apps and limit our frame rate maximum to 60 frames per second.</p>
+<pre tabindex="0"><code># limit frame rate
+# near our game_running variable we can add
+clock = pygame.time.Clock()
+FPS = 60
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'> Refactoring - Winforms using mvc</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
-    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
-     </div>
-  </header>
-  This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.
-I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Refactoring - Winforms using mvc</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
-    <ul class="pagination pagination-default">
-      <li class="page-item">
-        <a href="/sections/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item active">
-        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
-    
+# and the top of our game loop we can add
+​clock.tick(FPS)
+</code></pre><p>Our game should still look the same but the delta time should have increased to about 16 or 17.</p>
+<p>One more change - Let’s move the keypress code into its own class.</p>
+<pre tabindex="0"><code>class keyisdown():
    
-</main>
+    def __init__(self) -&gt; None:
+        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return False
+           
+            if event.type==pygame.KEYDOWN:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                if event.key in [K_w, K_UP]:
+                    self.upkey = True
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = True
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = True
+               
+            elif event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                if event.key in [K_w, K_UP]:
+                    self.upkey = False
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = False
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = False
+        return True
+held_keys = keyisdown()
 
+
+And then make these changes to the game loop.
+   game_running = held_keys.getEvents()
+    if held_keys.leftkey:
+        player_loc = player_loc.move([-speed, 0])
+    if held_keys.rightkey:
+        player_loc = player_loc.move([speed, 0])
+    if held_keys.upkey:
+        player_loc = player_loc.move([0, -speed])
+    if held_keys.downkey:
+        player_loc = player_loc.move([0, speed])
+​```
+
+Here is how the final code should look
+</code></pre><pre tabindex="0"><code class="language-#" data-lang="#">import pygame
+from pygame.locals import *
+# Initialize the pygame code
+pygame.init()
+#game globals
+img_path = &#39;images/&#39;
+# set window size
+size = width, height = (800, 600)
+screen = pygame.display.set_mode(size)
+black = (0,0,0)
+white = (255,255,255)
+screen.fill(black)
+# update the display to see what we set
+pygame.display.update()
+#load images
+player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+
+
+clock = pygame.time.Clock()
+FPS = 60
+# control variable
+game_running = True
+# time based movement requires delta time
+class deltatime():
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+# end of the class and code contiues​
+delta_time = deltatime()  # we initialize the class here and can now use it as an object
+class keyisdown():
+   
+    def __init__(self) -&gt; None:
+        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return False
+           
+            if event.type==pygame.KEYDOWN:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                if event.key in [K_w, K_UP]:
+                    self.upkey = True
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = True
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = True
+               
+            elif event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                if event.key in [K_w, K_UP]:
+                    self.upkey = False
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = False
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = False
+        return True
+held_keys = keyisdown()
+
+
+# GAME LOOP
+while game_running:
+    clock.tick(FPS)
+    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    speed = 1 * dt
+    print(dt) #remove this line when coding your game
+   
+    game_running = held_keys.getEvents()
+    if held_keys.leftkey:
+        player_loc = player_loc.move([-speed, 0])
+    if held_keys.rightkey:
+        player_loc = player_loc.move([speed, 0])
+    if held_keys.upkey:
+        player_loc = player_loc.move([0, -speed])
+    if held_keys.downkey:
+        player_loc = player_loc.move([0, speed])
+    screen.fill(black)
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+# quit the pygame window
+
+pygame.quit()
+#the app exits
+</code></pre>
 
                 </div></div>
         </div>

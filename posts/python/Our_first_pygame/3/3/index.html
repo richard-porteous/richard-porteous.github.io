@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Sections | Game Experiments</title>
+    <title>Our first pygame - moving images - part 3 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -199,90 +199,164 @@
     <div id="main">
         <div class="container">
             <div class="row"><div class="col-md" id="content">
-<main>
-    <article>
-        <header>
-            <h1>Sections</h1>
-        </header>
-        
-        
-    </article>
-
-    
-
-    
 
 
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/general/using_git/using_git/'> Using Git</a> </h2>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-01-30T13:01:01-07:00">30.01.2023</time> - 
+<h1>Our first pygame - moving images - part 3</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
-  </header>
-  It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.
-What we will do this Lesson Learn to add your project to a git repository. Know how to use a free online host. Git is simple to learn. We use the terminal here, though a Git Client (sourcetree, git-gui, etc.) can help visualize better.
-I use GitHub as my remote host, but choose whichever you think is best.
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/general/using_git/using_git/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Using Git</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
 
 
+  <p>Now we get to play a little.
+Lets simply draw a simple background and then download some premade shapes that we can move around.</p>
+<p>First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.</p>
+<ul>
+<li>I&rsquo;m going to use individual 2d png files for each item to start. This is simplest but not very efficient.</li>
+<li>We load the image only once outside the game loop, so that helps.</li>
+<li>we draw the image on the screen</li>
+<li>we try move the image</li>
+</ul>
+<p>Copy the files from the default folder and place them in the images folder. if your images folder doesn&rsquo;t exist, use VS Code to create the folder.
+Lets type the following code into our app above the first display update</p>
+<pre tabindex="0"><code>#load images
+player = pygame.image.load(&#34;images/blue_body_square.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+</code></pre><p>Then type this at the bottom of the game-loop , before the quitting of the window (NOTE must be indented the same as the rest of the game loop)</p>
+<pre tabindex="0"><code>​    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+</code></pre><p>We can run this and should see our loaded image.</p>
+<p>To move our image is simply a matter of checking for input events and then move the position of the game-object.</p>
+<p>Inside the game loop just below the code checks for the quit event:</p>
+<pre tabindex="0"><code>​        if event.type == KEYDOWN:
+            # move user to the left
+            if event.key in [K_a, K_LEFT]:
+                player_loc = player_loc.move([-10 * dt, 0])
+            # move user car to the right
+            if event.key in [K_d, K_RIGHT]:
+                player_loc = player_loc.move([10 * dt, 0])
+</code></pre><p>As you see when running</p>
+<ul>
+<li>it will leave images across the screen as you move left or right.</li>
+<li>it requires to to press the key for each move</li>
+</ul>
+<p>
+<img src="images/movement1.png" alt=""  /></p>
+<p>Not exactly what we want. lets fix the image being left behind problem.</p>
+<p>After setting the window size write the following code</p>
+<pre tabindex="0"><code>​black = (0,0,0)
+white = (255,255,255)
+screen.fill(black)
+And ​​before the screen blit write this code.
+    screen.fill(black)
+</code></pre><p>If you had images in the background you could simply redraw them instead.</p>
+<p>Run now and you&rsquo;ll see the Game-Object move left or right each time you pressed the key.</p>
+<p>Lets fix the need to press a key and change it so we can just hold the key down.
+Add this just before the loop</p>
+<pre tabindex="0"><code>key_left = False
+key_right = False
+and from the keydown event
+​        if event.type == KEYDOWN:
+            # move user to the left
+            if event.key in [K_a, K_LEFT]:
+                key_left = True
+            # move user car to the right
+            if event.key in [K_d, K_RIGHT]:
+                key_right = True
+        if event.type == KEYUP:
+            if event.key in [K_a, K_LEFT]:
+                key_left = False
+            if event.key in [K_d, K_RIGHT]:
+                key_right = False
+    if key_left:
+        player_loc = player_loc.move([-1 * dt, 0])
+    if key_right:
+        player_loc = player_loc.move([1 * dt, 0])
+</code></pre><p>Run the game an watch the game object move. Did you notice I had to change the speed to 1 otherwise it was too fast?</p>
+<p>So our complete listing now looks like this</p>
+<pre tabindex="0"><code># the pygame imports to make them usable in our game
+import pygame
+from pygame.locals import *
+# Initialize the pygame code
+pygame.init()
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'> Refactoring - Winforms using mvc</a> </h2>
+# set window size
+size = width, height = (800, 600)
+screen = pygame.display.set_mode(size)
+black = (0,0,0)
+white = (255,255,255)
+screen.fill(black)
+# update the display to see what we set
+pygame.display.update()
+#load images
+player = pygame.image.load(&#34;images/blue_body_square.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
-    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
-     </div>
-  </header>
-  This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.
-I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.
 
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Refactoring - Winforms using mvc</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
-    <ul class="pagination pagination-default">
-      <li class="page-item">
-        <a href="/sections/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item active">
-        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
-    
+
+
+# control variable
+game_running = True
+# time based movement requires delta time
+class deltatime():
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+# end of the class and code contiues​
+delta_time = deltatime()  # we initialize the class here and can now use it as an object
+key_left = False
+key_right = False
+# GAME LOOP
+while game_running:
+    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    print(dt) #remove this line when coding your game
    
-</main>
+    # event listeners i.e. listen to what the user or system is doing?
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            # collapse the app
+            game_running = False
+        if event.type == KEYDOWN:
+            # move user to the left
+            if event.key in [K_a, K_LEFT]:
+                key_left = True
+            # move user car to the right
+            if event.key in [K_d, K_RIGHT]:
+                key_right = True
+        if event.type == KEYUP:
+            if event.key in [K_a, K_LEFT]:
+                key_left = False
+            if event.key in [K_d, K_RIGHT]:
+                key_right = False
+    if key_left:
+        player_loc = player_loc.move([-1 * dt, 0])
+    if key_right:
+        player_loc = player_loc.move([1 * dt, 0])
+    screen.fill(black)
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+# quit the pygame window
+pygame.quit()
+#the app exits
+</code></pre><p>See you in the next post</p>
 
 
                 </div></div>
