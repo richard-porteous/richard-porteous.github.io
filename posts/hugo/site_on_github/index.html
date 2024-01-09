@@ -238,21 +238,21 @@ create hugoblog as private (for now) and the github.io page(s) as public.
 This will result in two empty repositories.
 </code></pre>
 <p>
-<img src="images/github-repository.png" alt="Empty Repositories"  /></p>
+<img src="/img/blog/setting-up-hugo/github-repository.png" alt="Empty Repositories"  /></p>
 <h2 id="get-hugo-and-git">Get Hugo and git</h2>
 <p>The <a href="https://gohugo.io/getting-started">Hugo</a> site has a getting started page which will help you install hugo extended and git. It is also possible you may need to install go.</p>
 <h2 id="create-hugo-site-locally">Create Hugo site locally</h2>
 <p>I used CMD on windows despite the warning not to do so. I didn&rsquo;t try anything fancy and it seemed to work fine. I suggest you follow the recommendations.</p>
 <p>Make the folder you want to keep your Hugo site repositories in.</p>
 <p>
-<img src="images/create_site_with_cmd.png" alt="Make the site"  /></p>
+<img src="/img/blog/setting-up-hugo/create_site_with_cmd.png" alt="Make the site"  /></p>
 <p>Do you see the two commands there. Change you current directory/folder to the one you want to create your site in.</p>
 <p>The second is</p>
 <pre><code>hugo new site name-of-site
 </code></pre>
 <p>Change directory to that site name and list the files</p>
 <p>
-<img src="images/list_site_files.png" alt="Make the site"  /></p>
+<img src="/img/blog/setting-up-hugo/list_site_files.png" alt="Make the site"  /></p>
 <pre><code>content holds the pages and posts which are markdown files
 
 static holds the images
@@ -275,9 +275,9 @@ git remote add origin https://github.com/account-name/hugoblog.git
 git push -u origin main
 </code></pre>
 <p>
-<img src="images/github-init-repository.png" alt="empty github repository instructions"  /></p>
+<img src="/img/blog/setting-up-hugo/github-init-repository.png" alt="empty github repository instructions"  /></p>
 <p>
-<img src="images/first-commit.png" alt="First commit"  /></p>
+<img src="/img/blog/setting-up-hugo/first-commit.png" alt="First commit"  /></p>
 <h2 id="add-a-theme">Add a theme</h2>
 <p>Hugo has an example using a theme called <a href="https://github.com/theNewDynamic/gohugo-theme-ananke?tab=readme-ov-file">Ananke</a>.
 I like that theme because it has so much information on configuration.</p>
@@ -285,7 +285,7 @@ I like that theme because it has so much information on configuration.</p>
 <p>Head over to <a href="https://themes.gohugo.io/">Hugo Themes</a> and select a theme you like. My needs are well defined so I chose one that would match my needs. I chose <a href="https://themes.gohugo.io/themes/hugo-tikva/">Tikva</a>.</p>
 <p>Tikva&rsquo;s instructions are simple.</p>
 <p>
-<img src="images/tikva_setup.png" alt=""  /></p>
+<img src="/img/blog/setting-up-hugo/tikva_setup.png" alt=""  /></p>
 <pre><code>cd themes
 git clone https://github.com/geschke/hugo-tikva.git
 
@@ -297,7 +297,7 @@ git submodule add -f https://github.com/geschke/hugo-tikva themes/hugo-tikva
 </code></pre>
 <h2 id="go-to-the-example-site-folder-and-copy-the-files">go to the example site folder and copy the files</h2>
 <p>
-<img src="images/theme-example-folder.png" alt=""  /></p>
+<img src="/img/blog/site-from-theme-example/theme-example-folder.png" alt=""  /></p>
 <p>Copy the example, usually this is the content, layouts, and static folder to the top-level folder (my-themed-site) overwriting the <!-- raw HTML omitted -->empty<!-- raw HTML omitted --> folders there.</p>
 <h2 id="rename-configtoml-to-hugotoml">rename config.toml to hugo.toml</h2>
 <p>copy the config.toml to the same folder, remove the default hugo.toml. Then rename config.toml to hugo.toml
@@ -305,7 +305,7 @@ or use</p>
 <pre><code>cp themes\hugo-tikva\exampleSite\config.toml hugo.toml
 </code></pre>
 <p>
-<img src="images/add-images-icons-posts.png" alt=""  /></p>
+<img src="/img/blog/site-from-theme-example/add-images-icons-posts.png" alt=""  /></p>
 <p>Notice the header_background.jpg and the folder structure. I found that this works with some minor changes to our hugo.toml file</p>
 <pre tabindex="0"><code>change the 
 1. baseurl
@@ -344,10 +344,6 @@ author: &#34;Your Name&#34;
 <h2 id="check-any-existing-content-for-image-links-etc-check-the-paths-are-correct">check any existing content for image links etc. Check the paths are correct</h2>
 <p>Remove the /Static/ in front of image links in your posts if you had them in your editor.
 The site removes the need for that so you need to find a plugin in for your editor that respects the hugo paths.</p>
-<h2 id="improve-the-post-path">improve the post path</h2>
-<p>This is a newer way, but it seems to work better with some previewers too. We move the images of the posts from the static folder to a subfolder within the post folder. Each post with images can get its own folder and have its own images folder below it. It doesn&rsquo;t matter too much for a post without images etc.</p>
-<p>
-<img src="images/new_image_folder.png" alt=""  /></p>
 <h2 id="remove-default-content">Remove default content</h2>
 <p>Check all your content and read before deleting. <!-- raw HTML omitted -->html can be used for posts instead of markdown BUT can also be used for headless etc.<!-- raw HTML omitted --> so be careful.</p>
 <p>And finally we need to remove the additional content from the about, feedback, extra posts, and sections.</p>
@@ -387,11 +383,11 @@ git push -u origin main
 /themes
 .hugo_build.lock
 </code></pre><p>images in hugo posts should not include the /static in the path. this can be confusing if you use an ide that doesn&rsquo;t check for this i.e. VSCode</p>
-<pre tabindex="0"><code>![image](images/image.png)
+<pre tabindex="0"><code>![image](/img/image.png)
 
 not
 
-![image](/images/image.png)
+![image](/static/img/image.png)
 </code></pre><p>in you main site folder (in my case that would be &ldquo;gameexperiments&rdquo;) type in the following</p>
 <pre><code>hugo
 hugo server
@@ -437,7 +433,7 @@ git push origin main
 <p>there are a few ways to automate things but for now we add posts, build the site (run hugo). We check by running hugo serve and viewing in <a href="http://localhost:1313/">browser</a>. Then in the public folder and site folder (check git status) and add files (git add .), commit to the main branch and push to origin.</p>
 <p>If your account-name.github.io site does not get the themes or some other change verify the above then check the pages tab for your site in your repository settings.</p>
 <p>
-<img src="images/check-site-pages.png" alt="site-settings"  /></p>
+<img src="/img/blog/setting-up-hugo/check-site-pages.png" alt="site-settings"  /></p>
 <p>if still nothing do the same git add/commit/push command on the hugoblog site</p>
 <h2 id="different-theme---menus-not-dynamic">different theme - menus not dynamic??</h2>
 <p>If you chose a theme without a dynamic nav bar (i.e. silhouette-hugo), then to fix the nav-bar in this theme we actually need to edit one of the themes files. The names of folders and files may differ.</p>
@@ -469,16 +465,11 @@ git push origin main
 <p><!-- raw HTML omitted -->A quick note about compatability<!-- raw HTML omitted --> when placing an image from the static folder into a post,</p>
 <pre><code>1. please remove the word static from the internal link
 2. keep the name lowercase and match the case in the markdown
+3. tikva uses the img folder for site images not &quot;images&quot;
 </code></pre>
 <pre tabindex="0"><code>i.e. ![](/img/blog/site-from-theme-example/theme-example-folder.png)
-</code></pre><p>A suggestion is not to use the static folder but to place an images folder under the post and have each post in its own folder.</p>
-<p>
-<img src="images/new_image_folder.png" alt=""  /></p>
-<p>and then link to it with the following</p>
-<pre tabindex="0"><code>![](images/movement1.png)
-</code></pre><p>This style works with an editor like VSCode.</p>
-<h3 id="using-links-to-an-anchor-on-the-same-page">Using links to an anchor on the same page.</h3>
-<p>so</p>
+</code></pre><p>Using links to an anchor on the same page.
+so</p>
 <pre tabindex="0"><code>a link to
 ## Create a new Hugo site
 would be
