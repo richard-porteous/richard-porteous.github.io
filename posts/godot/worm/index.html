@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Tags | Game Experiments</title>
+    <title>Recreate the Worm game on Godot | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -199,70 +199,97 @@
     <div id="main">
         <div class="container">
             <div class="row"><div class="col-md" id="content">
-<main>
-  <div>
-   <h1>Tags</h1>
-   
-    
-        
 
 
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/tags/blog/'> Blog</a> </h2>
+
+<h1>Recreate the Worm game on Godot</h1>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-09T11:04:52-07:00">09.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
-  </header>
-  
-
-  <footer>
-  
-  </footer>
-</article>
-    
-        
 
 
+  <h2 id="welcome">Welcome</h2>
+<p>Hi Welcome to this new tutorial series on Godot 4 and making 2d games.</p>
+<p>The first app we tackle is <!-- raw HTML omitted -->WORM<!-- raw HTML omitted -->. The same game we started in pygame. I want to have the same mechanics. The worm code needs to be mostly reusable in the game that follows.</p>
+<p>What we build here I&rsquo;ll be taking back to the pygame game as an exercise. Really I want to be able to write a game in either one and decide for myself which I prefer for a particular style of game. I&rsquo;ll polish up the one I prefer and publish. When I say polish up &hellip; its my weakness so I&rsquo;ll still look guady unless I find decent art work or get myself motivated enough to do the artwork. (I just really don&rsquo;t enjoy it as much as someone who actually likes to do it).</p>
+<h2 id="lets-begin">Lets begin</h2>
+<p>I went to <a href="https://store.steampowered.com/">https://store.steampowered.com/</a> and installed steam by clicking the button.
 
-<article class="mb-5 post">
-  <header>
+<img src="images/install-steam.png" alt=""  /></p>
+<p>After it installed I created an account and was logged in.</p>
+<p>Once logged in I searched to find Godot and downloaded that.
 
-    <h2><a href='https://richard-porteous.github.io/tags/post/'> Post</a> </h2>
+<img src="images/search-for-godot.png" alt=""  /></p>
+<p>Now if you want you can go to the <a href="https://godotengine.org/">website https://godotengine.org/</a>  instead and you will have a few more choices.</p>
+<p>Currently on the website godot 3 is LTS and Godot is Latest.
+.Net version lets you use C#. I&rsquo;m fairly experienced at C# but we want to learn python or GdScript which is similar.</p>
+<p>
+<img src="images/website-godot4-options.png" alt=""  /></p>
+<p>So the Latest Godot (without .net) is the same as the version on steam.</p>
+<p>Once installed you may find you want a few examples. Select assest library, and make sure the following is checked.
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-09T11:04:52-07:00">09.01.2024</time> - 
-     </div>
-  </header>
-  
+<img src="images/assets-library-projects-example-options.png" alt=""  /></p>
+<p>Back in the new project tab you will want to create a project called worm.</p>
+<p>
+<img src="images/new-project-from-local-projects.png" alt=""  /></p>
+<p>See the highlighted areas!</p>
+<ol>
+<li>click <!-- raw HTML omitted -->browse<!-- raw HTML omitted --> to browse to the folder you want first.</li>
+<li>type in the project name (worm) and click <!-- raw HTML omitted -->create folder<!-- raw HTML omitted -->.</li>
+<li>select the renderer you want read the info to the right as it explains quite well what it can do.</li>
+<li>ensure git is selected</li>
+<li>click <!-- raw HTML omitted -->create &amp; edit<!-- raw HTML omitted --></li>
+</ol>
+<p>Once you have the project open. open a browser and navigate to
 
-  <footer>
-  
-  </footer>
-</article>
-    
-        
+<img src="images/docs-a-first-look.png" alt=""  /></p>
+<p>There is no way I could explain the interface better. Come back when you are ready.</p>
+<p>I personally find it difficult to learn from tutorials so I tend to accumulate from various places before I truely understand what suits me best. If you see another tutorial with worm, take a look. You&rsquo;ll see it is different from this one, but may show you another way to achieve the same goal.</p>
+<p>This is what we have so far.
 
+<img src="./images/create-a-new-sceen.png" alt=""  /></p>
+<p>click on <!-- raw HTML omitted -->2D Scene<!-- raw HTML omitted -->
+save (ctrl-s) or
 
+<img src="./images/save-scene.png" alt=""  /></p>
+<p>You&rsquo;ll be prompted with a name and where to save.</p>
+<ol>
+<li>Change the name to game.</li>
+<li>save</li>
+</ol>
+<p>if you didn&rsquo;t rename you can do that by right clicking ion the tscn file.</p>
+<p>
+<img src="./images/game-sceen.png" alt=""  /></p>
+<p>Let us take a look at what we have in the folder. I&rsquo;m on windows so use windows explorer.</p>
+<p>
+<img src="./images/folder-contents-early.png" alt=""  /></p>
+<p>We have a git attributes and git ignore file , plus the files we see in the IDE and a few other godot specific files. The git files should be good to filter out what we dont need so lets create and initialise a git repository.</p>
+<p>from the correct folder type the following in your terminal. see <a href="#notes">NOTES</a></p>
+<pre tabindex="0"><code>git init
+git add .
+git branch -M &#34;main&#34;
+git commit -m &#34;first commit of godot worm&#34;
+</code></pre><p>
+<img src="./images/git-init-and-first-commit.png" alt=""  /></p>
+<h2 id="bto-set-upstreamb"><!-- raw HTML omitted -->To set upstream<!-- raw HTML omitted --></h2>
+<ul>
+<li>you would need a repository on github and your command would be something like</li>
+</ul>
+<pre tabindex="0"><code>git remote add origin https://github.com/account-name/godot-worm.git
+</code></pre><p>I&rsquo;m using microsoft powershell (not windows powershell - weird huh!). But any terminal should do.</p>
+<h2 id="bif-has-upstreamb"><!-- raw HTML omitted -->if has upstream<!-- raw HTML omitted --></h2>
+<ul>
+<li>you could push the repository</li>
+</ul>
+<pre tabindex="0"><code>git push origin main
+</code></pre><p>We will continue this in the next post. I suggest you check out more about git, because we wont touch it anymore in this series.</p>
+<h2 id="notes">NOTES:</h2>
+<p>After using Hugo (this site was generated by it) I was suprised to note that they preferred use to use a non windows terminal (ok not suprising). Powershell which comes with windows is not good enough either. They suggested Microsoft Powershell which is different - that is a suprise (ok maybe not). The other option is to use wsl or a linux terminal. see <a href="https://gohugo.io/getting-started/quick-start/">hugo quick start</a>.</p>
+<p><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4#install-powershell-using-winget-recommended">Install Microsoft powershell</a></p>
 
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/tags/text/'> Text</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-09T11:04:52-07:00">09.01.2024</time> - 
-     </div>
-  </header>
-  
-
-  <footer>
-  
-  </footer>
-</article>
-    
-  </div>
-</main>
 
                 </div></div>
         </div>

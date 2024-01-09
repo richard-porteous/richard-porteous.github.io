@@ -6,8 +6,15 @@
     <description>Recent content in Text on Game Experiments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Sat, 06 Jan 2024 15:19:13 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jan 2024 11:04:52 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/tags/text/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recreate the Worm game on Godot</title>
+      <link>https://richard-porteous.github.io/posts/godot/worm/</link>
+      <pubDate>Tue, 09 Jan 2024 11:04:52 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/godot/worm/</guid>
+      <description>Welcome Hi Welcome to this new tutorial series on Godot 4 and making 2d games.&#xA;The first app we tackle is WORM. The same game we started in pygame. I want to have the same mechanics. The worm code needs to be mostly reusable in the game that follows.&#xA;What we build here I&amp;rsquo;ll be taking back to the pygame game as an exercise. Really I want to be able to write a game in either one and decide for myself which I prefer for a particular style of game.</description>
+    </item>
     <item>
       <title>Our first pygame 6</title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</link>
