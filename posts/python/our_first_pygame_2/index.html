@@ -206,112 +206,214 @@
 
 <h1>Our first pygame - part 2</h1>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-08-11T13:19:30-07:00">11.08.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
 
 
-  <p>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc.
-We will start building the common code while creating a game and we will refactor it into something reusable as we go.</p>
-<p>I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE. If you prefer to use another go ahead.</p>
-<p>Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment.</p>
+  <p>Now we get to play a little.
+Lets simply draw a simple background and then download some premade shapes that we can move around.</p>
+<p>First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.</p>
+<ul>
+<li>I&rsquo;m going to use individual 2d png files for each item to start.</li>
+<li>We load the image only once outside the game loop, so that helps.</li>
+<li>we draw the image on the screen</li>
+<li>we try move the image</li>
+</ul>
+<p>Copy the blue_body_squircle.png from the default folder and place them in the a folder. if your images folder doesn&rsquo;t exist, use VS Code to create the folder. I use an assets folder and create a player folder in it to store the player png files</p>
 <p>
-<img src="/img/blog/pygame/my-app/screen-shot.png" alt="Our first game"  /></p>
-<p>I assume you know some python. However if you just read the python as English it will understandable. for now # is a comment for the rest of the line. Python relies on indentation to group code.
-Type the following into myapp.py</p>
-<p>(if you copy paste, past first into a plain text file as plain text to remove the extra invisible characters)</p>
-<pre tabindex="0"><code># the pygame imports to make them usable in our game
-import pygame
+<img src="/static/img/blog/pygame/my-app/copy-images.png" alt=""  /></p>
+<p>Lets type the following code into our app above the first display update</p>
+<pre tabindex="0"><code>#load images
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+</code></pre><p>Then type this at the bottom of the game-loop , before the quitting of the window (NOTE must be indented the same as the rest of the game loop)</p>
+<pre tabindex="0"><code>    #clear the display
+    screen.fill(white)
+
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+</code></pre><p>We can run this and should see our loaded image.</p>
+<p>To move our image is simply a matter of checking for input events and then move the position of the game-object.</p>
+<p>Inside the game loop just below the code checks for the quit event:</p>
+<pre tabindex="0"><code>​        if event.type == KEYDOWN:
+            # move user to the left
+            if event.key in [K_a, K_LEFT]:
+                player_loc = player_loc.move([-10 * dt, 0])
+            # move user car to the right
+            if event.key in [K_d, K_RIGHT]:
+                player_loc = player_loc.move([10 * dt, 0])
+</code></pre><p>As you see when running</p>
+<ul>
+<li>it will leave images across the screen as you move left or right.</li>
+<li>it requires to to press the key for each move</li>
+</ul>
+<p>
+<img src="/img/blog/pygame/my-app/movement1.png" alt=""  /></p>
+<p>Not exactly what we want. lets fix the image being left behind problem.</p>
+<p>After setting the window size write the following code</p>
+<pre tabindex="0"><code>​black = (0,0,0)
+white = (255,255,255)
+screen.fill(white)
+And ​​before the screen blit write this code.
+    screen.fill(white)
+</code></pre><p>If you had images in the background you could simply redraw them instead.</p>
+<p>Run now and you&rsquo;ll see the Game-Object move left or right each time you pressed the key.</p>
+<p>Lets fix the need to press a key and change it so we can just hold the key down.
+Add this just before the loop</p>
+<pre tabindex="0"><code>key_left = False
+key_right = False
+</code></pre><p>and replace the keydown event with this</p>
+<pre tabindex="0"><code>    for event in pygame.event.get():
+        if event.type == QUIT:
+            game_running = False
+            break
+        
+        if event.type==pygame.KEYDOWN:
+            if event.key == K_ESCAPE:
+                game_running = False
+                break
+            if event.key in [K_s, K_DOWN]:
+                downkey = True
+            if event.key in [K_w, K_UP]:
+                upkey = True
+            if event.key in [K_d, K_RIGHT]:
+                rightkey = True
+            if event.key in [K_a, K_LEFT]:
+                leftkey = True
+            
+        elif event.type==pygame.KEYUP:
+            if event.key in [K_s, K_DOWN]:
+                downkey = False
+            if event.key in [K_w, K_UP]:
+                upkey = False
+            if event.key in [K_d, K_RIGHT]:
+                rightkey = False
+            if event.key in [K_a, K_LEFT]:
+                leftkey = False
+</code></pre><p>And add this just below so we can use x and y to move the player</p>
+<pre tabindex="0"><code>    x=0
+    y=0
+    if leftkey:
+        x += -speed
+    if rightkey:
+        x += speed
+    if upkey:
+        y += -speed
+    if downkey:
+        y += speed
+
+    player_loc = player_loc.move([x, y])
+</code></pre><p>Let’s be nice to other apps and limit our frame rate maximum to 60 frames per second.</p>
+<pre tabindex="0"><code># limit frame rate
+# near our game_running variable we can add
+clock = pygame.time.Clock()
+FPS = 60
+
+
+# and the top of our game loop we can add
+​clock.tick(FPS)
+</code></pre><p>So our complete listing now looks like this</p>
+<pre tabindex="0"><code>import pygame
 from pygame.locals import *
+
+# set window size
+size = width, height = (800, 600)
+screen = pygame.display.set_mode(size)
+black = (0,0,0)
+white = (255,255,255)
+screen.fill(white)
+
+
+#load images
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+
+
+# update the display to see what we set
+pygame.display.update()
 
 
 # Initialize the pygame code
 pygame.init()
 
+# Max frame rate
+clock = pygame.time.Clock()
+FPS = 60
 
-#​
-#
-#
+leftkey = False
+rightkey = False
+upkey = False
+downkey = False
 
+speed = 10
+# control variable
+game_running = True
+
+
+#game loop
+while game_running:
+    clock.tick(FPS)
+
+    
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            game_running = False
+            break
+        
+        if event.type==pygame.KEYDOWN:
+            if event.key == K_ESCAPE:
+                game_running = False
+                break
+            if event.key in [K_s, K_DOWN]:
+                downkey = True
+            if event.key in [K_w, K_UP]:
+                upkey = True
+            if event.key in [K_d, K_RIGHT]:
+                rightkey = True
+            if event.key in [K_a, K_LEFT]:
+                leftkey = True
+            
+        elif event.type==pygame.KEYUP:
+            if event.key in [K_s, K_DOWN]:
+                downkey = False
+            if event.key in [K_w, K_UP]:
+                upkey = False
+            if event.key in [K_d, K_RIGHT]:
+                rightkey = False
+            if event.key in [K_a, K_LEFT]:
+                leftkey = False
+
+    x=0
+    y=0
+    if leftkey:
+        x += -speed
+    if rightkey:
+        x += speed
+    if upkey:
+        y += -speed
+    if downkey:
+        y += speed
+
+    player_loc = player_loc.move([x, y])
+
+    #clear the display
+    screen.fill(white)
+
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
 
 # quit the pygame window
 pygame.quit()
 #the app exits
-</code></pre><p>This will run but do nothing except say something like :
-pygame 2.5.2 (SDL 2.28.3, Python 3.12.0)
-Hello from the pygame community. <a href="https://www.pygame.org/contribute.html">https://www.pygame.org/contribute.html</a></p>
-<p>Ok lets create a window.
-Replace the 3 comments in the middle with the following code</p>
-<pre tabindex="0"><code># set window size
-size = width, height = (800, 600)
-screen = pygame.display.set_mode(size)
-# update the display to see what we set
-pygame.display.update()
-</code></pre><pre tabindex="0"><code># control variable
-game_running = True
+</code></pre><p>[&ldquo;Next Post&rdquo;] (<a href="https://richard-porteous.github.io/posts/python/our_first_pygame_3/">https://richard-porteous.github.io/posts/python/our_first_pygame_3/</a>)</p>
 
-
-# GAME LOOP
-while game_running:
-    # event listeners i.e. listen to what the user or system is doing?
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            # collapse the app
-            game_running = False
-
-
-    pygame.display.update()
-</code></pre><p>Now you should see a window that you can exit.</p>
-<ul>
-<li>The Quit looks for the event to quit.</li>
-<li>The game loop makes it keep checking for an event and updating the screen with the current info.</li>
-<li>The display update draws the window.</li>
-<li>We set the window size as 800 by 600.</li>
-</ul>
-<p>Ok - not interesting yet!</p>
-<p>PROBLEM:
-If you drew something to the screen now and then tried to move it, the item would appear in every place it redrew. Great for a paint program but useless for us.
-Most beginner tutorials do 2 things which I don&rsquo;t like.</p>
-<ol>
-<li>They take the simple way and re-draw everything each loop. Its not bad, but not always the best.</li>
-<li>They omit mentioning that movement will NOT be smooth when moving a game-object.</li>
-</ol>
-<p>We will address this now.</p>
-<h2 id="movement">Movement</h2>
-<p>To move an object at a steady rate across the screen and make it the same for players on fast and slow computers we need to move it according to the speed it travels and that is usually measured in meters per second i.e. m/s. (convert back to an INT please, we don&rsquo;t want floating point numbers here)</p>
-<p>Most game engines and frameworks and even some libraries provide you with delta time. Delta time is the time taken from one loop to the next. There are a couple of ways to do this, I will use a class. Classes are not difficult and once you start using them they provide a way to group your code in nice little self contained packages/modules/whatever - well not always, but that argument is for overdoing it.</p>
-<h2 id="screen-redrawing">Screen redrawing</h2>
-<p>Screen redrawing is a very established method of removing images redrawn elsewhere on the screen by simply redrawing everything each time you loop around in the game loop.</p>
-<p>Sprites were introduced many many years ago to efficiently redraw only the small bit under the sprite and any small bits over the sprite. This is more efficient for a few objects, but not with many. Pygame does support sprites. I plan to take a quick look at them in a later post.</p>
-<p>​Lets add the delta time code just above the game loop.</p>
-<pre tabindex="0"><code># time based movement requires delta time
-class deltatime():
-
-
-    def __init__(self):
-        self.last_loop = pygame.time.get_ticks()
-        self.dt = 0
-
-
-    # calculate delta time and store the time for the next loop
-    def loop_time(self) -&gt; int:
-        time_now_ms = pygame.time.get_ticks()
-        dt = time_now_ms - self.last_loop
-        self.last_loop = time_now_ms
-        return dt
-
-
-# end of the class and code contiues​
-delta_time = deltatime()  # we initialize the class here and can now use it as an object
-</code></pre><p>We can now use delta time in our loop inside the game loop and just before our event listeners:</p>
-<pre tabindex="0"><code>​    # indicating the number of miliseconds since the last time that piece of code was run
-    dt = delta_time.loop_time()
-    print(dt) #remove this line when coding your game
-</code></pre><p>If you run your code now, you&rsquo;ll see a lot of small integers being displayed to the terminal. That would be the time of each loop and because we aren&rsquo;t doing anything else the looping is fast i.e. in milliseconds or less.</p>
-<p>Its time to use git again and do your second stage and commit. Type something meaningful in the message starting with the word Update. If you add files you would start with the word Add, and if fixing a bug you would use the word Fix.</p>
-<h2 id="for-the-complete-code">For the complete code</h2>
-<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git
-</code></pre>
 
                 </div></div>
         </div>

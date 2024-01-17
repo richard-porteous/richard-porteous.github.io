@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Our first pygame - Refactoring - part 4 | Game Experiments</title>
+    <title>Our first pygame part 4 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -204,106 +204,134 @@
 
 
 
-<h1>Our first pygame - Refactoring - part 4</h1>
+<h1>Our first pygame part 4</h1>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-06T15:19:13-07:00">06.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
 
 
-  <h2 id="if-you-look-at-the-git-repository-we-are-near-the-post-4-tag">if you look at the git repository we are near the post 4 tag.</h2>
-<p>if things dont look the same don&rsquo;t worry too much.</p>
-<p>I&rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name</p>
-<pre tabindex="0"><code>#Somewhere near the top of our code we will place the following
-img_path = &#39;images/&#39;
-#Then we replace our existing player load image code with the following concatenation
-player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
-</code></pre><p>Run the app and it does the same.</p>
-<p>The reason for this change is that the choice for images (or assets) tends to change. I know some who are used to Game Engines and they like having a top-level Assets folder. Well as your app grows you may need to reorganize and this is one way to do it. You may want to have several variables based on the way you organize your game objects in which case it could be &ldquo;assets/images/player/&rdquo; or &ldquo;tokens/player/images&rdquo; etc. etc.</p>
-<p>If you still are writing the delta time to the terminal you will notice we are chewing up a lot of processor time and are updating our screen more than we need to. Let’s be nice to other apps and limit our frame rate maximum to 60 frames per second.</p>
-<pre tabindex="0"><code># limit frame rate
-# near our game_running variable we can add
-clock = pygame.time.Clock()
-FPS = 60
+  <h2 id="input-is-not-smart-enough">Input is not smart enough</h2>
+<p>We are going to add a key queue so we can keep track of the order of keys ben pressed or in our case the order of the keys currently held down.</p>
+<p>We also want to move more of the input logic out the game and into the input class.</p>
+<ul>
+<li>we add self.key_queue = [] to init</li>
+</ul>
+<p>then we change each keydown part something like this</p>
+<pre tabindex="0"><code>                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                    self.key_queue.append(&#34;D&#34;)
+</code></pre><p>and each keyup part to something like this</p>
+<pre tabindex="0"><code>                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                    self.key_queue.remove(&#34;D&#34;)
+</code></pre><p>and still in the input class of ours, we include the logic that was part of the game.</p>
+<pre tabindex="0"><code>    def get_first_of_remaining_pressed(self):
+        while(len(self.key_queue) &gt; 0):
+            match (self.key_queue[0]): 
+                case &#34;U&#34;:
+                    if self.upkey:
+                        return (0,-speed)
+                case &#34;D&#34;:
+                    if self.downkey:
+                        return (0,speed)
+                case &#34;L&#34;:
+                    if self.leftkey:
+                        return (-speed,0)
+                case &#34;R&#34;:
+                    if self.rightkey:
+                        return (speed,0)
+            
+            #should be removed if invalid or no longer valid
+            self.key_queue.pop(0)
+
+        return(0,0)
+
+    def clean_queue(self):
+        self.key_queue = []
+        
+</code></pre><p>Notice we use speed here. This should be a parameter when we first initialize the class.
+i.e.</p>
+<pre tabindex="0"><code>def __init__(self, speed) -&gt; None:
+    self.speed = speed
+</code></pre><p>BUT We refrain from this just yet. We are going to stick with a global - and yes Globals can be very bad.</p>
+<h2 id="delta-time">Delta Time</h2>
+<p>I mentioned in an earlier post that movement would not be smooth or consistant and that I would show a simple way to fix that.</p>
+<pre tabindex="0"><code># time based movement requires delta time
+class deltatime():
 
 
-# and the top of our game loop we can add
-​clock.tick(FPS)
-</code></pre><p>Our game should still look the same but the delta time should have increased to about 16 or 17.</p>
-<p>One more change - Let’s move the keypress code into its own class.</p>
-<pre tabindex="0"><code>class keyisdown():
-   
-    def __init__(self) -&gt; None:
-        self.leftkey = False
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    # calculate delta time and store the time for the next loop
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+</code></pre><p>And then before the game loop</p>
+<pre tabindex="0"><code>delta_time = deltatime()  
+</code></pre><p>To see the time it produces we could add this temporary code and see the output or terminal display the time of each loop</p>
+<pre tabindex="0"><code>​    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    print(dt) #remove this line when coding your game
+</code></pre><p>If you run your code now, you&rsquo;ll see a lot of small integers being displayed to the terminal. That would be the time of each loop and because we aren&rsquo;t doing anything else the looping is fast i.e. in milliseconds or less.</p>
+<p>Remove the temporary code. Replace it with this above the input.</p>
+<pre tabindex="0"><code>    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    speed = 0.7 * dt
+</code></pre><h2 id="still-not-smart-enough">Still not smart enough</h2>
+<p>Finally we want to remove some code we made and replace it with pygame supported code.</p>
+<p>Remove the following</p>
+<pre tabindex="0"><code>        self.leftkey = False
         self.rightkey = False
         self.upkey = False
         self.downkey = False
-    def getEvents(self):
-       
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                return False
-           
-            if event.type==pygame.KEYDOWN:
-                if event.key in [K_s, K_DOWN]:
-                    self.downkey = True
-                if event.key in [K_w, K_UP]:
-                    self.upkey = True
-                if event.key in [K_d, K_RIGHT]:
-                    self.rightkey = True
-                if event.key in [K_a, K_LEFT]:
-                    self.leftkey = True
-               
-            elif event.type==pygame.KEYUP:
-                if event.key in [K_s, K_DOWN]:
-                    self.downkey = False
-                if event.key in [K_w, K_UP]:
-                    self.upkey = False
-                if event.key in [K_d, K_RIGHT]:
-                    self.rightkey = False
-                if event.key in [K_a, K_LEFT]:
-                    self.leftkey = False
-        return True
-held_keys = keyisdown()
-
-
-And then make these changes to the game loop.
-   game_running = held_keys.getEvents()
-    if held_keys.leftkey:
-        player_loc = player_loc.move([-speed, 0])
-    if held_keys.rightkey:
-        player_loc = player_loc.move([speed, 0])
-    if held_keys.upkey:
-        player_loc = player_loc.move([0, -speed])
-    if held_keys.downkey:
-        player_loc = player_loc.move([0, speed])
-​```
-
-Here is how the final code should look
-</code></pre><pre tabindex="0"><code class="language-#" data-lang="#">import pygame
+</code></pre><p>and where we set each one of them</p>
+<pre tabindex="0"><code>        #remove
+        self.downkey = True
+        # and
+        self.downkey = False
+</code></pre><p>and replace in the first remaining pressed function</p>
+<pre tabindex="0"><code>                    #replace
+                    if self.upkey:
+                    #with this
+                    if keys[pygame.K_UP] or keys[pygame.K_w]:
+</code></pre><p>Do that for each. The final code looks like.</p>
+<pre tabindex="0"><code>import pygame
 from pygame.locals import *
-# Initialize the pygame code
-pygame.init()
-#game globals
-img_path = &#39;images/&#39;
+
+
+
 # set window size
 size = width, height = (800, 600)
 screen = pygame.display.set_mode(size)
 black = (0,0,0)
 white = (255,255,255)
-screen.fill(black)
-# update the display to see what we set
-pygame.display.update()
+screen.fill(white)
+
+
 #load images
-player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
 player_loc = player.get_rect()
 player_loc.center = width/2, height/2
 
+# update the display to see what we set
+pygame.display.update()
 
+# Initialize the pygame code
+pygame.init()
+# Max frame rate
 clock = pygame.time.Clock()
 FPS = 60
+
+speed = 10
 # control variable
 game_running = True
+
 # time based movement requires delta time
 class deltatime():
     def __init__(self):
@@ -316,71 +344,107 @@ class deltatime():
         dt = time_now_ms - self.last_loop
         self.last_loop = time_now_ms
         return dt
-# end of the class and code contiues​
-delta_time = deltatime()  # we initialize the class here and can now use it as an object
+    
+
 class keyisdown():
-   
+    
     def __init__(self) -&gt; None:
-        self.leftkey = False
-        self.rightkey = False
-        self.upkey = False
-        self.downkey = False
+        self.key_queue = []
+
     def getEvents(self):
        
         for event in pygame.event.get():
             if event.type == QUIT:
+                self.key_queue.clear()
                 return False
-           
+            
+            # KEEP KEY PRESS ORDER
             if event.type==pygame.KEYDOWN:
+                if event.key == K_ESCAPE:
+                    return False
                 if event.key in [K_s, K_DOWN]:
-                    self.downkey = True
+                    self.key_queue.append(&#34;D&#34;)
                 if event.key in [K_w, K_UP]:
-                    self.upkey = True
+                    self.key_queue.append(&#34;U&#34;)
                 if event.key in [K_d, K_RIGHT]:
-                    self.rightkey = True
+                    self.key_queue.append(&#34;R&#34;)
                 if event.key in [K_a, K_LEFT]:
-                    self.leftkey = True
-               
-            elif event.type==pygame.KEYUP:
+                    self.key_queue.append(&#34;L&#34;)
+
+            # KEEP KEY PRESS ORDER (remove released from middle too)
+            if event.type==pygame.KEYUP:
                 if event.key in [K_s, K_DOWN]:
-                    self.downkey = False
+                    self.key_queue.remove(&#34;D&#34;)
                 if event.key in [K_w, K_UP]:
-                    self.upkey = False
+                    self.key_queue.remove(&#34;U&#34;)
                 if event.key in [K_d, K_RIGHT]:
-                    self.rightkey = False
+                    self.key_queue.remove(&#34;R&#34;)
                 if event.key in [K_a, K_LEFT]:
-                    self.leftkey = False
+                    self.key_queue.remove(&#34;L&#34;)
+        #if(self.upkey or self.rightkey or self.downkey or self.leftkey):
+        #    print(&#34;up&#34;,self.upkey, &#34;right&#34;, self.rightkey, &#34;down&#34;, self.downkey, &#34;left&#34;, self.leftkey)
         return True
+    
+    def get_first_of_remaining_pressed(self):
+        keys = pygame.key.get_pressed()
+
+        while(len(self.key_queue) &gt; 0):
+            match (self.key_queue[0]): 
+                case &#34;U&#34;:
+                    if keys[pygame.K_UP] or keys[pygame.K_w]:
+                        return (0,-speed)
+                case &#34;D&#34;:
+                    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
+                        return (0,speed)
+                case &#34;L&#34;:
+                    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+                        return (-speed,0)
+                case &#34;R&#34;:
+                    if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+                        return (speed,0)
+            
+            #in-valid front of queue items are removed
+            self.key_queue.pop(0)
+
+        return(0,0)
+
+    def clean_queue(self):
+        self.key_queue = []
+        
+
+#initialize the classes
 held_keys = keyisdown()
+delta_time = deltatime()
 
-
-# GAME LOOP
+#game loop
 while game_running:
     clock.tick(FPS)
+
     # indicating the number of miliseconds since the last time that piece of code was run
     dt = delta_time.loop_time()
-    speed = 1 * dt
-    print(dt) #remove this line when coding your game
-   
+    speed = 0.7 * dt
+
     game_running = held_keys.getEvents()
-    if held_keys.leftkey:
-        player_loc = player_loc.move([-speed, 0])
-    if held_keys.rightkey:
-        player_loc = player_loc.move([speed, 0])
-    if held_keys.upkey:
-        player_loc = player_loc.move([0, -speed])
-    if held_keys.downkey:
-        player_loc = player_loc.move([0, speed])
-    screen.fill(black)
+    velocity = (x,y) = held_keys.get_first_of_remaining_pressed()
+    player_loc = player_loc.move(velocity)
+
+    #clear the display
+    screen.fill(white)
+
     # place image on the screen
     screen.blit(player, player_loc)
     # apply changes
     pygame.display.update()
-# quit the pygame window
 
+
+# quit the pygame window
 pygame.quit()
 #the app exits
-</code></pre>
+</code></pre><p>To get the code - you could clone this repository into a folder. I suggest that you type your own code where ever you can as it helps to notice things.</p>
+<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git
+</code></pre><p>If you look at the repository the first step was on the main branch with the commit message &ldquo;Add key queue&rdquo;</p>
+<p>[&ldquo;Next Post&rdquo;] (<a href="https://richard-porteous.github.io/posts/python/our_first_pygame_4/">https://richard-porteous.github.io/posts/python/our_first_pygame_4/</a>)</p>
+
 
                 </div></div>
         </div>

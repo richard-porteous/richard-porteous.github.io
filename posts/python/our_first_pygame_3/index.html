@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Our first pygame - moving images - part 3 | Game Experiments</title>
+    <title>Our first pygame - Refactoring - part 3 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -204,160 +204,161 @@
 
 
 
-<h1>Our first pygame - moving images - part 3</h1>
+<h1>Our first pygame - Refactoring - part 3</h1>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
 
 
-  <p>Now we get to play a little.
-Lets simply draw a simple background and then download some premade shapes that we can move around.</p>
-<p>First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.</p>
-<ul>
-<li>I&rsquo;m going to use individual 2d png files for each item to start. This is simplest but not very efficient.</li>
-<li>We load the image only once outside the game loop, so that helps.</li>
-<li>we draw the image on the screen</li>
-<li>we try move the image</li>
-</ul>
-<p>Copy the files from the default folder and place them in the images folder. if your images folder doesn&rsquo;t exist, use VS Code to create the folder.
-Lets type the following code into our app above the first display update</p>
-<pre tabindex="0"><code>#load images
-player = pygame.image.load(&#34;images/blue_body_square.png&#34;)
-player_loc = player.get_rect()
-player_loc.center = width/2, height/2
-</code></pre><p>Then type this at the bottom of the game-loop , before the quitting of the window (NOTE must be indented the same as the rest of the game loop)</p>
-<pre tabindex="0"><code>​    # place image on the screen
-    screen.blit(player, player_loc)
-    # apply changes
-    pygame.display.update()
-</code></pre><p>We can run this and should see our loaded image.</p>
-<p>To move our image is simply a matter of checking for input events and then move the position of the game-object.</p>
-<p>Inside the game loop just below the code checks for the quit event:</p>
-<pre tabindex="0"><code>​        if event.type == KEYDOWN:
-            # move user to the left
-            if event.key in [K_a, K_LEFT]:
-                player_loc = player_loc.move([-10 * dt, 0])
-            # move user car to the right
-            if event.key in [K_d, K_RIGHT]:
-                player_loc = player_loc.move([10 * dt, 0])
-</code></pre><p>As you see when running</p>
-<ul>
-<li>it will leave images across the screen as you move left or right.</li>
-<li>it requires to to press the key for each move</li>
-</ul>
-<p>
-<img src="/img/blog/pygame/my-app/movement1.png" alt=""  /></p>
-<p>Not exactly what we want. lets fix the image being left behind problem.</p>
-<p>After setting the window size write the following code</p>
-<pre tabindex="0"><code>​black = (0,0,0)
-white = (255,255,255)
-screen.fill(black)
-And ​​before the screen blit write this code.
-    screen.fill(black)
-</code></pre><p>If you had images in the background you could simply redraw them instead.</p>
-<p>Run now and you&rsquo;ll see the Game-Object move left or right each time you pressed the key.</p>
-<p>Lets fix the need to press a key and change it so we can just hold the key down.
-Add this just before the loop</p>
-<pre tabindex="0"><code>key_left = False
-key_right = False
-and from the keydown event
-​        if event.type == KEYDOWN:
-            # move user to the left
-            if event.key in [K_a, K_LEFT]:
-                key_left = True
-            # move user car to the right
-            if event.key in [K_d, K_RIGHT]:
-                key_right = True
-        if event.type == KEYUP:
-            if event.key in [K_a, K_LEFT]:
-                key_left = False
-            if event.key in [K_d, K_RIGHT]:
-                key_right = False
-    if key_left:
-        player_loc = player_loc.move([-1 * dt, 0])
-    if key_right:
-        player_loc = player_loc.move([1 * dt, 0])
-</code></pre><p>Run the game an watch the game object move. Did you notice I had to change the speed to 1 otherwise it was too fast?</p>
-<p>So our complete listing now looks like this</p>
-<pre tabindex="0"><code># the pygame imports to make them usable in our game
-import pygame
-from pygame.locals import *
-# Initialize the pygame code
-pygame.init()
+  <h2 id="refactor">Refactor</h2>
+<p>Let’s move the keypress code into its own class.</p>
+<pre tabindex="0"><code>class keyisdown():
+   
+    def __init__(self) -&gt; None:
+        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return False
+           
+            if event.type==pygame.KEYDOWN:
+                if event.key == K_ESCAPE:
+                    return False
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                if event.key in [K_w, K_UP]:
+                    self.upkey = True
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = True
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = True
+               
+            elif event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                if event.key in [K_w, K_UP]:
+                    self.upkey = False
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = False
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = False
+        return True
 
+held_keys = keyisdown() # this initilizes the key is down class
+</code></pre><p>And then make these changes to the game loop.</p>
+<pre tabindex="0"><code>    game_running = held_keys.getEvents()
+    x=0
+    y=0
+    if held_keys.leftkey:
+        x += -speed
+    if held_keys.rightkey:
+        x += speed
+    if held_keys.upkey:
+        y += -speed
+    if held_keys.downkey:
+        y += speed
 
-# set window size
-size = width, height = (800, 600)
+    player_loc = player_loc.move([x, y])
+
+​```
+
+Here is how the final code should look
+</code></pre><p>import pygame
+from pygame.locals import *</p>
+<h1 id="set-window-size">set window size</h1>
+<p>size = width, height = (800, 600)
 screen = pygame.display.set_mode(size)
 black = (0,0,0)
 white = (255,255,255)
-screen.fill(black)
-# update the display to see what we set
-pygame.display.update()
-#load images
-player = pygame.image.load(&#34;images/blue_body_square.png&#34;)
+screen.fill(white)</p>
+<p>#load images
+player = pygame.image.load(&ldquo;assets/player/blue_body_squircle.png&rdquo;)
 player_loc = player.get_rect()
-player_loc.center = width/2, height/2
-
-
-
-
-# control variable
-game_running = True
-# time based movement requires delta time
-class deltatime():
-    def __init__(self):
-        self.last_loop = pygame.time.get_ticks()
-        self.dt = 0
-
-
-    def loop_time(self) -&gt; int:
-        time_now_ms = pygame.time.get_ticks()
-        dt = time_now_ms - self.last_loop
-        self.last_loop = time_now_ms
-        return dt
-# end of the class and code contiues​
-delta_time = deltatime()  # we initialize the class here and can now use it as an object
-key_left = False
-key_right = False
-# GAME LOOP
-while game_running:
-    # indicating the number of miliseconds since the last time that piece of code was run
-    dt = delta_time.loop_time()
-    print(dt) #remove this line when coding your game
+player_loc.center = width/2, height/2</p>
+<h1 id="update-the-display-to-see-what-we-set">update the display to see what we set</h1>
+<p>pygame.display.update()</p>
+<h1 id="initialize-the-pygame-code">Initialize the pygame code</h1>
+<p>pygame.init()</p>
+<h1 id="max-frame-rate">Max frame rate</h1>
+<p>clock = pygame.time.Clock()
+FPS = 60</p>
+<p>class keyisdown():</p>
+<pre><code>def __init__(self) -&gt; None:
+    self.leftkey = False
+    self.rightkey = False
+    self.upkey = False
+    self.downkey = False
+    
+def getEvents(self):
    
-    # event listeners i.e. listen to what the user or system is doing?
     for event in pygame.event.get():
         if event.type == QUIT:
-            # collapse the app
-            game_running = False
-        if event.type == KEYDOWN:
-            # move user to the left
-            if event.key in [K_a, K_LEFT]:
-                key_left = True
-            # move user car to the right
+            return False
+       
+        if event.type==pygame.KEYDOWN:
+            if event.key == K_ESCAPE:
+                return False
+            if event.key in [K_s, K_DOWN]:
+                self.downkey = True
+            if event.key in [K_w, K_UP]:
+                self.upkey = True
             if event.key in [K_d, K_RIGHT]:
-                key_right = True
-        if event.type == KEYUP:
+                self.rightkey = True
             if event.key in [K_a, K_LEFT]:
-                key_left = False
+                self.leftkey = True
+           
+        elif event.type==pygame.KEYUP:
+            if event.key in [K_s, K_DOWN]:
+                self.downkey = False
+            if event.key in [K_w, K_UP]:
+                self.upkey = False
             if event.key in [K_d, K_RIGHT]:
-                key_right = False
-    if key_left:
-        player_loc = player_loc.move([-1 * dt, 0])
-    if key_right:
-        player_loc = player_loc.move([1 * dt, 0])
-    screen.fill(black)
-    # place image on the screen
-    screen.blit(player, player_loc)
-    # apply changes
-    pygame.display.update()
-# quit the pygame window
-pygame.quit()
-#the app exits
-</code></pre><p>See you in the next post</p>
+                self.rightkey = False
+            if event.key in [K_a, K_LEFT]:
+                self.leftkey = False
+    return True
+</code></pre>
+<p>held_keys = keyisdown()
+speed = 10</p>
+<h1 id="control-variable">control variable</h1>
+<p>game_running = True</p>
+<p>#game loop
+while game_running:
+clock.tick(FPS)</p>
+<pre><code>game_running = held_keys.getEvents()
+x=0
+y=0
+if held_keys.leftkey:
+    x += -speed
+if held_keys.rightkey:
+    x += speed
+if held_keys.upkey:
+    y += -speed
+if held_keys.downkey:
+    y += speed
 
+player_loc = player_loc.move([x, y])
+
+#clear the display
+screen.fill(white)
+
+# place image on the screen
+screen.blit(player, player_loc)
+# apply changes
+pygame.display.update()
+</code></pre>
+<h1 id="quit-the-pygame-window">quit the pygame window</h1>
+<p>pygame.quit()
+#the app exits</p>
+<pre tabindex="0"><code>
+
+[&#34;Next Post&#34;] (https://richard-porteous.github.io/posts/python/our_first_pygame_4/)
+</code></pre>
 
                 </div></div>
         </div>

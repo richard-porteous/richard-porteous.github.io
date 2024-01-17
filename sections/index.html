@@ -217,21 +217,15 @@
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/godot/worm/'> Recreate the Worm game on Godot</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/monogame/basic_game_post1/'> Basic_game_post1</a> </h2>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-09T11:04:52-07:00">09.01.2024</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-16T17:36:34-07:00">16.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  Welcome Hi Welcome to this new tutorial series on Godot 4 and making 2d games.
-The first app we tackle is WORM. The same game we started in pygame. I want to have the same mechanics. The worm code needs to be mostly reusable in the game that follows.
-What we build here I&rsquo;ll be taking back to the pygame game as an exercise. Really I want to be able to write a game in either one and decide for myself which I prefer for a particular style of game.
+  
 
   <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/godot/worm/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Recreate the Worm game on Godot</span><span class="meta-nav"> »</span></span>
-  </a>
   
   </footer>
 </article>
@@ -242,43 +236,20 @@ What we build here I&rsquo;ll be taking back to the pygame game as an exercise. 
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_6/'> Our first pygame 6</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_4/'> Our first pygame part 4</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-06T15:19:13-07:00">06.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  I will come back to this series and fix it. I needed to spend time moving this to github. Its not its last stop, though I like GitHub as a host better than most others.
-A lot has happened to the code too. I decided to continue with app development without the sprites for now. I fixed input and movement as the original design was not doing what I wanted, the way I wanted.
+  Input is not smart enough We are going to add a key queue so we can keep track of the order of keys ben pressed or in our case the order of the keys currently held down.
+We also want to move more of the input logic out the game and into the input class.
+we add self.key_queue = [] to init then we change each keydown part something like this
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our_first_pygame_6/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame 6</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
-
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/posts/hosts/warning/'> Warning</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-05T12:22:45-07:00">05.01.2024</time> - 
-    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
-     </div>
-  </header>
-  A difficult lesson My code for the last 10 or more years has been backed up using git. I&rsquo;ve used both Bitbucket and Github hosts and have been very happy with the free offering for my small projects. Unfortunatley I&rsquo;ve only started using git for content more recently. I don&rsquo;t mean work related, I also don&rsquo;t mean I wasn&rsquo;t using a backup either.
-My blog site was &lsquo;accidently&rsquo; deleted. I was trying various different free sites (I need to use what I teach).
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/hosts/warning/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Warning</span><span class="meta-nav"> »</span></span>
+  <a href='https://richard-porteous.github.io/posts/python/our_first_pygame_4/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame part 4</span><span class="meta-nav"> »</span></span>
   </a>
   
   </footer>
@@ -313,69 +284,19 @@ My blog site was &lsquo;accidently&rsquo; deleted. I was trying various differen
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_5/'> Our first pygame - Sprites - part 5</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:59-07:00">10.11.2023</time> - 
-    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
-     </div>
-  </header>
-  CODE REPOSITORY branch &lsquo;main&rsquo; did not follow this step git clone https://github.com/richard-porteous/my-app.git If you look at the repository this step was on branch sprites-example You can skip if you want! we get back to doing it later.
-This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game.
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/python/our_first_pygame_5/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Sprites - part 5</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
-
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_4/'> Our first pygame - Refactoring - part 4</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_3/'> Our first pygame - Refactoring - part 3</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  if you look at the git repository we are near the post 4 tag. if things dont look the same don&rsquo;t worry too much.
-I&rsquo;d like to make a small change. I want to put the image path in a variable, for now, img_path is a good name
-#Somewhere near the top of our code we will place the followingimg_path = &#39;images/&#39;#Then we replace our existing player load image code with the following concatenationplayer = pygame.
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/python/our_first_pygame_4/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Refactoring - part 4</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
-
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_3/'> Our first pygame - moving images - part 3</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
-    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
-     </div>
-  </header>
-  Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around.
-First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.
-I&rsquo;m going to use individual 2d png files for each item to start.
+  Refactor Let’s move the keypress code into its own class.
+class keyisdown():def __init__(self) -&gt; None:self.leftkey = Falseself.rightkey = Falseself.upkey = Falseself.downkey = Falsedef getEvents(self):for event in pygame.event.get():if event.type == QUIT:return Falseif event.type==pygame.KEYDOWN:if event.key == K_ESCAPE:return Falseif event.key in [K_s, K_DOWN]:self.downkey = Trueif event.key in [K_w, K_UP]:self.upkey = Trueif event.key in [K_d, K_RIGHT]:self.rightkey = Trueif event.
 
   <footer>
   
   <a href='https://richard-porteous.github.io/posts/python/our_first_pygame_3/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - moving images - part 3</span><span class="meta-nav"> »</span></span>
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Refactoring - part 3</span><span class="meta-nav"> »</span></span>
   </a>
   
   </footer>
@@ -389,12 +310,13 @@ I&rsquo;m going to use individual 2d png files for each item to start.
 
     <h2><a href='https://richard-porteous.github.io/posts/python/our_first_pygame_2/'> Our first pygame - part 2</a> </h2>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-08-11T13:19:30-07:00">11.08.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc. We will start building the common code while creating a game and we will refactor it into something reusable as we go.
-I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE. If you prefer to use another go ahead.
+  Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around.
+First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.
+I&rsquo;m going to use individual 2d png files for each item to start.
 
   <footer>
   
@@ -417,13 +339,13 @@ I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is inc
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  Refer to Using Python to get python installed and set up a virtial environment.
-If python is installed Create a folder named mygame create a virtual environment inside activate the virtual environment
+  Python Installation Refer to Using Python to get python installed and set up a virtial environment.
+Install PyGame Create a folder named mygame create a virtual environment inside activate the virtual environment
 run this command
 python3 -m pip install pygameorpython3 -m pip install -U pygame --user see getting started
 anyway now we have our folder, environment, and pygame
 type
-$ python&gt;&gt; import pygame dont type the $ or the &raquo; if you have no errors you can quit
+$ python&gt;&gt; import pygame don&rsquo;t type the $ or the &raquo; if you have no errors you can quit the terminal
 
   <footer>
   
@@ -460,26 +382,82 @@ python --versionif the response is not python 3 or higher then i recommend you 
   </footer>
 </article>
     
-    <ul class="pagination pagination-default">
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item active">
-        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/sections/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/windows/fix_windows_clock/'> Resync Windows time with task scheduler</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-02-28T11:25:07-07:00">28.02.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  NOTE: Time sync should be done as little as possible. See the recommendations on the time server sites. i.e. https://www.pool.ntp.org
+Tired of forcing your time to resync manually?
+If you dual boot or your computer just doesn&rsquo;t keep time after it has been shut down for a while, you may be a little frustrated with the default setting for windows.
+Linux when booted will set the system time clock to UTC and display your local time.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/windows/fix_windows_clock/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Resync Windows time with task scheduler</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/general/using_git/'> Using Git</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-01-30T13:01:01-07:00">30.01.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Get Git It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.
+I usuall head to https://git-scm.com/downloads If you have linux you likely have git already, but doesn&rsquo;t hurt to check out the above.
+Some Concepts From the horses mouth Its always better to look at official documentation - git is simple you should start here https://git-scm.com/doc
+where are my file (versions) git creates a repository which is the hidden folder called .
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/general/using_git/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Using Git</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'> Refactoring - Winforms using mvc</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.
+I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Refactoring - Winforms using mvc</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
     
    
 </main>

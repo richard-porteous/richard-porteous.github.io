@@ -211,56 +211,37 @@
      </div>
 
 
-  <p>It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.</p>
-<h2 id="what-we-will-do-this-lesson">What we will do this Lesson</h2>
+  <h2 id="get-git">Get Git</h2>
+<p>It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.</p>
+<p>I usuall head to <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
+If you have linux you likely have git already, but doesn&rsquo;t hurt to check out the above.</p>
+<h2 id="some-concepts">Some Concepts</h2>
+<h3 id="from-the-horses-mouth">From the horses mouth</h3>
+<p>Its always better to look at official documentation - git is simple you should start here <a href="https://git-scm.com/doc">https://git-scm.com/doc</a></p>
+<h3 id="where-are-my-file-versions">where are my file (versions)</h3>
+<p>git creates a repository which is the hidden folder called <!-- raw HTML omitted -->.git<!-- raw HTML omitted --> that git likes to keep a full repository for you on your local computer.</p>
+<p>the command git initi is usually used for this.</p>
+<h3 id="do-you-need-an-online-account">Do you need an online account</h3>
+<p>No. But often its the best way to keep your git repository safe from deletion. (well you could still delete it online but you have to be intentional)</p>
+<h3 id="git-file-gitignore">git file .gitignore</h3>
+<p>This file removes unwanted files from your commits. It simply tells git what it can safely ignore.</p>
+<p>Some software and github.com provides a preconfigured .gitignore for you when you create a project or repository.</p>
+<h3 id="commands-you-may-use-frequently">commands you may use frequently</h3>
 <ul>
-<li>Learn to add your project to a git repository.</li>
-<li>Know how to use a free online host.</li>
+<li>add - this &lsquo;stages&rsquo; files so they are ready to commit</li>
+<li>commit - this adds an entry to a branch. each commit has a short message to identify its purpose.</li>
+<li>branch - this usually consists of a number of commits in cronological order and can be given a name</li>
+<li>push - you use this to &lsquo;push&rsquo; your commits (branch) to an upstream repository. Often the upstream repository is one you have on a host or another computer.</li>
+<li>pull - this is used mostly when you want the branch on your repository to contain other changes made on the host to the host. Push &amp; pull are used synchronize your repository with the host.</li>
+<li>merge - the common way to get changes on one branch to be placed on the main branch. Yes you can have many branches.</li>
 </ul>
-<h2 id="git-gui-sourcetree-etc">git-gui, Sourcetree, etc</h2>
-<p>Git is simple to learn. We use the terminal here, though a Git Client (UI) can help visualize better.</p>
-<p>I use GitHub as my remote host, but choose whichever you think is best. Some activity we do relies on GitHub pages so you may want to consider GitHub.</p>
-<h2 id="gitignore">.gitignore</h2>
-<p>This file removes temporary files from your commits. It simply tells git what it can safely ignore.</p>
-<p>Some software provides a preconfigured .gitignore for you when you create a project.</p>
-<p>I usually will create the host repository first then create the local repository. But you do not need the host for most of these projects. For your own projects, you should create an online free account and ad the repository following next two sections</p>
-<h2 id="get-a-github-account">Get a GitHub account</h2>
-<p>If you are younger than 13 you will need permission from parent or guardian.</p>
-<ul>
-<li>Go to <a href="https://github.com/">https://github.com/</a> and create an account if you don&rsquo;t already have one.</li>
-</ul>
-<h2 id="create-the-repository">Create the repository</h2>
-<p>Once you have created your account profile</p>
-<h3 id="optional">Optional</h3>
-<ul>
-<li>you can do rename the default branch from your profile icon top right. Select <em>Settings</em>. On the Settings page choose <em>Repositories</em> (on the left under <em>code planning and automation</em>). The top choice should be a way to change your default branch name.</li>
-</ul>
-<h3 id="required">Required</h3>
-<ul>
-<li>create an empty repository using the NEW REPOSITORY option.
-You will name it too depending on your needs i.e. your-username.github.io
-Keep it private unless you plan to share (see usage agreement) i.e. your-username.github.io should be public.</li>
-</ul>
-<h2 id="accept-the-changes">Accept the changes</h2>
-<p>
-<img src="/img/blog/git/create_on_github.png" alt="Create on GitHub"  /></p>
-<p>Look near the bottom of the page you will get the instructions with the correct URL to create the local repository.</p>
-<pre tabindex="0"><code>URL should look like 
-https://github.com/YOUR_NAME/YOUR_PROJECT.git
-YOUR_NAME is the name you chose during signup
-YOUR_PROJECT is the name of your project
-</code></pre><p>with git installed
-Open a command prompt window (cmd or your computers terminal app)
-go to your new empty project folder (top level)</p>
-<h2 id="if-you-created-content-online-ie-readme-gitignore-etc">If you created content online (i.e. README, .gitignore etc.)</h2>
-<p>This makes some assumptions</p>
-<pre tabindex="0"><code>git init
-git remote add origin https://github.com/YOUR_NAME/YOUR_PROJECT.git
-git pull
-git add .
-git branch -M main
-git status
-</code></pre><h2 id="if-you-did-not-create-content-online">If you did not create content online</h2>
+<h2 id="gui">GUI</h2>
+<p>Git is simple to learn. We use the terminal here, though a Git Client (UI) could help you visualize what is happening better. I use GitAhead on windows, and sometimes the Git Graph plugin for code.</p>
+<p>I use GitHub as my remote host, but choose whichever you think is best. If you plan on following my Hugo posts then use GitHub for them.</p>
+<p>A note - Hugo is very specific what kind of terminal you should use if you plan on using windows. See <a href="https://gohugo.io/getting-started/quick-start/#commands">https://gohugo.io/getting-started/quick-start/#commands</a></p>
+<h3 id="to-create-a-repository">to create a repository</h3>
+<p>The remote command wont work. The URL will need to match the one for the &lsquo;Host&rsquo;. i.e. if you created a empty repository on github it will give you a URL to use.</p>
+<p>GitHub instructions <a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github</a></p>
 <pre tabindex="0"><code>echo &#34;# Readme&#34; &gt;&gt; README.md
 git init
 git add README.md
@@ -294,13 +275,6 @@ or sticking with command line - here are two starting points.
 <h2 id="built-in">Built in</h2>
 <p>You can use git directly from a lot of tools and ide&rsquo;s these days. if you can i suggest you do that or the command line.</p>
 <p><!-- raw HTML omitted -->VSCode<!-- raw HTML omitted --> which I suggest you use in many tutorials has Git Support with a few plugins which give you extra features. I like <!-- raw HTML omitted -->git graph<!-- raw HTML omitted --> simply because I like to visualize the structure of my git repository. It adds almost everything you need, you just need to explore it a bit.</p>
-<h2 id="git-client">Git client</h2>
-<p>These are really useful when you don&rsquo;t understand it yet. Thier focus is to help you manage your git repositories, use branches, and many other things almost all visually. Helps reduce the need to understand and memorise yet another tool.</p>
-<p>Of the Clients I currently recommend <!-- raw HTML omitted -->GitAhead<!-- raw HTML omitted -->. Followed by source-tree. There are many others, I suggest you try a few. I have had one or two git client apps really do a lot of damage but I was trying something stupid anyway.</p>
-<p><!-- raw HTML omitted -->Git Gui<!-- raw HTML omitted --> comes with git, not as intuitive but you dont have anything extra to install.</p>
-<p>On the cmd line type git-gui or search with the search bar to find the app ~ you&rsquo;ll have to select the new &ldquo;repository&rdquo; the first time, it will remember for the second time.</p>
-<p>In the app select &ldquo;Repository&rdquo;, then select &ldquo;visualize all branch history&rdquo;</p>
-<p>OK, that&rsquo;s all for now, see you in lesson 3.</p>
 <h2 id="free-pro-git-book">Free Pro Git Book</h2>
 <p>Git has a free book - has a section intended for beginners.</p>
 <p><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
@@ -315,13 +289,11 @@ or sticking with command line - here are two starting points.
 <p>Git lists clients on its site. You will find a more comprehensive list there.</p>
 <ul>
 <li>GitAhead - free - <a href="https://gitahead.github.io/gitahead.com/">https://gitahead.github.io/gitahead.com/</a> (my current favorite)</li>
-<li>SourceTree - free -  can find on BitBucket&rsquo;s site</li>
-<li>GitHub Desktop - free - <a href="https://docs.github.com/en/desktop">https://docs.github.com/en/desktop</a> (keeps it simple)</li>
-<li>git-gui we use it in this book, it is packaged with the git you downloaded earlier</li>
-<li>VSCode with git extention - you are still required to download git for your os but that is preferable anyway.</li>
+<li>SourceTree - free -  <a href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a> works best with bitbucket.org</li>
+<li>GitHub Desktop - free - <a href="https://docs.github.com/en/desktop">https://docs.github.com/en/desktop</a></li>
+<li>git-gui  - free - it is often packaged with the git you download</li>
+<li>VSCode with git extention - you are still required to download git for your OS</li>
 </ul>
-<h2 id="adding-git-to-your-project---github-instructions">Adding Git to your project - GitHub instructions</h2>
-<p><a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github</a></p>
 
 
                 </div></div>
