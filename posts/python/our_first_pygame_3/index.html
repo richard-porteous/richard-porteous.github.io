@@ -249,7 +249,7 @@
                     self.leftkey = False
         return True
 
-held_keys = keyisdown() 
+held_keys = keyisdown() # this initilizes the key is down class
 </code></pre><p>And then make these changes to the game loop.</p>
 <pre tabindex="0"><code>    game_running = held_keys.getEvents()
     x=0
@@ -262,101 +262,108 @@ held_keys = keyisdown()
         y += -speed
     if held_keys.downkey:
         y += speed
-    player_loc = player_loc.move([x, y])
-​```
 
-Here is how the final code should look
-</code></pre><p>import pygame
-from pygame.locals import *</p>
-<h1 id="set-window-size">set window size</h1>
-<p>size = width, height = (800, 600)
+    player_loc = player_loc.move([x, y])
+</code></pre><p>Here is how the final code should look</p>
+<pre tabindex="0"><code>import pygame
+from pygame.locals import *
+
+
+# set window size
+size = width, height = (800, 600)
 screen = pygame.display.set_mode(size)
 black = (0,0,0)
 white = (255,255,255)
-screen.fill(white)</p>
-<p>#load images
-player = pygame.image.load(&ldquo;assets/player/blue_body_squircle.png&rdquo;)
-player_loc = player.get_rect()
-player_loc.center = width/2, height/2</p>
-<h1 id="update-the-display-to-see-what-we-set">update the display to see what we set</h1>
-<p>pygame.display.update()</p>
-<h1 id="initialize-the-pygame-code">Initialize the pygame code</h1>
-<p>pygame.init()</p>
-<h1 id="max-frame-rate">Max frame rate</h1>
-<p>clock = pygame.time.Clock()
-FPS = 60</p>
-<p>class keyisdown():</p>
-<pre><code>def __init__(self) -&gt; None:
-    self.leftkey = False
-    self.rightkey = False
-    self.upkey = False
-    self.downkey = False
-    
-def getEvents(self):
-   
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            return False
-       
-        if event.type==pygame.KEYDOWN:
-            if event.key == K_ESCAPE:
-                return False
-            if event.key in [K_s, K_DOWN]:
-                self.downkey = True
-            if event.key in [K_w, K_UP]:
-                self.upkey = True
-            if event.key in [K_d, K_RIGHT]:
-                self.rightkey = True
-            if event.key in [K_a, K_LEFT]:
-                self.leftkey = True
-           
-        elif event.type==pygame.KEYUP:
-            if event.key in [K_s, K_DOWN]:
-                self.downkey = False
-            if event.key in [K_w, K_UP]:
-                self.upkey = False
-            if event.key in [K_d, K_RIGHT]:
-                self.rightkey = False
-            if event.key in [K_a, K_LEFT]:
-                self.leftkey = False
-    return True
-</code></pre>
-<p>held_keys = keyisdown()
-speed = 10</p>
-<h1 id="control-variable">control variable</h1>
-<p>game_running = True</p>
-<p>#game loop
-while game_running:
-clock.tick(FPS)</p>
-<pre><code>game_running = held_keys.getEvents()
-x=0
-y=0
-if held_keys.leftkey:
-    x += -speed
-if held_keys.rightkey:
-    x += speed
-if held_keys.upkey:
-    y += -speed
-if held_keys.downkey:
-    y += speed
-
-player_loc = player_loc.move([x, y])
-
-#clear the display
 screen.fill(white)
 
-# place image on the screen
-screen.blit(player, player_loc)
-# apply changes
-pygame.display.update()
-</code></pre>
-<p>pygame.quit() #the app exits</p>
-<pre tabindex="0"><code>
-[Prev Post][prev] - [Next Post][next]
+#load images
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
 
-[prev]: &lt;/posts/python/our_first_pygame_2/&gt;
-[next]: &lt;/posts/python/our_first_pygame_4/&gt;
-</code></pre>
+# update the display to see what we set
+pygame.display.update()
+
+# Initialize the pygame code
+pygame.init()
+# Max frame rate
+clock = pygame.time.Clock()
+FPS = 60
+
+class keyisdown():
+   
+    def __init__(self) -&gt; None:
+        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+        
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return False
+           
+            if event.type==pygame.KEYDOWN:
+                if event.key == K_ESCAPE:
+                    return False
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                if event.key in [K_w, K_UP]:
+                    self.upkey = True
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = True
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = True
+               
+            elif event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                if event.key in [K_w, K_UP]:
+                    self.upkey = False
+                if event.key in [K_d, K_RIGHT]:
+                    self.rightkey = False
+                if event.key in [K_a, K_LEFT]:
+                    self.leftkey = False
+        return True
+
+
+held_keys = keyisdown()
+speed = 10
+# control variable
+game_running = True
+
+#game loop
+while game_running:
+    clock.tick(FPS)
+
+    game_running = held_keys.getEvents()
+    x=0
+    y=0
+    if held_keys.leftkey:
+        x += -speed
+    if held_keys.rightkey:
+        x += speed
+    if held_keys.upkey:
+        y += -speed
+    if held_keys.downkey:
+        y += speed
+
+    player_loc = player_loc.move([x, y])
+
+    #clear the display
+    screen.fill(white)
+
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+
+    # quit the pygame window
+pygame.quit()
+    #the app exits
+</code></pre><p><a href="/posts/python/our_first_pygame_1/">Prev Post</a> - <a href="/posts/python/our_first_pygame_3/">Next Post</a></p>
+
 
                 </div></div>
         </div>
