@@ -48,7 +48,7 @@
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
       <pubDate>Thu, 10 Aug 2023 13:19:30 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
-      <description>Python Installation Refer to Using Python to get python installed and set up a virtial environment.&#xA;Install PyGame Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see getting started&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame don&amp;rsquo;t type the $ or the &amp;raquo; if you have no errors you can quit the terminal</description>
+      <description>Python Installation Refer to Using Python to get python installed and set up a virtial environment.&#xA;Install PyGame Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see [getting started]&amp;lt;getting_started&amp;gt;&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame don&amp;rsquo;t type the $ or the &amp;raquo; if you have no errors you can quit the terminal</description>
     </item>
     <item>
       <title>Using python</title>
