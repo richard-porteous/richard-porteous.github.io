@@ -9,11 +9,11 @@
     <lastBuildDate>Mon, 01 Jan 2024 21:52:00 +0100</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Basic_game_post1</title>
-      <link>https://richard-porteous.github.io/posts/monogame/basic_game_post1/</link>
-      <pubDate>Tue, 16 Jan 2024 17:36:34 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/monogame/basic_game_post1/</guid>
-      <description></description>
+      <title>Our first pygame - grid movement - part 5 </title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</link>
+      <pubDate>Wed, 17 Jan 2024 17:35:57 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</guid>
+      <description>Quick refactor before starting I mentioned in the last post we should do something with speed. Its used as a global inside the input class and I don&amp;rsquo;t like that. The original idea is to pass it in, but that wont work well because it is going to be used with delta time.&#xA;So here is a better idea. We will remove it.&#xA;replace speed inside our input class with 1 remove speed from being initialized before its needed Now we replace a small bit of code:</description>
     </item>
     <item>
       <title>Our first pygame part 4</title>

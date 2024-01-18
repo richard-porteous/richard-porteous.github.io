@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Our first pygame - Sprites - part 5 | Game Experiments</title>
+    <title>Our first pygame - grid movement - part 5  | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -204,145 +204,216 @@
 
 
 
-<h1>Our first pygame - Sprites - part 5</h1>
+<h1>Our first pygame - grid movement - part 5 </h1>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:59-07:00">10.11.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-17T17:35:57-07:00">17.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
 
 
-  <h2 id="code-repository-branch-main-did-not-follow-this-step">CODE REPOSITORY branch &lsquo;main&rsquo; did not follow this step</h2>
-<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git
-</code></pre><p>If you look at the repository this step was on branch sprites-example
-You can skip if you want! we get back to doing it later.</p>
-<p>This is a little ambitious. Currently we are just experimenting. Soon we will make a few choices and make a simple game. Then we will refactor, and build another game. The first game I think will be a top down and the next from the side likely a platform game. Each time we will make changes to the skeleton to improve reusability. Is that a word? Spell check thought so!</p>
-<p>Ok so lets get to sprites. Head over to pygame sprites after reading this and check what I have done so you can improve your version of the code.</p>
-<p>Ok the site says this is</p>
+  <h2 id="quick-refactor-before-starting">Quick refactor before starting</h2>
+<p>I mentioned in the last post we should do something with speed. Its used as a global inside the input class and I don&rsquo;t like that.
+The original idea is to pass it in, but that wont work well because it is going to be used with delta time.</p>
+<p>So here is a better idea. We will remove it.</p>
 <ul>
-<li>optional</li>
-<li>intended as a base class</li>
-<li>each sprite having a Surface.image attribute and a Surface.rect seems to be important for other functions.</li>
-<li>there are collision functions - we haven&rsquo;t addressed this yet.</li>
-<li>​currently Sprites do not clean up the trail left behind them.</li>
+<li>replace speed inside our input class with 1</li>
+<li>remove speed from being initialized before its needed</li>
 </ul>
-<p>Traditional sprites allow an image to move across the screen without leaving a trail, by managing two buffers with hardware simply drawing one buffer over the other. Pygame may introduce a sprite with some super rendering, but for now, you either find a workaround, do things the common expected way or contribute to the pygame project.</p>
-<p>Despite my disappointment, we can still get some benefit from using Sprites. Besides keeping things in a nice little wrapper we can add the sprites to various groups and have a very efficient way of working with multiple sprites.
-(Picture)</p>
-<p>If you haven&rsquo;t used git to stage and commit your last changes, its time to do it now. We also want to create a new branch and call it feature/sprites or something like that.
-(Picture)</p>
-<p>If you installed git graph you can have a visual idea of what your repository looks like. Your development is currently at the main branch head. I added two branches test_file and feature/sprites. I checked out test_file and then found an example of using sprites that I liked from pygame. I placed it in the folder and staged and committed it to that branch. I can switch to that branch if I need to reference it. I then checked out “feature/sprites” and started to add the class and make changes to my existing code.
-note: the naming of commits for this small project doesn’t follow any convention.
-Ok, let’s add a sprite class for our player.</p>
-<pre tabindex="0"><code># REMOVE THIS CODE
-#load images
-player = pygame.image.load(img_path + &#34;blue_body_square.png&#34;)
+<p>Now we replace a small bit of code:</p>
+<pre tabindex="0"><code>    velocity = (x,y) = held_keys.get_first_of_remaining_pressed()
+</code></pre><p>With this bit</p>
+<pre tabindex="0"><code>    (x,y) = held_keys.get_first_of_remaining_pressed()
+    velocity = (x * speed, y * speed)
+</code></pre><p>Thats all! amazing.</p>
+<h2 id="grid-movement">Grid Movement</h2>
+<p>For Grid movement we want to move from the center of one tile to the center of the next.</p>
+<ul>
+<li>We could abandon the delta time and the incremental drawing of each step, and use either animation or tween.</li>
+</ul>
+<p>or</p>
+<ul>
+<li>We could use what we have and prevent turning until we reach our destination.</li>
+</ul>
+<p>I prefer the second, but the option is yours for your game. I&rsquo;ll show you how to implement this with the existing code.</p>
+<h3 id="we-want">We want</h3>
+<ul>
+<li>move length i.e. the size of a tile</li>
+<li>direction at start of move</li>
+<li>a start point</li>
+<li>a destination</li>
+<li>a method to determine when we are close enough before we allow a turn.</li>
+</ul>
+<p>Sounds easy! Ok so lets see how easy it is, and if i&rsquo;ll be bug fixing once I&rsquo;m done.</p>
+<p>We have some of this. I do need to add a few things.</p>
+<p>we create two &lsquo;static&rsquo; variables i.e. ones we don&rsquo;t change</p>
+<pre tabindex="0"><code>TILESIZE = (80,80)
+PLAYERNORMALSPEED = 0.7
+</code></pre><p>Place those at the top after the imports.</p>
+<p>then we want a variable like speed that will be set to the Normal speed. I think we should create a new one and call it player current speed, so we know we can change it, i.e. make the worm go faster at certain intervals.</p>
+<p>Before the game loop add</p>
+<pre tabindex="0"><code>direction = (0,0)
+from_tile = player_loc.center
+player_current_speed = PLAYERNORMALSPEED
+</code></pre><p>We added the direction for the duration of the move, a start point, and speed like we talked about.</p>
+<p>Now we need to replace the following</p>
+<pre tabindex="0"><code>    speed = 0.7 * dt
+</code></pre><p>with</p>
+<pre tabindex="0"><code>    dt_distance = player_current_speed * dt
+</code></pre><p>and replace this</p>
+<pre tabindex="0"><code>    (x,y) = held_keys.get_first_of_remaining_pressed()
+    velocity = (x * speed, y * speed)
+    player_loc = player_loc.move(velocity)
+</code></pre><p>with</p>
+<pre tabindex="0"><code>    #get direction from key pressed queue
+    new_direction = held_keys.get_first_of_remaining_pressed()
+
+    # get destination
+    to_tile = (from_tile[0] + direction[0] * TILESIZE[0], from_tile[1] + direction[1] * TILESIZE[1])
+
+    if direction != (0,0) or new_direction != (0,0):
+        # print(&#34;movement&#34;) # debug statement
+
+        dist_to_dest = abs(math.dist(player_loc.center, to_tile))
+        # are we at the destination? i.e. close enough to get there.
+        if (dist_to_dest &lt;= abs(dt_distance)):
+            # print(&#34;end of movement&#34;) # debug statement
+            
+            # we only change direction when we are at the destination
+            player_loc.center = to_tile
+            from_tile = to_tile
+            direction = new_direction
+        else:
+            # we are in a move - keep going
+            velocity = (direction[0] * dt_distance, direction[1] * dt_distance)
+            player_loc = player_loc.move(velocity)
+</code></pre><p>So we:</p>
+<ul>
+<li>check if we have direction</li>
+<li>if we are at the start/end of a move we allow a direction change</li>
+<li>otherwise we keep moving</li>
+</ul>
+<p>Notice - we have the bonus of not moving at all until the first time we press a key. If you wanted the character to start moving right away you would likely need to set the new_direction if direction was (0,0).</p>
+<h2 id="two-more-things">Two more things</h2>
+<ol>
+<li>Lets scale the board. Currently it does not have sufficient grid places and the player appears too big.</li>
+<li>Lets add food in random places, and as a bonus eat a piece of food and place a piece of the tail on the board.</li>
+</ol>
+<p>The food is easier than it seems. We simply randomly generate a position, place it (we don&rsquo;t test if something is there, not yet), and if the head location matches the food location we place it in a new location and add a tail to the worm. We won&rsquo;t generate sounds, that is a later topic.</p>
+<h3 id="copy-food-png">Copy food png</h3>
+<p>Ok copy tile_coin.png and place it in assets/food folder which you&rsquo;ll need to create. copy it from the same place as we did when you copied in the head. We are pretending a coin is food.</p>
+<p>The code you&rsquo;ll use is the same as what you did for the player. Try it yourself.</p>
+<p>After the player moves you&rsquo;ll place the code that check to see if the food and the haed are in the center of the same tile</p>
+<pre tabindex="0"><code>    if (player_loc.center == food_loc.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_loc.center = (80 * x + 80/2) , (80 * y + 80/2)
+</code></pre><p>then you would blit the food before the player so it goes under the head when being eaten. Like so &hellip;</p>
+<pre tabindex="0"><code>    # place image on the screen
+    screen.blit(food, food_loc)
+    screen.blit(player, player_loc)
+</code></pre><p>Now we need to scale the screen, easiest is just to draw things smaller. If you have a better way, now it the time to implement.</p>
+<p>Under tilesize definition you can add the following</p>
+<pre tabindex="0"><code>SCALESIZE = 0.5
+TILE_SIZE = (80,80)
+TILESIZE = (TILE_SIZE[0] * SCALESIZE, TILE_SIZE[1] * SCALESIZE)
+
+# this is modified
+PLAYERNORMALSPEED = 0.4 * SCALESIZE
+</code></pre><p>We also going to set window size to be a multiple of the square size</p>
+<pre tabindex="0"><code>size = width, height = (800, 560)
+</code></pre><p>We wont fill the screen directly - we will use a background texture. I&rsquo;m going to create with code.</p>
+<pre tabindex="0"><code>#background
+background = pygame.Surface.copy(screen)
+background.fill(white)
+
+#draw lines for the grid
+for y in range(0, height, int(TILESIZE[0])):
+    pygame.draw.line(background, black, (0,y), (width,y))
+for x in range(0, width, int(TILESIZE[1])):
+    pygame.draw.line(background, black, (x,0), (x,height))
+
+
+screen.blit(background,(0,0))
+</code></pre><p>We scale our current images</p>
+<pre tabindex="0"><code>#player
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player = pygame.transform.scale_by(player, 0.5 )
 player_loc = player.get_rect()
 player_loc.center = width/2, height/2
-</code></pre><pre tabindex="0"><code>#AND REPLACE IT WITH
-​#create class for players
-class Player(pygame.sprite.Sprite):
-  velocity = (0,0)
-  def __init__(self, img, x, y):
-    pygame.sprite.Sprite.__init__(self)
-    self.image = pygame.image.load(img_path + img)
-    self.rect = self.image.get_rect()
-    self.rect.center = (x, y)
+player_loc.center = TILESIZE[0]/2, TILESIZE[1]/2
 
-
-  def update(self):
-    #player.rect = player.rect.move([-speed, 0])
-    self.rect.move_ip(self.velocity)
-
-
-  def set_velocity(self, velocity):
-      self.velocity = velocity
-
-
-#create groups
-players = pygame.sprite.Group()
-
-
-#load game-objects
-player = Player(&#34;blue_body_square.png&#34;, width/2, height/2)
-
-
-#Add game-objects to their respective groups
-players.add(player)
-</code></pre><p>So you removed some old code and replaced it with a player class. The nice thing about classes is that it helps clean up code in other places. Ok lets continue and finish the job.</p>
-<pre tabindex="0"><code>#Replace the movement code with this
-​    game_running = held_keys.getEvents()
-    x=0
-    y=0
-    if held_keys.leftkey:
-        x += -speed
-    if held_keys.rightkey:
-        x += speed
-    if held_keys.upkey:
-        y += -speed
-    if held_keys.downkey:
-        y += speed
-   
-    player.set_velocity((x,y))
-</code></pre><p>then finally replace the screen blit with the following
-​</p>
-<pre tabindex="0"><code>    #update sprite group
-    players.update()
-
-
-    #draw sprite group
-    players.draw(screen)
-</code></pre><p>and because I&rsquo;m picky we can avoid calling the move if the velocity is 0,0.
-Note: this is not always more efficient to avoid calls. you could do your tests by placing the calls in tight loops. i.e. a loop of 100,000 times and see which one finishes faster. Or use the tooling available.</p>
-<pre tabindex="0"><code>  def update(self):
-    if self.velocity != (0,0):
-        self.rect.move_ip(self.velocity)
-</code></pre><p>Final code should look like</p>
-<pre tabindex="0"><code># the pygame imports to make them usable in our game
+#food
+eaten = False
+food = pygame.image.load(&#34;assets/food/tile_coin.png&#34;)
+food = pygame.transform.scale_by(food, 0.5 )
+food_loc = food.get_rect()
+food_loc.center = (TILESIZE[0] * 9 + TILESIZE[0]/2) , (TILESIZE[1] * 9 + TILESIZE[1]/2)
+</code></pre><p>We fix the food placement to scale</p>
+<pre tabindex="0"><code>    if (player_loc.center == food_loc.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_loc.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
+</code></pre><p>and blit the background</p>
+<pre tabindex="0"><code>screen.blit(background,(0,0))
+</code></pre><h2 id="the-final-code-listing-looks-like-this">The final code listing looks like this</h2>
+<pre tabindex="0"><code>import math
+import random
 import pygame
 from pygame.locals import *
-# Initialize the pygame code
-pygame.init()
-#game globals
-img_path = &#39;images/&#39;
+
+
+SCALESIZE = 0.5
+TILE_SIZE = (80,80)
+TILESIZE = (TILE_SIZE[0] * SCALESIZE, TILE_SIZE[1] * SCALESIZE)
+
+
+PLAYERNORMALSPEED = 0.4 * SCALESIZE
+
 # set window size
-size = width, height = (800, 600)
+size = width, height = (800, 560)
 screen = pygame.display.set_mode(size)
+
 black = (0,0,0)
 white = (255,255,255)
-screen.fill(black)
+#screen.fill(white)
+
+#background
+background = pygame.Surface.copy(screen)
+background.fill(white)
+
+for y in range(0, height, int(TILESIZE[0])):
+    pygame.draw.line(background, black, (0,y), (width,y))
+for x in range(0, width, int(TILESIZE[1])):
+    pygame.draw.line(background, black, (x,0), (x,height))
+
+#player
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player = pygame.transform.scale_by(player, 0.5 )
+player_loc = player.get_rect()
+player_loc.center = TILESIZE[0]/2, TILESIZE[1]/2
+
+#food
+eaten = False
+food = pygame.image.load(&#34;assets/food/tile_coin.png&#34;)
+food = pygame.transform.scale_by(food, 0.5 )
+food_loc = food.get_rect()
+food_loc.center = (TILESIZE[0] * 9 + TILESIZE[0]/2) , (TILESIZE[1] * 9 + TILESIZE[1]/2)
+
+screen.blit(background,(0,0))
+
 # update the display to see what we set
 pygame.display.update()
 
-
-
-
-#create class for players
-class Player(pygame.sprite.Sprite):
-    velocity = (0,0)
-    def __init__(self, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(img_path + img)
-        self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
-    def clear(surf, rect):
-        color = 255, 0, 0
-        surf.fill(color, rect)
-    # called on the group
-    def update(self):
-        if self.velocity != (0,0):
-            self.rect.move_ip(self.velocity)
-    def set_velocity(self, velocity):
-        self.velocity = velocity
-#create groups
-players = pygame.sprite.Group()
-#load game-objects
-player = Player(&#34;blue_body_square.png&#34;, width/2, height/2)
-#Add game-objects to their respective groups
-players.add(player)
+# Initialize the pygame code
+pygame.init()
+# Max frame rate
 clock = pygame.time.Clock()
 FPS = 60
+
+#speed = 10
 # control variable
 game_running = True
+
 # time based movement requires delta time
 class deltatime():
     def __init__(self):
@@ -355,83 +426,130 @@ class deltatime():
         dt = time_now_ms - self.last_loop
         self.last_loop = time_now_ms
         return dt
-# end of the class and code contiues​
-delta_time = deltatime()  # we initialize the class here and can now use it as an object
+    
+
 class keyisdown():
-   
+    
     def __init__(self) -&gt; None:
-        self.leftkey = False
-        self.rightkey = False
-        self.upkey = False
-        self.downkey = False
+        self.key_queue = []
+
     def getEvents(self):
        
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == QUIT or (event.type==pygame.KEYDOWN and event.key in [K_ESCAPE]):
+                self.key_queue.clear()
                 return False
-           
+            
+            # KEEP KEY PRESS ORDER
             if event.type==pygame.KEYDOWN:
+                if event.key == K_ESCAPE:
+                    return False
                 if event.key in [K_s, K_DOWN]:
-                    self.downkey = True
+                    self.key_queue.append(&#34;D&#34;)
                 if event.key in [K_w, K_UP]:
-                    self.upkey = True
+                    self.key_queue.append(&#34;U&#34;)
                 if event.key in [K_d, K_RIGHT]:
-                    self.rightkey = True
+                    self.key_queue.append(&#34;R&#34;)
                 if event.key in [K_a, K_LEFT]:
-                    self.leftkey = True
-               
-            elif event.type==pygame.KEYUP:
+                    self.key_queue.append(&#34;L&#34;)
+
+            # KEEP KEY PRESS ORDER (remove released from middle too)
+            if event.type==pygame.KEYUP:
                 if event.key in [K_s, K_DOWN]:
-                    self.downkey = False
+                    self.key_queue.remove(&#34;D&#34;)
                 if event.key in [K_w, K_UP]:
-                    self.upkey = False
+                    self.key_queue.remove(&#34;U&#34;)
                 if event.key in [K_d, K_RIGHT]:
-                    self.rightkey = False
+                    self.key_queue.remove(&#34;R&#34;)
                 if event.key in [K_a, K_LEFT]:
-                    self.leftkey = False
+                    self.key_queue.remove(&#34;L&#34;)
+        #if(self.upkey or self.rightkey or self.downkey or self.leftkey):
+        #    print(&#34;up&#34;,self.upkey, &#34;right&#34;, self.rightkey, &#34;down&#34;, self.downkey, &#34;left&#34;, self.leftkey)
         return True
+    
+    def get_first_of_remaining_pressed(self):
+        keys = pygame.key.get_pressed()
+
+        while(len(self.key_queue) &gt; 0):
+            match (self.key_queue[0]): 
+                case &#34;U&#34;:
+                    if keys[pygame.K_UP] or keys[pygame.K_w]:
+                        return (0,-1)
+                case &#34;D&#34;:
+                    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
+                        return (0,1)
+                case &#34;L&#34;:
+                    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+                        return (-1,0)
+                case &#34;R&#34;:
+                    if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+                        return (1,0)
+            
+            #in-valid front of queue items are removed
+            self.key_queue.pop(0)
+
+        return(0,0)
+
+    def clean_queue(self):
+        self.key_queue = []
+        
+
+#initialize the classes
 held_keys = keyisdown()
+delta_time = deltatime()
+direction = (0,0)
+from_tile = player_loc.center
+player_current_speed = PLAYERNORMALSPEED
 
-
-# GAME LOOP
+#game loop
 while game_running:
     clock.tick(FPS)
+
     # indicating the number of miliseconds since the last time that piece of code was run
     dt = delta_time.loop_time()
-    speed = 1 * dt
-    print(dt) #remove this line when coding your game
-   
- 
+    dt_distance = player_current_speed * dt
+
     game_running = held_keys.getEvents()
-    x=0
-    y=0
-    if held_keys.leftkey:
-        x += -speed
-    if held_keys.rightkey:
-        x += speed
-    if held_keys.upkey:
-        y += -speed
-    if held_keys.downkey:
-        y += speed
-   
-    player.set_velocity((x,y))
-   
-    #clear screen
-    screen.fill(black)
-   
-    #update sprite group
-    players.update()
-    #draw sprite group
-    players.draw(screen)
-    # apply changes - can&#39;t be used on opengl
+
+    new_direction = held_keys.get_first_of_remaining_pressed()
+    to_tile = (from_tile[0] + direction[0] * TILESIZE[0], from_tile[1] + direction[1] * TILESIZE[1])
+
+    # we have a direction
+    if direction != (0,0) or new_direction != (0,0):
+        #print(&#34;movement&#34;)
+        # are we there yet?
+        dist_to_dest = abs(math.dist(player_loc.center, to_tile))
+        if (dist_to_dest &lt;= abs(dt_distance)):
+            player_loc.center = to_tile
+            from_tile = to_tile
+            #print(&#34;end of contineous movement&#34;)
+            direction = new_direction
+        else:
+            velocity = (direction[0] * dt_distance, direction[1] * dt_distance)
+            player_loc = player_loc.move(velocity)
+
+
+    if (player_loc.center == food_loc.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_loc.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
+        
+
+    #clear the display
+    screen.blit(background,(0,0))
+
+    # place image on the screen
+    screen.blit(food, food_loc)
+    screen.blit(player, player_loc)
+
+    # apply changes
     pygame.display.update()
+
+
 # quit the pygame window
 pygame.quit()
 #the app exits
-</code></pre><p>​
-Run the app and test.
-Yes we changed behaviour, so no not just refactoring. The input now gives us 8 directions, not just 4. Nice we now have sprites.</p>
-<p>​OK so other than slightly clear code there is no real benefit. Sprites only really start to get interesting once you use more of them together - and oh yes, they contain collisions which we explore soon.</p>
+</code></pre><p>I take the code directly from the git repository. I suggest you do the same.</p>
 
 
                 </div></div>
