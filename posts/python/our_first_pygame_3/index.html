@@ -249,7 +249,7 @@
                     self.leftkey = False
         return True
 
-held_keys = keyisdown() # this initilizes the key is down class
+held_keys = keyisdown() 
 </code></pre><p>And then make these changes to the game loop.</p>
 <pre tabindex="0"><code>    game_running = held_keys.getEvents()
     x=0
@@ -262,9 +262,7 @@ held_keys = keyisdown() # this initilizes the key is down class
         y += -speed
     if held_keys.downkey:
         y += speed
-
     player_loc = player_loc.move([x, y])
-
 ​```
 
 Here is how the final code should look
@@ -352,12 +350,12 @@ screen.blit(player, player_loc)
 # apply changes
 pygame.display.update()
 </code></pre>
-<h1 id="quit-the-pygame-window">quit the pygame window</h1>
-<p>pygame.quit()
-#the app exits</p>
+<p>pygame.quit() #the app exits</p>
 <pre tabindex="0"><code>
+[Prev Post][prev] - [Next Post][next]
 
-[&#34;Next Post&#34;] (https://richard-porteous.github.io/posts/python/our_first_pygame_4/)
+[prev]: &lt;/posts/python/our_first_pygame_2/&gt;
+[next]: &lt;/posts/python/our_first_pygame_4/&gt;
 </code></pre>
 
                 </div></div>
