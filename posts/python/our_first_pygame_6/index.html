@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Tags | Game Experiments</title>
+    <title>Our first pygame - continuous movement - part 6 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -199,70 +199,112 @@
     <div id="main">
         <div class="container">
             <div class="row"><div class="col-md" id="content">
-<main>
-  <div>
-   <h1>Tags</h1>
-   
-    
-        
 
 
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/tags/blog/'> Blog</a> </h2>
+
+<h1>Our first pygame - continuous movement - part 6</h1>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-18T14:45:00-07:00">18.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
-  </header>
-  
 
-  <footer>
-  
-  </footer>
-</article>
+
+  <h2 id="continuous-movement">continuous movement</h2>
+<p>The game Worm should have the worm moving even when you don&rsquo;t have any keys pressed, unless the game has paused.</p>
+<p>So we will make a small change to allow the worm to keep moving in its last direction selected.</p>
+<p>First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving. You can use the last direction moved while keys were being held. I chose not to.</p>
+<p>We add one more line to or input class&rsquo;s init. It now looks like.</p>
+<pre tabindex="0"><code>    def __init__(self) -&gt; None:
+        self.key_queue = []
+        self.last_key_pressed = &#34;none&#34;
+</code></pre><p>and we set the last key pressed in the same place we set our key queue.</p>
+<pre tabindex="0"><code>                if event.key in [K_s, K_DOWN]:
+                    self.last_key_pressed = &#34;D&#34;
+                    self.key_queue.append(&#34;D&#34;)
+                if event.key in [K_w, K_UP]:
+                    self.last_key_pressed = &#34;U&#34;
+                    self.key_queue.append(&#34;U&#34;)
+                if event.key in [K_d, K_RIGHT]:
+                    self.last_key_pressed = &#34;R&#34;
+                    self.key_queue.append(&#34;R&#34;)
+                if event.key in [K_a, K_LEFT]:
+                    self.last_key_pressed = &#34;L&#34;
+                    self.key_queue.append(&#34;L&#34;)
+</code></pre><p>we add a function to read it</p>
+<pre tabindex="0"><code>    def get_last_direction_chosen(self):
+        match (self.last_key_pressed):
+            case &#34;U&#34;:
+                return (0,-1)
+            case &#34;D&#34;:
+                return (0,1)
+            case &#34;L&#34;:
+                return (-1,0)
+            case &#34;R&#34;:
+                return (1,0)
+        return (0,0)
+</code></pre><p>and then before the game loop we set a variable to be continuous</p>
+<pre tabindex="0"><code>continuous = True
+</code></pre><p>right now we the variable is hardcoded. It is a flag to tell the code the behaviour we want. We can change that later if needed.</p>
+<p>at the end of our &ldquo;reached destination code&rdquo; we add 3 lines above the last (plus spacing). here it is including the last line</p>
+<pre tabindex="0"><code>            if (continuous and new_direction == (0,0)):
+                direction = held_keys.get_last_direction_chosen()
+            else:
+                direction = new_direction
+</code></pre><p>I also noticed we set a varable eaten with food but never use it. We can delete it.</p>
+<p>We run the code and we see the head moving around the board, after we have pressed a direction key at least once. If it easts food the food reappears elsewhere.</p>
+<p>Ok so lets add a face to our worm, and when it eats some food we let it grow a tail. For now a body part will simply stay where we ate the food. It will also become part of a list we call the tail.</p>
+<p>player creation now looks like</p>
+<pre tabindex="0"><code>#player
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_body = pygame.image.load(&#34;assets/player/blue_body_circle.png&#34;)
+player_face = pygame.image.load(&#34;assets/player/face_a.png&#34;)
+player = pygame.transform.scale_by(player, 0.5 )
+player_body = pygame.transform.scale_by(player_body, 0.5 )
+player_face = pygame.transform.scale_by(player_face, 0.5 )
+player_loc = player.get_rect()
+player_loc.center = TILESIZE[0]/2, TILESIZE[1]/2
+player_tail = []
+</code></pre><p>we added a body a face and a tail</p>
+<p>Copy face_a and blue_body_circle png files into our player folder.</p>
+<p>After we eat food in the same if statement we need this line of code</p>
+<pre tabindex="0"><code>player_tail.append(player_loc)
+</code></pre><p>And where we draw the food and player we need this</p>
+<pre tabindex="0"><code>    screen.blit(food, food_loc)
     
-        
-
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/tags/post/'> Post</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-18T14:45:00-07:00">18.01.2024</time> - 
-     </div>
-  </header>
-  
-
-  <footer>
-  
-  </footer>
-</article>
+    for t in player_tail:
+        if t != player_loc:
+            screen.blit(player_body,t)
     
-        
+    screen.blit(player, player_loc)
+    screen.blit(player_face, player_loc)
+</code></pre><p>We draw the face on top of the player where the player currently is. The face needs to be centered.</p>
+<p>
+<img src="/img/blog/pygame/my-app/player_with_face_1.png" alt=""  /></p>
+<p>The player uses player and player_loc, and while location is one way of saying it, it is easier to keep track of by calling it what it is. Its a rectangle and it has a ceneter so lets rename that to player_rect. If you not using the ide&rsquo;s rename whic takes care of all references then dont forget to name all of them. PS replace all from the text serach and replace is dangerous.</p>
+<p>so we end up with</p>
+<pre tabindex="0"><code>#player
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_body = pygame.image.load(&#34;assets/player/blue_body_circle.png&#34;)
+player_face = pygame.image.load(&#34;assets/player/face_a.png&#34;)
+player = pygame.transform.scale_by(player, 0.5 )
+player_body = pygame.transform.scale_by(player_body, 0.5 )
+player_face = pygame.transform.scale_by(player_face, 0.5 )
+player_rect = player.get_rect()
+player_face_rect = player_face.get_rect()
+player_rect.center = TILESIZE[0]/2, TILESIZE[1]/2
+player_face_rect.center = player_rect.center
+player_tail = []
+</code></pre><p>this starts the face in the right place - lets keep it in the right place. We set the center of the rect the same as the player center</p>
+<pre tabindex="0"><code>    screen.blit(player, player_rect)
+    player_face_rect.center = player_rect.center
+    screen.blit(player_face, player_face_rect)
+</code></pre><p>You will notice if you follow along with the git, I have several commits for each post. It is easier to keep your git commits small and frequent, in case you want to go back a bit and only keep some changes.</p>
+<p>The next git commit I renamed the classes, I did this to match the pygame. Stick with python standards whenever possible.</p>
+<p>In the next post we refactor the player to keep the players code in one place and not spread all over. Eventually we discover a list of texture poistions is insufficient for the tail and we decide to use some of the player code. I refactor further and use inheritance. These are object oriented concepts and you could stick with lists and functions if you prefer.</p>
+<p><a href="/posts/python/our_first_pygame_5/">Prev Post</a> - <a href="/posts/">Next Post</a></p>
 
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/tags/text/'> Text</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-18T14:45:00-07:00">18.01.2024</time> - 
-     </div>
-  </header>
-  
-
-  <footer>
-  
-  </footer>
-</article>
-    
-  </div>
-</main>
 
                 </div></div>
         </div>

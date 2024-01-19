@@ -9,6 +9,13 @@
     <lastBuildDate>Mon, 01 Jan 2024 21:52:00 +0100</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Our first pygame - continuous movement - part 6</title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</link>
+      <pubDate>Thu, 18 Jan 2024 14:45:00 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</guid>
+      <description>continuous movement The game Worm should have the worm moving even when you don&amp;rsquo;t have any keys pressed, unless the game has paused.&#xA;So we will make a small change to allow the worm to keep moving in its last direction selected.&#xA;First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving.</description>
+    </item>
+    <item>
       <title>Our first pygame - grid movement - part 5 </title>
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</link>
       <pubDate>Wed, 17 Jan 2024 17:35:57 -0700</pubDate>
