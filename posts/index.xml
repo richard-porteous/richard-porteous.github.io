@@ -9,11 +9,18 @@
     <lastBuildDate>Sat, 20 Jan 2024 10:49:43 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Using_microsoft_powershell</title>
+      <title>Using microsoft powershell</title>
       <link>https://richard-porteous.github.io/posts/windows/using_microsoft_powershell/</link>
       <pubDate>Sat, 20 Jan 2024 10:49:43 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/windows/using_microsoft_powershell/</guid>
       <description>Microsoft Powershell is NOT Windows Powershell I&amp;rsquo;ve never liked windows powershell while others have sworn by it. I stuck with cmd and ignored windows powershell with a vengance. OK, OK, I did try it for a month or two, but found it slowing me down and in places being an obstruction. Perhaps it was more &amp;ldquo;when&amp;rdquo; and &amp;ldquo;what&amp;rdquo;, but I wasn&amp;rsquo;t happy.&#xA;So why would I try Microsoft Powershell? Well, I discovered they are different.</description>
+    </item>
+    <item>
+      <title>Our first pygame - tails follow head - part 8</title>
+      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_8/</link>
+      <pubDate>Sat, 20 Jan 2024 10:33:02 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_8/</guid>
+      <description>Decisions about the Code We pay more attention to coding here as it is where the decisions were made.&#xA;The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.&#xA;The end move position is calculated outside the class in the game loop, and the result is currently passed to the head.</description>
     </item>
     <item>
       <title>Our first pygame part 7</title>
