@@ -20,7 +20,7 @@
       <link>https://richard-porteous.github.io/posts/python/our_first_pygame_8/</link>
       <pubDate>Sat, 20 Jan 2024 10:33:02 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_8/</guid>
-      <description>Decisions about the Code We pay more attention to coding here as it is where the decisions were made.&#xA;The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.&#xA;The end move position is calculated outside the class in the game loop, and the result is currently passed to the head.</description>
+      <description>Decisions about the Code The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.&#xA;The end move position is calculated outside the class in the game loop, and the result is currently passed to the head. To move this code we need to store the tile size in the base class, everything else already belongs to the base class.</description>
     </item>
     <item>
       <title>Our first pygame part 7</title>

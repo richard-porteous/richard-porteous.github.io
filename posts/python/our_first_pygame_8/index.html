@@ -212,7 +212,6 @@
 
 
   <h2 id="decisions-about-the-code">Decisions about the Code</h2>
-<p>We pay more attention to coding here as it is where the decisions were made.</p>
 <blockquote>
 <p>The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.</p>
 </blockquote>
@@ -290,22 +289,6 @@ We remove the following line.</p>
         food_rect.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
         return True
     return False
-</code></pre><p>Ok back to Our bug.</p>
-<p>Add the return True and return False to our move function. We will set a variable called move_start with the returned value so we know if we started a new move</p>
-<pre tabindex="0"><code>    def move(self, dt_distance, new_direction, def_direction, continuous):
-        direction = self.direction
-        if direction != (0,0) or new_direction != (0,0):
-            if (self.is_end_of_move(dt_distance)):
-                if (continuous and new_direction == (0,0)):
-                    direction = def_direction
-                else:
-                    direction = new_direction
-                self.setup_next_move(direction)
-                return True
-            else:
-                #keep moving we are not there yet
-                self.keep_moving(dt_distance)
-        return False
 </code></pre><p>Now grab all that code under eat_food and make a function called grow_tail</p>
 <pre tabindex="0"><code>def grow_tail(TILESIZE, PLAYERNORMALSPEED, Tail, player, player_tail):
     t = Tail(PLAYERNORMALSPEED, TILESIZE)
@@ -324,6 +307,22 @@ We remove the following line.</p>
 </code></pre><p>and the calling code looks like</p>
 <pre tabindex="0"><code>    if eat_food(TILESIZE, player, food_rect):
         grow_tail(TILESIZE, PLAYERNORMALSPEED, Tail, player, player_tail)
+</code></pre><p>Ok back to Our bug.</p>
+<p>Add the return True and return False to our move function. We will set a variable called move_start with the returned value so we know if we started a new move</p>
+<pre tabindex="0"><code>    def move(self, dt_distance, new_direction, def_direction, continuous):
+        direction = self.direction
+        if direction != (0,0) or new_direction != (0,0):
+            if (self.is_end_of_move(dt_distance)):
+                if (continuous and new_direction == (0,0)):
+                    direction = def_direction
+                else:
+                    direction = new_direction
+                self.setup_next_move(direction)
+                return True
+            else:
+                #keep moving we are not there yet
+                self.keep_moving(dt_distance)
+        return False
 </code></pre><p>Our player move call and the tail move is now</p>
 <pre tabindex="0"><code>    # do we have a direction?
     move_start = player.move(dt_distance,new_direction,def_direction,continuous)

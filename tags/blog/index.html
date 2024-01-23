@@ -242,9 +242,8 @@ So why would I try Microsoft Powershell? Well, I discovered they are different.
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  Decisions about the Code We pay more attention to coding here as it is where the decisions were made.
-The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.
-The end move position is calculated outside the class in the game loop, and the result is currently passed to the head.
+  Decisions about the Code The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.
+The end move position is calculated outside the class in the game loop, and the result is currently passed to the head. To move this code we need to store the tile size in the base class, everything else already belongs to the base class.
 
   <footer>
   
