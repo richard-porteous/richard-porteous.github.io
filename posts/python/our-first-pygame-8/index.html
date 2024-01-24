@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Our first pygame - part 1 | Game Experiments</title>
+    <title>Our first pygame - tails follow head - part 8 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -204,103 +204,144 @@
 
 
 
-<h1>Our first pygame - part 1</h1>
+<h1>Our first pygame - tails follow head - part 8</h1>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-08-10T13:19:30-07:00">10.08.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-20T10:33:02-07:00">20.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
 
 
-  <h2 id="pygame-installation">Pygame Installation</h2>
-<p>Refer to <strong><a href="/posts/python/using_python/">Using Python</a></strong> to get python installed and set up a virtial environment. You need python 3 to continue</p>
-<h2 id="install-pygame">Install PyGame</h2>
-<p>Create a folder named mygame
-create a virtual environment inside
-activate the virtual environment</p>
-<p>run this command</p>
-<pre tabindex="0"><code>python3 -m pip install pygame
-or
-python3 -m pip install -U pygame --user
-</code></pre><blockquote>
-<p>The above is essential otherwise you will not be able to run this code.</p>
-<p>I understand it links around a bit. I just dont want to repeat the info over and over.</p>
+  <h2 id="decisions-about-the-code">Decisions about the Code</h2>
+<blockquote>
+<p>The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.</p>
 </blockquote>
-<p>anyway now we have our folder, environment, and pygame</p>
-<p>type</p>
-<pre tabindex="0"><code>$ python
-&gt;&gt; import pygame
-</code></pre><p>don&rsquo;t type the $ or the &raquo;
-if you have no errors you can quit the terminal</p>
-<h2 id="starting-our-pygame-game">Starting our PyGame game</h2>
-<p>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc.
-We will start building our game and then reuse code as we go. We will refactor this code library into something reusable as we go.</p>
-<p>I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE, though using a texteditor is perfectly fine.</p>
-<p>Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment.</p>
+<p>The end move position is calculated outside the class in the game loop, and the result is currently passed to the head. To move this code we need to store the tile size in the base class, everything else already belongs to the base class.</p>
+<p>so this needs fixing</p>
+<pre tabindex="0"><code>    player.end_move_pos = (player.start_move_pos[0] + player.direction[0] * TILESIZE[0], player.start_move_pos[1] + player.direction[1] * TILESIZE[1])
+</code></pre><p>We keep tile size as part of the gameobject</p>
+<pre tabindex="0"><code>    def __init__(self, speed, tilesize, img_file):
+        self.tilesize = tilesize
+</code></pre><p>and at setup next move we add our code to the end of the function</p>
+<pre tabindex="0"><code>    self.end_move_pos = (self.start_move_pos[0] + self.direction[0] * self.tilesize[0], self.start_move_pos[1] + self.direction[1] * self.tilesize[1])
+</code></pre><p>We need direction for the tail. we have start and end so we derive direction from that</p>
+<pre tabindex="0"><code>    def get_direction_from_start_end(self, start, end):
+        dx = end[0] - start[0]
+        dy = end[1] - start[1]
+        if dx &gt; 0: dx = 1
+        if dx &lt; 0: dx = -1
+        if dy &gt; 0: dy = 1
+        if dy &lt; 0: dy = -1
+
+        return (dx, dy)
+</code></pre><p>It&rsquo;s possible we could make use of this in other game objects, so we add our code in our game objects class for now.</p>
+<p>We also need to tell the tail piece what it is following and how to follow given a distance.</p>
+<pre tabindex="0"><code>    def set_obj_to_follow(self, obj):
+        self.object_to_follow = obj
+
+    def follow(self, dt_distance):
+        if (self.is_end_of_move(dt_distance)):
+            self.start_move_pos = self.end_move_pos
+            self.end_move_pos = self.object_to_follow.start_move_pos           
+            self.direction = self.get_direction_from_start_end(self.start_move_pos, self.end_move_pos)
+        else:
+            self.keep_moving(dt_distance)
+</code></pre><p>Now we need to set the tail and set what it is following.
+We remove the following line.</p>
+<pre tabindex="0"><code>player_tail.append(player.rect)
+</code></pre><p>and replace it with</p>
+<pre tabindex="0"><code>        t = Tail(PLAYERNORMALSPEED, TILESIZE)
+        if (len(player_tail) &gt; 0):
+            f = player_tail[len(player_tail) - 1]
+            t.rect.center = f.rect.center
+            t.end_move_pos = f.rect.center
+            t.start_move_pos = f.rect.center
+            t.object_to_follow = f
+        else:
+            t.rect.center = player.rect.center
+            t.end_move_pos = player.rect.center
+            t.start_move_pos = player.rect.center
+            t.object_to_follow = player
+        player_tail.append(t)
+</code></pre><p>and finally in the tail blit we remove</p>
+<pre tabindex="0"><code>        if t != player.rect:
+            screen.blit(player_body.image,t)
+</code></pre><p>and replace it with</p>
+<pre tabindex="0"><code>        screen.blit(t.image,t.rect)
+</code></pre><p>if you were paying attention you should have noticed to <!-- raw HTML omitted -->remove<!-- raw HTML omitted --> the following lines</p>
+<pre tabindex="0"><code>player_body = Tail(PLAYERNORMALSPEED, TILESIZE)
+</code></pre><p>and</p>
+<pre tabindex="0"><code>player.end_move_pos = (player.start_move_pos[0] + player.direction[0] * TILESIZE[0], player.start_move_pos[1] + player.direction[1] * TILESIZE[1])
+</code></pre><p>If you play the game now you will see the tail does not follow correctly, so where is the bug? Well its not so much a bug (there is one though) as it is simplly leaving off the end of move.</p>
+<p>if we fix the bug right away we stray from the git repository. So I&rsquo;m going to add that next commit here quickly.</p>
+<p>remove the following - we are actually moving and adjusting the code</p>
+<pre tabindex="0"><code>    # move food and grow tail
+    if (player.rect.center == food_rect.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_rect.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
+</code></pre><p>replace the code we removed with the following</p>
+<pre tabindex="0"><code>if eat_food(TILESIZE, player, food_rect):
+</code></pre><p>and place the removed code in this function above the game loop &hellip; we will move it again to make the code easier to read.</p>
+<pre tabindex="0"><code>def eat_food(TILESIZE, player, food_rect):
+    if (player.rect.center == food_rect.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_rect.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
+        return True
+    return False
+</code></pre><p>Now grab all that code under eat_food and make a function called grow_tail</p>
+<pre tabindex="0"><code>def grow_tail(TILESIZE, PLAYERNORMALSPEED, Tail, player, player_tail):
+    t = Tail(PLAYERNORMALSPEED, TILESIZE)
+    if (len(player_tail) &gt; 0):
+        f = player_tail[len(player_tail) - 1]
+        t.rect.center = f.rect.center
+        t.end_move_pos = f.rect.center
+        t.start_move_pos = f.rect.center
+        t.object_to_follow = f
+    else:
+        t.rect.center = player.rect.center
+        t.end_move_pos = player.rect.center
+        t.start_move_pos = player.rect.center
+        t.object_to_follow = player
+    player_tail.append(t)
+</code></pre><p>and the calling code looks like</p>
+<pre tabindex="0"><code>    if eat_food(TILESIZE, player, food_rect):
+        grow_tail(TILESIZE, PLAYERNORMALSPEED, Tail, player, player_tail)
+</code></pre><p>Ok back to Our bug.</p>
+<p>Add the return True and return False to our move function. We will set a variable called move_start with the returned value so we know if we started a new move</p>
+<pre tabindex="0"><code>    def move(self, dt_distance, new_direction, def_direction, continuous):
+        direction = self.direction
+        if direction != (0,0) or new_direction != (0,0):
+            if (self.is_end_of_move(dt_distance)):
+                if (continuous and new_direction == (0,0)):
+                    direction = def_direction
+                else:
+                    direction = new_direction
+                self.setup_next_move(direction)
+                return True
+            else:
+                #keep moving we are not there yet
+                self.keep_moving(dt_distance)
+        return False
+</code></pre><p>Our player move call and the tail move is now</p>
+<pre tabindex="0"><code>    # do we have a direction?
+    move_start = player.move(dt_distance,new_direction,def_direction,continuous)
+    for t in player_tail:
+        if move_start:
+            t.complete_move()
+        else:
+            t.follow(dt_distance)
+</code></pre><p>So we added the knowledge of the end of move to the tail, lets see how that helps.</p>
 <p>
-<img src="/img/blog/pygame/my-app/screen-shot.png" alt="Our first game"  /></p>
-<p>I assume you know some python. However if you just read the python as English it will understandable. for now # is a comment for the rest of the line. Python relies on indentation to group code.</p>
-<p>Type the following into myapp.py
-NB. if you copy paste, paste as plain text to remove the extra wierd html characters</p>
-<pre tabindex="0"><code># the pygame imports to make them usable in our game
-import pygame
-from pygame.locals import *
-
-
-# Initialize the pygame code
-pygame.init()
-
-
-#​
-#
-#
-
-
-# quit the pygame window
-pygame.quit()
-#the app exits
-</code></pre><p>This will run but do nothing except say something like :
-pygame 2.5.2 (SDL 2.28.3, Python 3.12.0)
-Hello from the pygame community. <a href="https://www.pygame.org/contribute.html">https://www.pygame.org/contribute.html</a></p>
-<p>Ok lets create a window.
-Replace the 3 comments &lsquo;###&rsquo; in the middle with the following code</p>
-<pre tabindex="0"><code># set window size
-size = width, height = (800, 600)
-screen = pygame.display.set_mode(size)
-# update the display to see what we set
-pygame.display.update()
-</code></pre><pre tabindex="0"><code># control variable
-game_running = True
-
-
-# GAME LOOP
-while game_running:
-    # event listeners 
-    # i.e. listen to key-presses or windows closing etc.
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            # collapse the app
-            game_running = False
-
-
-    pygame.display.update()
-</code></pre><p>Now you should see a window that you can exit.</p>
+<img src="./img/tail-follows.png" alt=""  /></p>
+<p>Great! It works, but we noticed a few things.</p>
 <ul>
-<li>The Quit looks for the event to quit.</li>
-<li>The game loop makes it keep checking for an event and updating the screen with the current info.</li>
-<li>The display update draws the window.</li>
-<li>We set the window size as 800 by 600.</li>
+<li>food could generate below player</li>
+<li>if we went to the edge we would dissapear off the screen</li>
+<li>we could cross over body without injury.</li>
 </ul>
-<p>Ok - not interesting yet!</p>
-<h2 id="screen-redrawing">Screen redrawing</h2>
-<p>Screen redrawing is a very established method of removing images redrawn elsewhere on the screen by simply redrawing everything each time you loop around in the game loop.</p>
-<p>Sprites were introduced many many years ago to efficiently redraw only the small bit under the sprite and any small bits over the sprite. This is more efficient for a few objects, but not with many. Pygame does support sprites. I plan to take a quick look at them in a later post, but we will stick with redrawing the whole screen.</p>
-<p>PROBLEM:
-If you drew something to the screen now and then tried to move it, the item would appear in every place it redrew. Great for a paint program but useless for us.</p>
-<p>
-<img src="img/blog/pygame/my-app/movement1.png" alt=""  /></p>
-<h2 id="for-the-complete-code">For the complete code</h2>
-<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git 
-</code></pre><p><a href="/posts/">Blog</a> - <a href="/posts/python/our_first_pygame_2/">Next Post</a></p>
+<p>Next post we&rsquo;ll tackle the difficulty and simplicity of edge detection and handling.</p>
+<p><a href="/posts/python/our_first_pygame_7/">Prev Post</a> - <a href="/posts/">Next Post</a></p>
 
 
                 </div></div>

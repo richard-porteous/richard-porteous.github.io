@@ -17,72 +17,65 @@
     </item>
     <item>
       <title>Our first pygame - tails follow head - part 8</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_8/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-8/</link>
       <pubDate>Sat, 20 Jan 2024 10:33:02 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_8/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-8/</guid>
       <description>Decisions about the Code The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.&#xA;The end move position is calculated outside the class in the game loop, and the result is currently passed to the head. To move this code we need to store the tile size in the base class, everything else already belongs to the base class.</description>
     </item>
     <item>
       <title>Our first pygame part 7</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_7/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-7/</link>
       <pubDate>Fri, 19 Jan 2024 11:40:22 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_7/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-7/</guid>
       <description>What we have so far We have a head with a face that can eat food but leaves droppings at each place it has eaten at. Lets address that.&#xA;What do we want to do?&#xA;make the tail follow the head tail can be added at head or at last tail piece (changes logic and appearance of the game only very slightly) reuse the code from the player for the tail wherever possible prevent messy code fix the class names to be consitant with the standard i.</description>
     </item>
     <item>
       <title>Our first pygame - continuous movement - part 6</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-6/</link>
       <pubDate>Thu, 18 Jan 2024 14:45:00 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_6/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-6/</guid>
       <description>continuous movement The game Worm should have the worm moving even when you don&amp;rsquo;t have any keys pressed, unless the game has paused.&#xA;So we will make a small change to allow the worm to keep moving in its last direction selected.&#xA;First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving.</description>
     </item>
     <item>
       <title>Our first pygame - grid movement - part 5 </title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-5/</link>
       <pubDate>Wed, 17 Jan 2024 17:35:57 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_5/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-5/</guid>
       <description>Quick refactor before starting I mentioned in the last post we should do something with speed. Its used as a global inside the input class and I don&amp;rsquo;t like that. The original idea is to pass it in, but that wont work well because it is going to be used with delta time.&#xA;So here is a better idea. We will remove it.&#xA;replace speed inside our input class with 1 remove speed from being initialized before its needed Now we replace a small bit of code:</description>
     </item>
     <item>
       <title>Our first pygame part 4</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_4/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-4/</link>
       <pubDate>Sat, 06 Jan 2024 15:19:13 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_4/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-4/</guid>
       <description>Input is not smart enough We are going to add a key queue so we can keep track of the order of keys ben pressed or in our case the order of the keys currently held down.&#xA;We also want to move more of the input logic out the game and into the input class.&#xA;we add self.key_queue = [] to init then we change each keydown part something like this</description>
     </item>
     <item>
-      <title>Hugo site on github</title>
-      <link>https://richard-porteous.github.io/posts/hugo/site_on_github/</link>
-      <pubDate>Thu, 04 Jan 2024 10:59:46 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/hugo/site_on_github/</guid>
-      <description>Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&amp;mdash;) format not toml add a posts archetype can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Publish Create the github repositories I have a post on using GIT.</description>
-    </item>
-    <item>
       <title>Our first pygame - Refactoring - part 3</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_3/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-3/</link>
       <pubDate>Fri, 10 Nov 2023 13:19:53 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_3/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-3/</guid>
       <description>Refactor Let’s move the keypress code into its own class.&#xA;class keyisdown():&#xD;def __init__(self) -&amp;gt; None:&#xD;self.leftkey = False&#xD;self.rightkey = False&#xD;self.upkey = False&#xD;self.downkey = False&#xD;def getEvents(self):&#xD;for event in pygame.event.get():&#xD;if event.type == QUIT:&#xD;return False&#xD;if event.type==pygame.KEYDOWN:&#xD;if event.key == K_ESCAPE:&#xD;return False&#xD;if event.key in [K_s, K_DOWN]:&#xD;self.downkey = True&#xD;if event.key in [K_w, K_UP]:&#xD;self.upkey = True&#xD;if event.key in [K_d, K_RIGHT]:&#xD;self.rightkey = True&#xD;if event.</description>
     </item>
     <item>
       <title>Our first pygame - part 2</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-2/</link>
       <pubDate>Mon, 11 Sep 2023 13:19:37 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_2/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-2/</guid>
       <description>Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around.&#xA;First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.&#xA;I&amp;rsquo;m going to use individual 2d png files for each item to start.</description>
     </item>
     <item>
       <title>Our first pygame - part 1</title>
-      <link>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</link>
+      <link>https://richard-porteous.github.io/posts/python/our-first-pygame-1/</link>
       <pubDate>Thu, 10 Aug 2023 13:19:30 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/our_first_pygame_1/</guid>
-      <description>Python Installation Refer to Using Python to get python installed and set up a virtial environment.&#xA;Install PyGame Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user see [getting started]&amp;lt;getting_started&amp;gt;&#xA;anyway now we have our folder, environment, and pygame&#xA;type&#xA;$ python&#xD;&amp;gt;&amp;gt; import pygame don&amp;rsquo;t type the $ or the &amp;raquo; if you have no errors you can quit the terminal</description>
+      <guid>https://richard-porteous.github.io/posts/python/our-first-pygame-1/</guid>
+      <description>Pygame Installation Refer to Using Python to get python installed and set up a virtial environment. You need python 3 to continue&#xA;Install PyGame Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user The above is essential otherwise you will not be able to run this code.&#xA;I understand it links around a bit.</description>
     </item>
     <item>
       <title>Using python</title>
-      <link>https://richard-porteous.github.io/posts/python/using_python/</link>
+      <link>https://richard-porteous.github.io/posts/python/using-python/</link>
       <pubDate>Sun, 30 Jul 2023 13:09:27 -0700</pubDate>
-      <guid>https://richard-porteous.github.io/posts/python/using_python/</guid>
+      <guid>https://richard-porteous.github.io/posts/python/using-python/</guid>
       <description>Do you already have python? I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type cmd in the bar above.&#xA;Windows - python, py commands should work Linux/Mac python or python3 should work&#xA;run the following:&#xA;python --version&#xD;if the response is not python 3 or higher then i recommend you check the py command or the python3 command</description>
     </item>
     <item>

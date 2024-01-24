@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Our first pygame - part 1 | Game Experiments</title>
+    <title>Using python | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -204,103 +204,44 @@
 
 
 
-<h1>Our first pygame - part 1</h1>
+<h1>Using python</h1>
 
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-08-10T13:19:30-07:00">10.08.2023</time> - 
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-07-30T13:09:27-07:00">30.07.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
 
 
-  <h2 id="pygame-installation">Pygame Installation</h2>
-<p>Refer to <strong><a href="/posts/python/using_python/">Using Python</a></strong> to get python installed and set up a virtial environment. You need python 3 to continue</p>
-<h2 id="install-pygame">Install PyGame</h2>
-<p>Create a folder named mygame
-create a virtual environment inside
-activate the virtual environment</p>
-<p>run this command</p>
-<pre tabindex="0"><code>python3 -m pip install pygame
+  <h2 id="do-you-already-have-python">Do you already have python?</h2>
+<p>I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type <!-- raw HTML omitted -->cmd<!-- raw HTML omitted --> in the bar above.</p>
+<p>Windows - python, py commands should work
+Linux/Mac python or python3 should work</p>
+<p>run the following:</p>
+<pre><code>python --version
+</code></pre>
+<p>if the response is not python 3 or higher then i recommend you check the py command or the python3 command</p>
+<pre><code>py --version
 or
-python3 -m pip install -U pygame --user
-</code></pre><blockquote>
-<p>The above is essential otherwise you will not be able to run this code.</p>
-<p>I understand it links around a bit. I just dont want to repeat the info over and over.</p>
-</blockquote>
-<p>anyway now we have our folder, environment, and pygame</p>
-<p>type</p>
-<pre tabindex="0"><code>$ python
-&gt;&gt; import pygame
-</code></pre><p>don&rsquo;t type the $ or the &raquo;
-if you have no errors you can quit the terminal</p>
-<h2 id="starting-our-pygame-game">Starting our PyGame game</h2>
-<p>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc.
-We will start building our game and then reuse code as we go. We will refactor this code library into something reusable as we go.</p>
-<p>I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE, though using a texteditor is perfectly fine.</p>
-<p>Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment.</p>
-<p>
-<img src="/img/blog/pygame/my-app/screen-shot.png" alt="Our first game"  /></p>
-<p>I assume you know some python. However if you just read the python as English it will understandable. for now # is a comment for the rest of the line. Python relies on indentation to group code.</p>
-<p>Type the following into myapp.py
-NB. if you copy paste, paste as plain text to remove the extra wierd html characters</p>
-<pre tabindex="0"><code># the pygame imports to make them usable in our game
-import pygame
-from pygame.locals import *
-
-
-# Initialize the pygame code
-pygame.init()
-
-
-#​
-#
-#
-
-
-# quit the pygame window
-pygame.quit()
-#the app exits
-</code></pre><p>This will run but do nothing except say something like :
-pygame 2.5.2 (SDL 2.28.3, Python 3.12.0)
-Hello from the pygame community. <a href="https://www.pygame.org/contribute.html">https://www.pygame.org/contribute.html</a></p>
-<p>Ok lets create a window.
-Replace the 3 comments &lsquo;###&rsquo; in the middle with the following code</p>
-<pre tabindex="0"><code># set window size
-size = width, height = (800, 600)
-screen = pygame.display.set_mode(size)
-# update the display to see what we set
-pygame.display.update()
-</code></pre><pre tabindex="0"><code># control variable
-game_running = True
-
-
-# GAME LOOP
-while game_running:
-    # event listeners 
-    # i.e. listen to key-presses or windows closing etc.
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            # collapse the app
-            game_running = False
-
-
-    pygame.display.update()
-</code></pre><p>Now you should see a window that you can exit.</p>
-<ul>
-<li>The Quit looks for the event to quit.</li>
-<li>The game loop makes it keep checking for an event and updating the screen with the current info.</li>
-<li>The display update draws the window.</li>
-<li>We set the window size as 800 by 600.</li>
-</ul>
-<p>Ok - not interesting yet!</p>
-<h2 id="screen-redrawing">Screen redrawing</h2>
-<p>Screen redrawing is a very established method of removing images redrawn elsewhere on the screen by simply redrawing everything each time you loop around in the game loop.</p>
-<p>Sprites were introduced many many years ago to efficiently redraw only the small bit under the sprite and any small bits over the sprite. This is more efficient for a few objects, but not with many. Pygame does support sprites. I plan to take a quick look at them in a later post, but we will stick with redrawing the whole screen.</p>
-<p>PROBLEM:
-If you drew something to the screen now and then tried to move it, the item would appear in every place it redrew. Great for a paint program but useless for us.</p>
-<p>
-<img src="img/blog/pygame/my-app/movement1.png" alt=""  /></p>
-<h2 id="for-the-complete-code">For the complete code</h2>
-<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git 
-</code></pre><p><a href="/posts/">Blog</a> - <a href="/posts/python/our_first_pygame_2/">Next Post</a></p>
+python3 --version
+</code></pre>
+<p>if still not you will need to download a never version. I tend to like to get it directly from the vendor which would be <a href="https://www.python.org/downloads/">Python website</a> and look at thier <a href="https://wiki.python.org/moin/BeginnersGuide">install instructions if you still have problems</a>.</p>
+<p>Once you know how to get python 3 (or newer) we can continue. NOTE from now on I&rsquo;ll just refer to it as python but please use the command that works best for you.</p>
+<h2 id="where-do-i-put-this-code">Where do I put this code</h2>
+<p>I like to have a &ldquo;dev&rdquo; or &ldquo;source&rdquo; folder under my home folder. Then I create folders under that for each of my projects. You can group by language or if you have specific work requirements then follow those.</p>
+<p>Under the Home directory would be your <!-- raw HTML omitted -->source<!-- raw HTML omitted --> folder. Under that would be your project folder which can be anything you choose. We use <!-- raw HTML omitted -->my_project<!-- raw HTML omitted --> for this example.
+Under my_project we would create the venv/. In here we will create .git/ and .gitignore.
+If using an IDE like VSCode we would open on this folder and have the venv automatically recognised. A terminal and text editor are sufficient, though I find beginners may prefer the help like code completion etc.</p>
+<h2 id="creating-the-venv-folder">Creating the venv/ folder</h2>
+<p>We don&rsquo;t want to clutter the python global environment, nor do we want each project to use the global versions as changes to one projects dependancies may break another. We create a project level virtual environment to give us flexibility.</p>
+<pre><code>python -m venv venv
+</code></pre>
+<p>the first venv after the -m is the python module, the second is the folder name we chose.</p>
+<p>we activate it in windows with</p>
+<pre><code>venv\Scripts\activate
+</code></pre>
+<p>Linux and Mac will use</p>
+<pre><code>source venv/bin/activate
+</code></pre>
+<p>After it is activated then install with pip will place those files safely in the virtual environment (venv).</p>
 
 
                 </div></div>

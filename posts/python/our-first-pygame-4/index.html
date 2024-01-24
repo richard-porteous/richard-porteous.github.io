@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Our first pygame part 4 | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Our first pygame part 4</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-06T15:19:13-07:00">06.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <h2 id="input-is-not-smart-enough">Input is not smart enough</h2>
+<p>We are going to add a key queue so we can keep track of the order of keys ben pressed or in our case the order of the keys currently held down.</p>
+<p>We also want to move more of the input logic out the game and into the input class.</p>
+<ul>
+<li>we add self.key_queue = [] to init</li>
+</ul>
+<p>then we change each keydown part something like this</p>
+<pre tabindex="0"><code>                if event.key in [K_s, K_DOWN]:
+                    self.downkey = True
+                    self.key_queue.append(&#34;D&#34;)
+</code></pre><p>and each keyup part to something like this</p>
+<pre tabindex="0"><code>                if event.key in [K_s, K_DOWN]:
+                    self.downkey = False
+                    self.key_queue.remove(&#34;D&#34;)
+</code></pre><p>and still in the input class of ours, we include the logic that was part of the game.</p>
+<pre tabindex="0"><code>    def get_first_of_remaining_pressed(self):
+        while(len(self.key_queue) &gt; 0):
+            match (self.key_queue[0]): 
+                case &#34;U&#34;:
+                    if self.upkey:
+                        return (0,-speed)
+                case &#34;D&#34;:
+                    if self.downkey:
+                        return (0,speed)
+                case &#34;L&#34;:
+                    if self.leftkey:
+                        return (-speed,0)
+                case &#34;R&#34;:
+                    if self.rightkey:
+                        return (speed,0)
+            
+            #should be removed if invalid or no longer valid
+            self.key_queue.pop(0)
+
+        return(0,0)
+
+    def clean_queue(self):
+        self.key_queue = []
+        
+</code></pre><p>Notice we use speed here. This should be a parameter when we first initialize the class.
+i.e.</p>
+<pre tabindex="0"><code>def __init__(self, speed) -&gt; None:
+    self.speed = speed
+</code></pre><p>BUT We refrain from this just yet. We are going to stick with a global - and yes Globals can be very bad.</p>
+<h2 id="delta-time">Delta Time</h2>
+<p>I mentioned in an earlier post that movement would not be smooth or consistant and that I would show a simple way to fix that.</p>
+<pre tabindex="0"><code># time based movement requires delta time
+class deltatime():
+
+
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    # calculate delta time and store the time for the next loop
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+</code></pre><p>And then before the game loop</p>
+<pre tabindex="0"><code>delta_time = deltatime()  
+</code></pre><p>To see the time it produces we could add this temporary code and see the output or terminal display the time of each loop</p>
+<pre tabindex="0"><code>​    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    print(dt) #remove this line when coding your game
+</code></pre><p>If you run your code now, you&rsquo;ll see a lot of small integers being displayed to the terminal. That would be the time of each loop and because we aren&rsquo;t doing anything else the looping is fast i.e. in milliseconds or less.</p>
+<p>Remove the temporary code. Replace it with this above the input.</p>
+<pre tabindex="0"><code>    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    speed = 0.7 * dt
+</code></pre><h2 id="still-not-smart-enough">Still not smart enough</h2>
+<p>Finally we want to remove some code we made and replace it with pygame supported code.</p>
+<p>Remove the following</p>
+<pre tabindex="0"><code>        self.leftkey = False
+        self.rightkey = False
+        self.upkey = False
+        self.downkey = False
+</code></pre><p>and where we set each one of them</p>
+<pre tabindex="0"><code>        #remove
+        self.downkey = True
+        # and
+        self.downkey = False
+</code></pre><p>and replace in the first remaining pressed function</p>
+<pre tabindex="0"><code>                    #replace
+                    if self.upkey:
+                    #with this
+                    if keys[pygame.K_UP] or keys[pygame.K_w]:
+</code></pre><p>Do that for each. The final code looks like.</p>
+<pre tabindex="0"><code>import pygame
+from pygame.locals import *
+
+
+
+# set window size
+size = width, height = (800, 600)
+screen = pygame.display.set_mode(size)
+black = (0,0,0)
+white = (255,255,255)
+screen.fill(white)
+
+
+#load images
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_loc = player.get_rect()
+player_loc.center = width/2, height/2
+
+# update the display to see what we set
+pygame.display.update()
+
+# Initialize the pygame code
+pygame.init()
+# Max frame rate
+clock = pygame.time.Clock()
+FPS = 60
+
+speed = 10
+# control variable
+game_running = True
+
+# time based movement requires delta time
+class deltatime():
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+    
+
+class keyisdown():
+    
+    def __init__(self) -&gt; None:
+        self.key_queue = []
+
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                self.key_queue.clear()
+                return False
+            
+            # KEEP KEY PRESS ORDER
+            if event.type==pygame.KEYDOWN:
+                if event.key == K_ESCAPE:
+                    return False
+                if event.key in [K_s, K_DOWN]:
+                    self.key_queue.append(&#34;D&#34;)
+                if event.key in [K_w, K_UP]:
+                    self.key_queue.append(&#34;U&#34;)
+                if event.key in [K_d, K_RIGHT]:
+                    self.key_queue.append(&#34;R&#34;)
+                if event.key in [K_a, K_LEFT]:
+                    self.key_queue.append(&#34;L&#34;)
+
+            # KEEP KEY PRESS ORDER (remove released from middle too)
+            if event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.key_queue.remove(&#34;D&#34;)
+                if event.key in [K_w, K_UP]:
+                    self.key_queue.remove(&#34;U&#34;)
+                if event.key in [K_d, K_RIGHT]:
+                    self.key_queue.remove(&#34;R&#34;)
+                if event.key in [K_a, K_LEFT]:
+                    self.key_queue.remove(&#34;L&#34;)
+        #if(self.upkey or self.rightkey or self.downkey or self.leftkey):
+        #    print(&#34;up&#34;,self.upkey, &#34;right&#34;, self.rightkey, &#34;down&#34;, self.downkey, &#34;left&#34;, self.leftkey)
+        return True
+    
+    def get_first_of_remaining_pressed(self):
+        keys = pygame.key.get_pressed()
+
+        while(len(self.key_queue) &gt; 0):
+            match (self.key_queue[0]): 
+                case &#34;U&#34;:
+                    if keys[pygame.K_UP] or keys[pygame.K_w]:
+                        return (0,-speed)
+                case &#34;D&#34;:
+                    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
+                        return (0,speed)
+                case &#34;L&#34;:
+                    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+                        return (-speed,0)
+                case &#34;R&#34;:
+                    if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+                        return (speed,0)
+            
+            #in-valid front of queue items are removed
+            self.key_queue.pop(0)
+
+        return(0,0)
+
+    def clean_queue(self):
+        self.key_queue = []
+        
+
+#initialize the classes
+held_keys = keyisdown()
+delta_time = deltatime()
+
+#game loop
+while game_running:
+    clock.tick(FPS)
+
+    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    speed = 0.7 * dt
+
+    game_running = held_keys.getEvents()
+    velocity = (x,y) = held_keys.get_first_of_remaining_pressed()
+    player_loc = player_loc.move(velocity)
+
+    #clear the display
+    screen.fill(white)
+
+    # place image on the screen
+    screen.blit(player, player_loc)
+    # apply changes
+    pygame.display.update()
+
+
+# quit the pygame window
+pygame.quit()
+#the app exits
+</code></pre><p>To get the code - you could clone this repository into a folder. I suggest that you type your own code where ever you can as it helps to notice things.</p>
+<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git
+</code></pre><p>If you look at the repository the first step was on the main branch with the commit message &ldquo;Add key queue&rdquo;.</p>
+<p><a href="/posts/python/our_first_pygame_3/">Prev Post</a> - <a href="/posts/python/our_first_pygame_5/">Next Post</a></p>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
