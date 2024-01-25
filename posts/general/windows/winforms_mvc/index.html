@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Refactoring - Winforms using mvc | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Refactoring - Winforms using mvc</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <p>This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.</p>
+<p>I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.</p>
+<p>Refactoring has its place and is best when you are maintaing an application.</p>
+<p>I am picking on winforms as it is</p>
+<ol>
+<li>quick for putting out prototypes</li>
+<li>still used more than it should be</li>
+<li>has very little structure of its own</li>
+<li>often becomes difficult to maintain very quickly</li>
+</ol>
+<p>The code becomes difficult to manage at some point between prototype and production even on small apps. They can quickly become a mess of tangled code that no one wants to fix.</p>
+<p>When you hear programmers say, &ldquo;This app needs to be re-written&rdquo;. Each case is different so often rewriting is not the best option.</p>
+<h2 id="alternatives">Alternatives</h2>
+<p>If you dont plan on keeping winforms it is likely better that you simply treat your winforms app as a prototype and example code, and start fresh. HOWEVER sometimes you don&rsquo;t have a choice.</p>
+<h2 id="mvc-mvvm-etc">MVC, MVVM etc</h2>
+<p>The <strong>MVC</strong> I show you here is the easiest to follow if you are new to this. There are other ways to implement this. I don&rsquo;t show M (model) here, but you will get the point.</p>
+<p>MVC (mvvm etc) allows you to split the code out of a (WinForms) app with minimal impact. i.e. break some dependencies. You are able to do one small part at a time with refactoring so it can become part fo your maintenance.</p>
+<h2 id="deal-with-bugs-especially-those-firing-events">Deal with BUGS especially those firing events</h2>
+<p>If using a datagridview you will likely find some code is trying to step through the grid instead of the data. A rookie mistake, which causes a lot of events to fire. These events will cause threading bugs. This will need to be fixed first as almost any change you make will break the code. A quick solution is using the copyto if its available.</p>
+<h2 id="why-refactor">WHY Refactor?</h2>
+<p>Mostly dependacies. Code becomes hard to fix, and one change affects code in another part - OR - you simply want to add features to the app but are unable to do so.</p>
+<h2 id="example-project">EXAMPLE PROJECT</h2>
+<p>This small project <a href="https://github.com/richard-porteous/interval-refactor-project" title=".net C# WinForms MVC style">interval refactor project</a> takes a WinForms C# app called Interval and adds MVC design to it. Martin Fowler (2019) describes this process with a Java app.</p>
+<p>The app has a very simple UI. It doesn&rsquo;t use a database, so you won&rsquo;t see much in the model, a service, or dependency injection.</p>
+<ol>
+<li>The project starts with the 2nd commit with IntervalView which is the code we will modify.</li>
+<li>The next commit adds the IntervalModel and IntervalController etc.</li>
+</ol>
+<p>The objective here is move code/logic/data out of the ui unless its ui specific.</p>
+<ol>
+<li>WinForms is the UI</li>
+<li>controller or view-model class</li>
+<li>model class.</li>
+</ol>
+<p>Simply put &hellip;</p>
+<p><em>UI Class. (WinForms)</em> View or display. We let the forms load as normal. The code deals with UI-related things, and it makes calls to the controller when something on the UI is changed by the user.</p>
+<p><em>Controller Class.</em> business logic. Anything we would need that wouldn&rsquo;t be affected by switching databases or UI.</p>
+<p><em>Model Class</em> Deals with getting and storing the data.</p>
+<p>This project simply shows you how to add the controller (and a view interface) and the model. It also goes briefly into how the screen will be updated. See the project readme for more explanation.</p>
+<p>For existing projects, create the controller and model for each WinForm and an Interface for the controller. When a WinForm is a popup or a seperate edit screen it <em>could</em> use the same controller and model - i.e. &ldquo;Customers&rdquo; and &ldquo;CustomerAdd&rdquo; are two different WinForms with much in common. Here are a few snippets from the project.</p>
+<p>In the UI - we add and initialize the controller.
+WinForms loads first, but you could start the app by loading the controller &hellip; that is another topic, we want to keep this simple.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Csharp" data-lang="Csharp"></code></pre></div><p>public partial class IntervalView : Form
+{
+# controller added
+private IntervalController controller;
+public IntervalView()
+{
+InitializeComponent();</p>
+<pre><code>    #controller initialized and stored for use
+    IntervalController ctl = new IntervalController(this);
+    SetController(ctl);
+}
+
+internal void SetController(IntervalController cont)
+{
+    controller = cont;
+    Update();
+}
+
+public void Update() {
+
+}
+</code></pre>
+<p>}</p>
+<pre tabindex="0"><code>
+In the Controller - we add and initialize the model, and use the passed view. We could use an object for the view or an Interface. In a later commit I make an &#39;interface&#39; that exposes the WinForms method &#39;update&#39; and nothing else.
+
+```Csharp
+class IntervalController
+{
+    private IntervalModel model;
+    private IntervalView view;
+
+    public IntervalController(IntervalView view)
+    {
+        this.model = new IntervalModel();
+        this.view = view;
+    }
+
+    private void SetChanged() { }
+
+    private void NotifyObservers()
+    {
+      view.Update();
+    }
+}
+</code></pre><p>And in the Model</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Csharp" data-lang="Csharp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IntervalModel</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> IntervalModel()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>View the repository to see the example code in action. There is only one branch so you will need to be able to see each commit.
+For tools: I used visual studio community, C#, and .NET 6. Modify as you please.</p>
+<p>The example app shows an unitrusive way how you could implement MVC in WinForms. You may find following the pattern closely makes for easier-to-read code.</p>
+<p><em>NOTE</em>
+Modern .net allows you to use WPF and WinForms in one project.</p>
+<p>WinForms for .NET 5 &amp; 6 no longer supports the WinForms reporting.
+I suggest detangling that code and place it in its own project.
+There is a decompiled &amp; recompiled NuGet package by the community you can use.
+Power BI report viewer can be used to view or edit existing RDL reports.</p>
+<p>If you want to keep your older reports,</p>
+<ul>
+<li>keep your <em>RDL</em> files and rename your <em>RDLC</em> file to RDL - yes that works!</li>
+</ul>
+<p>To see this more clearly use the repository and look through the code.</p>
+<p>That&rsquo;s it for today. If you see any bugs in the repository feel free to drop me a note. The code is free to use, the repository can be forked or downloaded.</p>
+<h2 id="general">General</h2>
+<p>When you make these changes take small steps.
+Separate the code in the project one variable at a time.
+Move the code into a function that needs to be moved to the controller or model. Change Globals into parameters etc.
+Then move the function.
+Test every step.</p>
+<p>Read a book on refactoring if needed.</p>
+<p>Your code should be easy to read and self-explanatory. Comments should not say the same as <del>WHAT</del> the code does, but rather explain WHY. Function names should say what the code is intended for and the function should only do that.</p>
+<p>Avoid being clever in your code. Either you will come back in a year and wonder why you did it that way or some other programmer will come along and criticize you for being cryptic and simply rewrite that code.</p>
+<h2 id="links">LINKS</h2>
+<p>Example Project: <a href="https://github.com/richard-porteous/interval-refactor-project">https://github.com/richard-porteous/interval-refactor-project</a></p>
+<h2 id="references">References</h2>
+<p>M Fowler, K Beck (2014). Refactoring, Improving the design of existing code, 29th printing. Addison-Wesley.</p>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

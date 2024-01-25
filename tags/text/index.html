@@ -211,7 +211,33 @@
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/windows/using_microsoft_powershell/'> Using microsoft powershell</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-9/'> Our first pygame - screen wrap - post 9</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-22T16:29:03-07:00">22.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Get some things out the way The file is starting to get too big. Lets move out some of the &lsquo;helper&rsquo; functions into thier own file.
+Lets create another file and name it mygame_library.py and place the following in it
+import pygamefrom pygame.locals import *# time based movement requires delta timeclass DeltaTime():def __init__(self):self.last_loop = pygame.time.get_ticks()self.dt = 0def loop_time(self) -&gt; int:time_now_ms = pygame.time.get_ticks()dt = time_now_ms - self.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-9/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - screen wrap - post 9</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+        
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/'> Using microsoft powershell</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-20T10:49:43-07:00">20.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -222,7 +248,7 @@ So why would I try Microsoft Powershell? Well, I discovered they are different.
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/windows/using_microsoft_powershell/'>  
+  <a href='https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Using microsoft powershell</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -236,7 +262,7 @@ So why would I try Microsoft Powershell? Well, I discovered they are different.
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-8/'> Our first pygame - tails follow head - part 8</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-8/'> Our first pygame - tails follow head - part 8</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-20T10:33:02-07:00">20.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -247,7 +273,7 @@ The end move position is calculated outside the class in the game loop, and the 
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-8/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-8/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - tails follow head - part 8</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -261,7 +287,7 @@ The end move position is calculated outside the class in the game loop, and the 
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-7/'> Our first pygame part 7</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-7/'> Our first pygame part 7</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-19T11:40:22-07:00">19.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -273,7 +299,7 @@ make the tail follow the head tail can be added at head or at last tail piece (c
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-7/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-7/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame part 7</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -287,7 +313,7 @@ make the tail follow the head tail can be added at head or at last tail piece (c
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-6/'> Our first pygame - continuous movement - part 6</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-6/'> Our first pygame - continuous movement - part 6</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-18T14:45:00-07:00">18.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -299,7 +325,7 @@ First we need to keep track of the last key pressed - regardless of the last key
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-6/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-6/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - continuous movement - part 6</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -313,7 +339,7 @@ First we need to keep track of the last key pressed - regardless of the last key
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-5/'> Our first pygame - grid movement - part 5 </a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-5/'> Our first pygame - grid movement - part 5 </a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-17T17:35:57-07:00">17.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -325,7 +351,7 @@ replace speed inside our input class with 1 remove speed from being initialized 
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-5/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-5/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - grid movement - part 5 </span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -339,7 +365,7 @@ replace speed inside our input class with 1 remove speed from being initialized 
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-4/'> Our first pygame part 4</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-4/'> Our first pygame part 4</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-06T15:19:13-07:00">06.01.2024</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -351,7 +377,7 @@ we add self.key_queue = [] to init then we change each keydown part something li
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-4/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-4/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame part 4</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -371,7 +397,7 @@ we add self.key_queue = [] to init then we change each keydown part something li
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&mdash;) format not toml add a posts archetype can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Publish Create the github repositories I have a post on using GIT.
+  Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&mdash;) format not toml add a posts archetype Now Hugo makes static sites but its development sure isn&rsquo;t static Page Links can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Hubble bubble, toil and trouble Publish Different Theme Conclusion Create the github repositories I have a post on using GIT.
 
   <footer>
   
@@ -389,7 +415,7 @@ we add self.key_queue = [] to init then we change each keydown part something li
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-3/'> Our first pygame - Refactoring - part 3</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-3/'> Our first pygame - Refactoring - part 3</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -400,7 +426,7 @@ class keyisdown():def __init__(self) -&gt; None:self.leftkey = Falseself.righ
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-3/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-3/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Refactoring - part 3</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -414,7 +440,7 @@ class keyisdown():def __init__(self) -&gt; None:self.leftkey = Falseself.righ
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-2/'> Our first pygame - part 2</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-2/'> Our first pygame - part 2</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -426,7 +452,7 @@ I&rsquo;m going to use individual 2d png files for each item to start.
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-2/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-2/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - part 2</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -440,7 +466,7 @@ I&rsquo;m going to use individual 2d png files for each item to start.
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/our-first-pygame-1/'> Our first pygame - part 1</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-1/'> Our first pygame - part 1</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-08-10T13:19:30-07:00">10.08.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -454,7 +480,7 @@ I understand it links around a bit.
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/our-first-pygame-1/'>  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-1/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - part 1</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -468,7 +494,7 @@ I understand it links around a bit.
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/python/using-python/'> Using python</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/general/using-python/'> Using python</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-07-30T13:09:27-07:00">30.07.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -481,7 +507,7 @@ python --versionif the response is not python 3 or higher then i recommend you 
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/python/using-python/'>  
+  <a href='https://richard-porteous.github.io/posts/general/using-python/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Using python</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -495,7 +521,7 @@ python --versionif the response is not python 3 or higher then i recommend you 
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/windows/fix_windows_clock/'> Resync Windows time with task scheduler</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/general/windows/fix_windows_clock/'> Resync Windows time with task scheduler</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-02-28T11:25:07-07:00">28.02.2023</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -508,7 +534,7 @@ Linux when booted will set the system time clock to UTC and display your local t
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/windows/fix_windows_clock/'>  
+  <a href='https://richard-porteous.github.io/posts/general/windows/fix_windows_clock/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Resync Windows time with task scheduler</span><span class="meta-nav"> »</span></span>
   </a>
   
@@ -549,7 +575,7 @@ where are my file (versions) git creates a repository which is the hidden folder
 <article class="mb-5 post">
   <header>
 
-    <h2><a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'> Refactoring - Winforms using mvc</a> </h2>
+    <h2><a href='https://richard-porteous.github.io/posts/general/windows/winforms_mvc/'> Refactoring - Winforms using mvc</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2022-01-09T11:20:41-07:00">09.01.2022</time> - 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
@@ -560,7 +586,7 @@ I like this choice as it can make switching out each form one at a time for WPF 
 
   <footer>
   
-  <a href='https://richard-porteous.github.io/posts/windows/winforms_mvc/'>  
+  <a href='https://richard-porteous.github.io/posts/general/windows/winforms_mvc/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Refactoring - Winforms using mvc</span><span class="meta-nav"> »</span></span>
   </a>
   

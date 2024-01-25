@@ -221,12 +221,17 @@
 <li><a href="#go-to-the-example-site-folder-and-copy-the-files">go to the example site folder and copy the files</a></li>
 <li><a href="#rename-config.toml-to-hugo.toml">if necessary, rename config.toml to hugo.toml</a></li>
 <li><a href="#if-the-posts-use-the-yaml-----format-not-toml-add-a-posts-archetype">if the posts use the yaml (&mdash;) format not toml add a posts archetype</a></li>
+<li><a href="#now-hugo-makes-static-sites-but-its-development-sure-isnt-static">Now Hugo makes static sites but its development sure isn&rsquo;t static</a></li>
+<li><a href="#page-links">Page Links</a></li>
 <li><a href="#can-create-your-first-post">can create your first post</a></li>
 <li><a href="#run-hugo-server-and-take-a-look">## Run hugo server and take a look</a></li>
 <li><a href="#check-any-existing-content-for-image-links-etc-check-the-paths-are-correct">check existing content</a></li>
 <li><a href="#remove-default-content">remove or replace default content</a></li>
 <li><a href="#test-and-fix-site-content">Test and fix site</a></li>
-<li>Publish</li>
+<li><a href="#hubble-bubble-toil-and-trouble">Hubble bubble, toil and trouble</a></li>
+<li><a href="#publish">Publish</a></li>
+<li><a href="#different-theme---menus-not-dynamic">Different Theme</a></li>
+<li><a href="#conculsion">Conclusion</a></li>
 </ul>
 <h2 id="create-the-github-repositories">Create the github repositories</h2>
 <p>I have a <a href="https://richard-porteous.github.io/posts/general/using_git/">post on using GIT</a>.</p>
@@ -330,11 +335,55 @@ tags: [&#34;Text&#34;,&#34;Blog&#34;,&#34;Post&#34;]
 author: &#34;Your Name&#34;
 ---
 </code></pre><p>for more about the different formats check out <a href="https://gohugo.io/content-management/front-matter/#front-matter-formats">https://gohugo.io/content-management/front-matter/#front-matter-formats</a></p>
-<h2 id="can-create-your-first-post">can create your first post</h2>
-<pre><code>hugo new post/mypost.md
-</code></pre>
-<p>edit your new post with some markdown content.</p>
-<p>NOTE - have at least 3 non-draft posts before panicking. I found them to not always show up - very annoying. Once you have 3 posts even the drafts = true starts to work without removing existing posts.</p>
+<h2 id="now-hugo-makes-static-sites-but-its-development-sure-isnt-static">Now Hugo makes static sites but its development sure isn&rsquo;t static</h2>
+<p>Hugo has something called bundles. It allows us to organize the posts and content differently.</p>
+<p>A leaf bundle allows you to place your post in its own folder with its own images. Nice if you have different authors or even if you find the static folder difficult to use for the posts images.
+In my case it didn&rsquo;t really matter either way, but using VSCode drove me nuts not being able to preview inside the IDE while I&rsquo;m still writing the post.</p>
+<ul>
+<li>In archetypes create a folder called leaf (we already should have default and posts.md in archetypes)</li>
+<li>inside that folder create an images folder and call it img (you can name it how you please)</li>
+<li>place a .gitkeep file (empty) in img</li>
+<li>place an index.md in the leaf folder</li>
+</ul>
+<p>contents of index.md</p>
+<pre tabindex="0"><code>---
+date: &#39;{{ .Date }}&#39;
+title: &#39;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#39;
+tags: [&#34;Post&#34;]
+archetype: &#34;leaf&#34;
+author: &#34;You name&#34;
+draft: true
+---
+</code></pre><p>that tile replacement works on the dash in the file name, so use the following to create posts</p>
+<pre tabindex="0"><code>hugo new --kind leaf posts/python/our-first-pygame-10
+</code></pre><p>it uses the <!-- raw HTML omitted -->&ndash;kind leaf<!-- raw HTML omitted --> to know to use the leaf bundle you just created</p>
+<h2 id="page-links">Page links</h2>
+<p>then the link in the post could look like</p>
+<pre tabindex="0"><code>![](./images/the-image-i-want-to-use.png)
+</code></pre><p>Using links to an anchor on the same page.
+so</p>
+<pre tabindex="0"><code>a link to
+## Create a new Hugo site
+would be
+[create a new hugo site](#create-a-new-hugo-site)
+replace any special character with the - (dash or minus whatever)
+</code></pre><h2 id="can-create-your-first-post">can create your first post</h2>
+<pre tabindex="0"><code>    hugo new post/mypost.md
+</code></pre><p>or</p>
+<pre tabindex="0"><code>hugo new --kind leaf posts/mypost.md
+</code></pre><p>edit your new post with some markdown content.</p>
+<blockquote>
+<p>NOTE - have at least 3 non-draft posts before panicking.
+I found them to not always show up - very annoying.
+Once you have 3 posts even the drafts = true starts to work without removing existing posts.</p>
+</blockquote>
+<blockquote>
+<p>Another Note</p>
+<p>You can organize a series of posts by putting them in another folder
+i.e if its a series on hugo call it hugo
+place an empty file _index.md in the hugo folder
+create you leaf post in that</p>
+</blockquote>
 <h2 id="run-hugo-server-and-take-a-look">Run hugo server and take a look</h2>
 <p>Its a good time to check the results.</p>
 <pre><code>hugo server
@@ -364,20 +413,7 @@ the name is determined in the template.
 there are also two files favicon-32x32.jpg and favicon-16x16.jpg which could be placed in that folder for devices viewing the site.
 </code></pre>
 <p>Some themes has a hardcoded nav-bar. This one is dynamic.</p>
-<h2 id="publish">Publish</h2>
-<p>to publish</p>
-<pre><code>hugo
-
-cd public
-
-git add .
-
-git commit -m &quot;commit message you understand&quot;
-
-git push -u origin main
-</code></pre>
-<p>The last one only works if you have set your online reposity upstream and you have added a git user email and name</p>
-<h2 id="notes">NOTEs</h2>
+<h2 id="hubble-bubble-toil-and-trouble">Hubble bubble, toil and trouble</h2>
 <p>if you dont use submodules on public and themes you can use .gitignore in your main folder with the following. you could also leave it in if wanted. check the hugo site for suggestions.</p>
 <pre tabindex="0"><code>/public
 /themes
@@ -402,25 +438,33 @@ hugo server, allows us to see the site locally in a browser</p>
 <p>run hugo again to publish your files. If satisfied.</p>
 <pre><code>hugo
 </code></pre>
-<p>now we should init git in the <!-- raw HTML omitted -->public<!-- raw HTML omitted --> folder and set it upstream to our github pages site &hellip;github.io. once done push the pulic git to origin. (once again REPLACE my account and repository name with yours)</p>
-<pre><code>cd public
+<h2 id="init-the-git">INIT the GIT</h2>
+<blockquote>
+<p>THIS SHOULD BE DONE ONCE
+init git in the <!-- raw HTML omitted -->public<!-- raw HTML omitted --> folder and set it upstream to our github pages site &hellip;github.io.
+once done push the pulic git to origin. (once again REPLACE my account and repository name with yours)</p>
+</blockquote>
+<p>This would be for the blogs public folder
+The steps are similar for the main folder - except dont change to the public folder and the remote address will be its own github address.</p>
+<pre tabindex="0"><code>    cd public
 
-echo &quot;# richard-porteous.github.io&quot; &gt;&gt; README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git branch -M main
-git remote add origin https://github.com/your-account/your-account.github.io.git
-git push -u origin main
-</code></pre>
-<p>set as a sub module
-git submodule add -b main -f <a href="https://github.com/your-account/your-account.github.io">https://github.com/your-account/your-account.github.io</a> public</p>
+    echo &#34;# richard-porteous.github.io&#34; &gt;&gt; README.md
+    git init
+    git add README.md
+    git commit -m &#34;first commit&#34;
+    git branch -M main
+    git remote add origin https://github.com/your-account/your-account.github.io.git
+    git push -u origin main
+</code></pre><p>set as a sub module</p>
+<pre tabindex="0"><code>    git submodule add -b main -f https://github.com/your-account/your-account.github.io public
+</code></pre><h2 id="publish">Publish</h2>
 <p>then a second commit and push for all the files</p>
 <pre><code>add .
 git commit -m &quot;add site files&quot;
 git push origin main
 </code></pre>
-<p>after a minute or so open your your-account.github.io site in the browser.</p>
+<p>after a minute or so open your your-account.github.io site in the browser.
+You should see your website looking like it does when you run hugo server and browse the localhost.</p>
 <p>OK now lets add all that code to the hugoblog repository</p>
 <pre><code>cd ..
 </code></pre>
@@ -435,7 +479,7 @@ git push origin main
 <p>
 <img src="./img/check-site-pages.png" alt="site-settings"  /></p>
 <p>if still nothing do the same git add/commit/push command on the hugoblog site</p>
-<h2 id="different-theme---menus-not-dynamic">different theme - menus not dynamic??</h2>
+<h2 id="different-theme---menus-not-dynamic">Different theme - menus not dynamic??</h2>
 <p>If you chose a theme without a dynamic nav bar (i.e. silhouette-hugo), then to fix the nav-bar in this theme we actually need to edit one of the themes files. The names of folders and files may differ.</p>
 <p>navigate to</p>
 <pre><code>themes\silhouette-hugo\layouts\partials
@@ -463,23 +507,12 @@ git push origin main
 &lt;/li&gt;
 </code></pre>
 <p><!-- raw HTML omitted -->A quick note about compatability<!-- raw HTML omitted --> when placing an image from the static folder into a post,</p>
-<pre><code>1. please remove the word static from the internal link
+<pre><code>1. please remove the word static from the internal link - it may not appear in your IDE's preview
 2. keep the name lowercase and match the case in the markdown
 3. tikva uses the img folder for site images not &quot;images&quot; - this is not uncommon
 </code></pre>
 <pre tabindex="0"><code>i.e. ![](/img/blog/site-from-theme-example/theme-example-folder.png)
-</code></pre><h2 id="new-way">NEW WAY</h2>
-<p>If you look at <a href="https://gohugo.io/content-management/image-processing/#page-resource">Hugo Page resource</a> you will see that you can also place the image below the post if the post is its own bundle, i.e. in a leaf bundle it is named index.md and the images are in an images folder below it.</p>
-<p>then the link in the post could look like</p>
-<pre tabindex="0"><code>![](./images/the-image-i-want-to-use.png)
-</code></pre><p>Using links to an anchor on the same page.
-so</p>
-<pre tabindex="0"><code>a link to
-## Create a new Hugo site
-would be
-[create a new hugo site](#create-a-new-hugo-site)
-replace any special character with the - (dash or minus whatever)
-</code></pre><h2 id="conculsion">conculsion</h2>
+</code></pre><h2 id="conculsion">Conculsion</h2>
 <p>if still having problems check with hugo. it may be something simple that was overlooked, or there is a missing step here. If you find an easy way to solve it drop me a note. thanks.</p>
 
 

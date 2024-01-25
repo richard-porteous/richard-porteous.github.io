@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Game Experiments</title>
+    <link>https://richard-porteous.github.io/posts/general/</link>
+    <description>Recent content on Game Experiments</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en_US</language>
+    <lastBuildDate>Sat, 20 Jan 2024 10:49:43 -0700</lastBuildDate>
+    <atom:link href="https://richard-porteous.github.io/posts/general/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using microsoft powershell</title>
+      <link>https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/</link>
+      <pubDate>Sat, 20 Jan 2024 10:49:43 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/</guid>
+      <description>Microsoft Powershell is NOT Windows Powershell I&amp;rsquo;ve never liked windows powershell while others have sworn by it. I stuck with cmd and ignored windows powershell with a vengance. OK, OK, I did try it for a month or two, but found it slowing me down and in places being an obstruction. Perhaps it was more &amp;ldquo;when&amp;rdquo; and &amp;ldquo;what&amp;rdquo;, but I wasn&amp;rsquo;t happy.&#xA;So why would I try Microsoft Powershell? Well, I discovered they are different.</description>
+    </item>
+    <item>
+      <title>Using python</title>
+      <link>https://richard-porteous.github.io/posts/general/using-python/</link>
+      <pubDate>Sun, 30 Jul 2023 13:09:27 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/general/using-python/</guid>
+      <description>Do you already have python? I have used cmd on windows, you can use whatever terminal you know how to open. A shortcut on windows is to use explorer to go to the folder you want and type cmd in the bar above.&#xA;Windows - python, py commands should work Linux/Mac python or python3 should work&#xA;run the following:&#xA;python --version&#xD;if the response is not python 3 or higher then i recommend you check the py command or the python3 command</description>
+    </item>
+    <item>
+      <title>Resync Windows time with task scheduler</title>
+      <link>https://richard-porteous.github.io/posts/general/windows/fix_windows_clock/</link>
+      <pubDate>Tue, 28 Feb 2023 11:25:07 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/general/windows/fix_windows_clock/</guid>
+      <description>NOTE: Time sync should be done as little as possible. See the recommendations on the time server sites. i.e. https://www.pool.ntp.org&#xA;Tired of forcing your time to resync manually?&#xA;If you dual boot or your computer just doesn&amp;rsquo;t keep time after it has been shut down for a while, you may be a little frustrated with the default setting for windows.&#xA;Linux when booted will set the system time clock to UTC and display your local time.</description>
+    </item>
+    <item>
+      <title>Using Git</title>
+      <link>https://richard-porteous.github.io/posts/general/using_git/</link>
+      <pubDate>Mon, 30 Jan 2023 13:01:01 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/general/using_git/</guid>
+      <description>Get Git It is highly recommended that you use GIT to keep track of your changes and prevent loss of your work.&#xA;I usuall head to https://git-scm.com/downloads If you have linux you likely have git already, but doesn&amp;rsquo;t hurt to check out the above.&#xA;Some Concepts From the horses mouth Its always better to look at official documentation - git is simple you should start here https://git-scm.com/doc&#xA;where are my file (versions) git creates a repository which is the hidden folder called .</description>
+    </item>
+    <item>
+      <title>Refactoring - Winforms using mvc</title>
+      <link>https://richard-porteous.github.io/posts/general/windows/winforms_mvc/</link>
+      <pubDate>Sun, 09 Jan 2022 11:20:41 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/general/windows/winforms_mvc/</guid>
+      <description>This was more to follow along in another book when I started, but take a look it has proven useful to me. This post is dependant on the repository.&#xA;I like this choice as it can make switching out each form one at a time for WPF a little simpler with old apps, just remember WinForms is designed to work with events, and you may end up fighting the UI.</description>
+    </item>
+  </channel>
+</rss>

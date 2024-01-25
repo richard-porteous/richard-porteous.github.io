@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Our first pygame - tails follow head - part 8 | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Our first pygame - tails follow head - part 8</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-20T10:33:02-07:00">20.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <h2 id="decisions-about-the-code">Decisions about the Code</h2>
+<blockquote>
+<p>The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.</p>
+</blockquote>
+<p>The end move position is calculated outside the class in the game loop, and the result is currently passed to the head. To move this code we need to store the tile size in the base class, everything else already belongs to the base class.</p>
+<p>so this needs fixing</p>
+<pre tabindex="0"><code>    player.end_move_pos = (player.start_move_pos[0] + player.direction[0] * TILESIZE[0], player.start_move_pos[1] + player.direction[1] * TILESIZE[1])
+</code></pre><p>We keep tile size as part of the gameobject</p>
+<pre tabindex="0"><code>    def __init__(self, speed, tilesize, img_file):
+        self.tilesize = tilesize
+</code></pre><p>and at setup next move we add our code to the end of the function</p>
+<pre tabindex="0"><code>    self.end_move_pos = (self.start_move_pos[0] + self.direction[0] * self.tilesize[0], self.start_move_pos[1] + self.direction[1] * self.tilesize[1])
+</code></pre><p>We need direction for the tail. we have start and end so we derive direction from that</p>
+<pre tabindex="0"><code>    def get_direction_from_start_end(self, start, end):
+        dx = end[0] - start[0]
+        dy = end[1] - start[1]
+        if dx &gt; 0: dx = 1
+        if dx &lt; 0: dx = -1
+        if dy &gt; 0: dy = 1
+        if dy &lt; 0: dy = -1
+
+        return (dx, dy)
+</code></pre><p>It&rsquo;s possible we could make use of this in other game objects, so we add our code in our game objects class for now.</p>
+<p>We also need to tell the tail piece what it is following and how to follow given a distance.</p>
+<pre tabindex="0"><code>    def set_obj_to_follow(self, obj):
+        self.object_to_follow = obj
+
+    def follow(self, dt_distance):
+        if (self.is_end_of_move(dt_distance)):
+            self.start_move_pos = self.end_move_pos
+            self.end_move_pos = self.object_to_follow.start_move_pos           
+            self.direction = self.get_direction_from_start_end(self.start_move_pos, self.end_move_pos)
+        else:
+            self.keep_moving(dt_distance)
+</code></pre><p>Now we need to set the tail and set what it is following.
+We remove the following line.</p>
+<pre tabindex="0"><code>player_tail.append(player.rect)
+</code></pre><p>and replace it with</p>
+<pre tabindex="0"><code>        t = Tail(PLAYERNORMALSPEED, TILESIZE)
+        if (len(player_tail) &gt; 0):
+            f = player_tail[len(player_tail) - 1]
+            t.rect.center = f.rect.center
+            t.end_move_pos = f.rect.center
+            t.start_move_pos = f.rect.center
+            t.object_to_follow = f
+        else:
+            t.rect.center = player.rect.center
+            t.end_move_pos = player.rect.center
+            t.start_move_pos = player.rect.center
+            t.object_to_follow = player
+        player_tail.append(t)
+</code></pre><p>and finally in the tail blit we remove</p>
+<pre tabindex="0"><code>        if t != player.rect:
+            screen.blit(player_body.image,t)
+</code></pre><p>and replace it with</p>
+<pre tabindex="0"><code>        screen.blit(t.image,t.rect)
+</code></pre><p>if you were paying attention you should have noticed to <!-- raw HTML omitted -->remove<!-- raw HTML omitted --> the following lines</p>
+<pre tabindex="0"><code>player_body = Tail(PLAYERNORMALSPEED, TILESIZE)
+</code></pre><p>and</p>
+<pre tabindex="0"><code>player.end_move_pos = (player.start_move_pos[0] + player.direction[0] * TILESIZE[0], player.start_move_pos[1] + player.direction[1] * TILESIZE[1])
+</code></pre><p>If you play the game now you will see the tail does not follow correctly, so where is the bug? Well its not so much a bug (there is one though) as it is simplly leaving off the end of move.</p>
+<p>if we fix the bug right away we stray from the git repository. So I&rsquo;m going to add that next commit here quickly.</p>
+<p>remove the following - we are actually moving and adjusting the code</p>
+<pre tabindex="0"><code>    # move food and grow tail
+    if (player.rect.center == food_rect.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_rect.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
+</code></pre><p>replace the code we removed with the following</p>
+<pre tabindex="0"><code>if eat_food(TILESIZE, player, food_rect):
+</code></pre><p>and place the removed code in this function above the game loop &hellip; we will move it again to make the code easier to read.</p>
+<pre tabindex="0"><code>def eat_food(TILESIZE, player, food_rect):
+    if (player.rect.center == food_rect.center):
+        x = random.randrange(0, 20)
+        y = random.randrange(0, 14)
+        food_rect.center = (TILESIZE[0] * x + TILESIZE[0]/2) , (TILESIZE[1] * y + TILESIZE[1]/2)
+        return True
+    return False
+</code></pre><p>Now grab all that code under eat_food and make a function called grow_tail</p>
+<pre tabindex="0"><code>def grow_tail(TILESIZE, PLAYERNORMALSPEED, Tail, player, player_tail):
+    t = Tail(PLAYERNORMALSPEED, TILESIZE)
+    if (len(player_tail) &gt; 0):
+        f = player_tail[len(player_tail) - 1]
+        t.rect.center = f.rect.center
+        t.end_move_pos = f.rect.center
+        t.start_move_pos = f.rect.center
+        t.object_to_follow = f
+    else:
+        t.rect.center = player.rect.center
+        t.end_move_pos = player.rect.center
+        t.start_move_pos = player.rect.center
+        t.object_to_follow = player
+    player_tail.append(t)
+</code></pre><p>and the calling code looks like</p>
+<pre tabindex="0"><code>    if eat_food(TILESIZE, player, food_rect):
+        grow_tail(TILESIZE, PLAYERNORMALSPEED, Tail, player, player_tail)
+</code></pre><p>Ok back to Our bug.</p>
+<p>Add the return True and return False to our move function. We will set a variable called move_start with the returned value so we know if we started a new move</p>
+<pre tabindex="0"><code>    def move(self, dt_distance, new_direction, def_direction, continuous):
+        direction = self.direction
+        if direction != (0,0) or new_direction != (0,0):
+            if (self.is_end_of_move(dt_distance)):
+                if (continuous and new_direction == (0,0)):
+                    direction = def_direction
+                else:
+                    direction = new_direction
+                self.setup_next_move(direction)
+                return True
+            else:
+                #keep moving we are not there yet
+                self.keep_moving(dt_distance)
+        return False
+</code></pre><p>Our player move call and the tail move is now</p>
+<pre tabindex="0"><code>    # do we have a direction?
+    move_start = player.move(dt_distance,new_direction,def_direction,continuous)
+    for t in player_tail:
+        if move_start:
+            t.complete_move()
+        else:
+            t.follow(dt_distance)
+</code></pre><p>So we added the knowledge of the end of move to the tail, lets see how that helps.</p>
+<p>
+<img src="./img/tail-follows.png" alt=""  /></p>
+<p>Great! It works, but we noticed a few things.</p>
+<ul>
+<li>food could generate below player</li>
+<li>if we went to the edge we would dissapear off the screen</li>
+<li>we could cross over body without injury.</li>
+</ul>
+<p>Next post we&rsquo;ll tackle the difficulty and simplicity of edge detection and handling.</p>
+<p><a href="/posts/pygame/worm-7/">Prev Post</a> - <a href="/posts/pygame/worm-9/">Next Post</a></p>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

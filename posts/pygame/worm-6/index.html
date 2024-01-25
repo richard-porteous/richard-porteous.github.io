@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Our first pygame - continuous movement - part 6 | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Our first pygame - continuous movement - part 6</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-18T14:45:00-07:00">18.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <h2 id="continuous-movement">continuous movement</h2>
+<p>The game Worm should have the worm moving even when you don&rsquo;t have any keys pressed, unless the game has paused.</p>
+<p>So we will make a small change to allow the worm to keep moving in its last direction selected.</p>
+<p>First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving. You can use the last direction moved while keys were being held. I chose not to.</p>
+<p>We add one more line to or input class&rsquo;s init. It now looks like.</p>
+<pre tabindex="0"><code>    def __init__(self) -&gt; None:
+        self.key_queue = []
+        self.last_key_pressed = &#34;none&#34;
+</code></pre><p>and we set the last key pressed in the same place we set our key queue.</p>
+<pre tabindex="0"><code>                if event.key in [K_s, K_DOWN]:
+                    self.last_key_pressed = &#34;D&#34;
+                    self.key_queue.append(&#34;D&#34;)
+                if event.key in [K_w, K_UP]:
+                    self.last_key_pressed = &#34;U&#34;
+                    self.key_queue.append(&#34;U&#34;)
+                if event.key in [K_d, K_RIGHT]:
+                    self.last_key_pressed = &#34;R&#34;
+                    self.key_queue.append(&#34;R&#34;)
+                if event.key in [K_a, K_LEFT]:
+                    self.last_key_pressed = &#34;L&#34;
+                    self.key_queue.append(&#34;L&#34;)
+</code></pre><p>we add a function to read it</p>
+<pre tabindex="0"><code>    def get_last_direction_chosen(self):
+        match (self.last_key_pressed):
+            case &#34;U&#34;:
+                return (0,-1)
+            case &#34;D&#34;:
+                return (0,1)
+            case &#34;L&#34;:
+                return (-1,0)
+            case &#34;R&#34;:
+                return (1,0)
+        return (0,0)
+</code></pre><p>and then before the game loop we set a variable to be continuous</p>
+<pre tabindex="0"><code>continuous = True
+</code></pre><p>right now we the variable is hardcoded. It is a flag to tell the code the behaviour we want. We can change that later if needed.</p>
+<p>at the end of our &ldquo;reached destination code&rdquo; we add 3 lines above the last (plus spacing). here it is including the last line</p>
+<pre tabindex="0"><code>            if (continuous and new_direction == (0,0)):
+                direction = held_keys.get_last_direction_chosen()
+            else:
+                direction = new_direction
+</code></pre><p>I also noticed we set a varable eaten with food but never use it. We can delete it.</p>
+<p>We run the code and we see the head moving around the board, after we have pressed a direction key at least once. If it easts food the food reappears elsewhere.</p>
+<p>Ok so lets add a face to our worm, and when it eats some food we let it grow a tail. For now a body part will simply stay where we ate the food. It will also become part of a list we call the tail.</p>
+<p>player creation now looks like</p>
+<pre tabindex="0"><code>#player
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_body = pygame.image.load(&#34;assets/player/blue_body_circle.png&#34;)
+player_face = pygame.image.load(&#34;assets/player/face_a.png&#34;)
+player = pygame.transform.scale_by(player, 0.5 )
+player_body = pygame.transform.scale_by(player_body, 0.5 )
+player_face = pygame.transform.scale_by(player_face, 0.5 )
+player_loc = player.get_rect()
+player_loc.center = TILESIZE[0]/2, TILESIZE[1]/2
+player_tail = []
+</code></pre><p>we added a body a face and a tail</p>
+<p>Copy face_a and blue_body_circle png files into our player folder.</p>
+<p>After we eat food in the same if statement we need this line of code</p>
+<pre tabindex="0"><code>player_tail.append(player_loc)
+</code></pre><p>And where we draw the food and player we need this</p>
+<pre tabindex="0"><code>    screen.blit(food, food_loc)
+    
+    for t in player_tail:
+        if t != player_loc:
+            screen.blit(player_body,t)
+    
+    screen.blit(player, player_loc)
+    screen.blit(player_face, player_loc)
+</code></pre><p>We draw the face on top of the player where the player currently is. The face needs to be centered.</p>
+<p>
+<img src="./img/player_with_face_1.png" alt=""  /></p>
+<p>The player uses player and player_loc, and while location is one way of saying it, it is easier to keep track of by calling it what it is. Its a rectangle and it has a ceneter so lets rename that to player_rect. If you not using the ide&rsquo;s rename whic takes care of all references then dont forget to name all of them. PS replace all from the text serach and replace is dangerous.</p>
+<p>so we end up with</p>
+<pre tabindex="0"><code>#player
+player = pygame.image.load(&#34;assets/player/blue_body_squircle.png&#34;)
+player_body = pygame.image.load(&#34;assets/player/blue_body_circle.png&#34;)
+player_face = pygame.image.load(&#34;assets/player/face_a.png&#34;)
+player = pygame.transform.scale_by(player, 0.5 )
+player_body = pygame.transform.scale_by(player_body, 0.5 )
+player_face = pygame.transform.scale_by(player_face, 0.5 )
+player_rect = player.get_rect()
+player_face_rect = player_face.get_rect()
+player_rect.center = TILESIZE[0]/2, TILESIZE[1]/2
+player_face_rect.center = player_rect.center
+player_tail = []
+</code></pre><p>this starts the face in the right place - lets keep it in the right place. We set the center of the rect the same as the player center</p>
+<pre tabindex="0"><code>    screen.blit(player, player_rect)
+    player_face_rect.center = player_rect.center
+    screen.blit(player_face, player_face_rect)
+</code></pre><p>You will notice if you follow along with the git, I have several commits for each post. It is easier to keep your git commits small and frequent, in case you want to go back a bit and only keep some changes.</p>
+<p>The next git commit I renamed the classes, I did this to match the pygame. Stick with python standards whenever possible.</p>
+<p>In the next post we refactor the player to keep the players code in one place and not spread all over. Eventually we discover a list of texture poistions is insufficient for the tail and we decide to use some of the player code. I refactor further and use inheritance. These are object oriented concepts and you could stick with lists and functions if you prefer.</p>
+<p><a href="/posts/pygame/worm-5/">Prev Post</a> - <a href="/posts/pygame/worm-7/">Next Post</a></p>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

@@ -13,7 +13,7 @@
       <link>https://richard-porteous.github.io/posts/hugo/site-on-github/</link>
       <pubDate>Thu, 04 Jan 2024 10:59:46 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/hugo/site-on-github/</guid>
-      <description>Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&amp;mdash;) format not toml add a posts archetype can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Publish Create the github repositories I have a post on using GIT.</description>
+      <description>Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&amp;mdash;) format not toml add a posts archetype Now Hugo makes static sites but its development sure isn&amp;rsquo;t static Page Links can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Hubble bubble, toil and trouble Publish Different Theme Conclusion Create the github repositories I have a post on using GIT.</description>
     </item>
   </channel>
 </rss>

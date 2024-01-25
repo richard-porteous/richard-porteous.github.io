@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Our first pygame - part 1 | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Our first pygame - part 1</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-08-10T13:19:30-07:00">10.08.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <h2 id="pygame-installation">Pygame Installation</h2>
+<p>Refer to <strong><a href="/posts/python/using_python/">Using Python</a></strong> to get python installed and set up a virtial environment. You need python 3 to continue</p>
+<h2 id="install-pygame">Install PyGame</h2>
+<p>Create a folder named mygame
+create a virtual environment inside
+activate the virtual environment</p>
+<p>run this command</p>
+<pre tabindex="0"><code>python3 -m pip install pygame
+or
+python3 -m pip install -U pygame --user
+</code></pre><blockquote>
+<p>The above is essential otherwise you will not be able to run this code.</p>
+<p>I understand it links around a bit. I just dont want to repeat the info over and over.</p>
+</blockquote>
+<p>anyway now we have our folder, environment, and pygame</p>
+<p>type</p>
+<pre tabindex="0"><code>$ python
+&gt;&gt; import pygame
+</code></pre><p>don&rsquo;t type the $ or the &raquo;
+if you have no errors you can quit the terminal</p>
+<h2 id="starting-our-pygame-game">Starting our PyGame game</h2>
+<p>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc.
+We will start building our game and then reuse code as we go. We will refactor this code library into something reusable as we go.</p>
+<p>I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE, though using a texteditor is perfectly fine.</p>
+<p>Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment.</p>
+<p>
+<img src="./img/screen-shot.png" alt="Our first game"  /></p>
+<p>I assume you know some python. However if you just read the python as English it will understandable. for now # is a comment for the rest of the line. Python relies on indentation to group code.</p>
+<p>Type the following into myapp.py
+NB. if you copy paste, paste as plain text to remove the extra wierd html characters</p>
+<pre tabindex="0"><code># the pygame imports to make them usable in our game
+import pygame
+from pygame.locals import *
+
+
+# Initialize the pygame code
+pygame.init()
+
+
+#​
+#
+#
+
+
+# quit the pygame window
+pygame.quit()
+#the app exits
+</code></pre><p>This will run but do nothing except say something like :
+pygame 2.5.2 (SDL 2.28.3, Python 3.12.0)
+Hello from the pygame community. <a href="https://www.pygame.org/contribute.html">https://www.pygame.org/contribute.html</a></p>
+<p>Ok lets create a window.
+Replace the 3 comments &lsquo;###&rsquo; in the middle with the following code</p>
+<pre tabindex="0"><code># set window size
+size = width, height = (800, 600)
+screen = pygame.display.set_mode(size)
+# update the display to see what we set
+pygame.display.update()
+</code></pre><pre tabindex="0"><code># control variable
+game_running = True
+
+
+# GAME LOOP
+while game_running:
+    # event listeners 
+    # i.e. listen to key-presses or windows closing etc.
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            # collapse the app
+            game_running = False
+
+
+    pygame.display.update()
+</code></pre><p>Now you should see a window that you can exit.</p>
+<ul>
+<li>The Quit looks for the event to quit.</li>
+<li>The game loop makes it keep checking for an event and updating the screen with the current info.</li>
+<li>The display update draws the window.</li>
+<li>We set the window size as 800 by 600.</li>
+</ul>
+<p>Ok - not interesting yet!</p>
+<h2 id="screen-redrawing">Screen redrawing</h2>
+<p>Screen redrawing is a very established method of removing images redrawn elsewhere on the screen by simply redrawing everything each time you loop around in the game loop.</p>
+<p>Sprites were introduced many many years ago to efficiently redraw only the small bit under the sprite and any small bits over the sprite. This is more efficient for a few objects, but not with many. Pygame does support sprites. I plan to take a quick look at them in a later post, but we will stick with redrawing the whole screen.</p>
+<p>PROBLEM:
+If you drew something to the screen now and then tried to move it, the item would appear in every place it redrew. Great for a paint program but useless for us.</p>
+<p>
+<img src="./img/movement1.png" alt=""  /></p>
+<h2 id="for-the-complete-code">For the complete code</h2>
+<pre tabindex="0"><code>git clone https://github.com/richard-porteous/my-app.git 
+</code></pre><p><a href="/posts/">Blog</a> - <a href="/posts/pygame/worm-2/">Next Post</a></p>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

@@ -2,37 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://richard-porteous.github.io/posts/pygame/</loc>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
+  </url><url>
     <loc>https://richard-porteous.github.io/tags/blog/</loc>
-    <lastmod>2024-01-20T10:49:43-07:00</lastmod>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
+  </url><url>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-9/</loc>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/tags/post/</loc>
-    <lastmod>2024-01-20T10:49:43-07:00</lastmod>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/posts/</loc>
-    <lastmod>2024-01-20T10:49:43-07:00</lastmod>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/tags/</loc>
-    <lastmod>2024-01-20T10:49:43-07:00</lastmod>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/tags/text/</loc>
+    <lastmod>2024-01-22T16:29:03-07:00</lastmod>
+  </url><url>
+    <loc>https://richard-porteous.github.io/posts/general/</loc>
     <lastmod>2024-01-20T10:49:43-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/windows/using_microsoft_powershell/</loc>
+    <loc>https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/</loc>
     <lastmod>2024-01-20T10:49:43-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-8/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-8/</loc>
     <lastmod>2024-01-20T10:33:02-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-7/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-7/</loc>
     <lastmod>2024-01-19T11:40:22-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-6/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-6/</loc>
     <lastmod>2024-01-18T14:45:00-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-5/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-5/</loc>
     <lastmod>2024-01-17T17:35:57-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-4/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-4/</loc>
     <lastmod>2024-01-06T15:19:13-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/posts/hugo/</loc>
@@ -44,28 +53,28 @@
     <loc>https://richard-porteous.github.io/</loc>
     <lastmod>2024-01-01T21:52:00+01:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-3/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-3/</loc>
     <lastmod>2023-11-10T13:19:53-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-2/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-2/</loc>
     <lastmod>2023-09-11T13:19:37-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/about/</loc>
     <lastmod>2023-08-11T13:19:30-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/our-first-pygame-1/</loc>
+    <loc>https://richard-porteous.github.io/posts/pygame/worm-1/</loc>
     <lastmod>2023-08-10T13:19:30-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/python/using-python/</loc>
+    <loc>https://richard-porteous.github.io/posts/general/using-python/</loc>
     <lastmod>2023-07-30T13:09:27-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/windows/fix_windows_clock/</loc>
+    <loc>https://richard-porteous.github.io/posts/general/windows/fix_windows_clock/</loc>
     <lastmod>2023-02-28T11:25:07-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/posts/general/using_git/</loc>
     <lastmod>2023-01-30T13:01:01-07:00</lastmod>
   </url><url>
-    <loc>https://richard-porteous.github.io/posts/windows/winforms_mvc/</loc>
+    <loc>https://richard-porteous.github.io/posts/general/windows/winforms_mvc/</loc>
     <lastmod>2022-01-09T11:20:41-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/feedback/</loc>

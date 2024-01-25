@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Our first pygame - screen wrap - post 9 | Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+
+
+
+
+
+<h1>Our first pygame - screen wrap - post 9</h1>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-22T16:29:03-07:00">22.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+
+
+  <h2 id="get-some-things-out-the-way">Get some things out the way</h2>
+<p>The file is starting to get too big. Lets move out some of the &lsquo;helper&rsquo; functions into thier own file.</p>
+<p>Lets create another file and name it mygame_library.py and place the following in it</p>
+<pre tabindex="0"><code>import pygame
+from pygame.locals import *
+
+
+# time based movement requires delta time
+class DeltaTime():
+    def __init__(self):
+        self.last_loop = pygame.time.get_ticks()
+        self.dt = 0
+
+
+    def loop_time(self) -&gt; int:
+        time_now_ms = pygame.time.get_ticks()
+        dt = time_now_ms - self.last_loop
+        self.last_loop = time_now_ms
+        return dt
+    
+
+class KeyInput():
+
+    def __init__(self) -&gt; None:
+        self.key_queue = []
+        self.last_key_pressed = &#34;none&#34;
+
+    def getEvents(self):
+       
+        for event in pygame.event.get():
+            if event.type == QUIT or (event.type==pygame.KEYDOWN and event.key in [K_ESCAPE]):
+                self.key_queue.clear()
+                return False
+            
+            # KEEP KEY PRESS ORDER
+            if event.type==pygame.KEYDOWN:
+                if event.key in [K_s, K_DOWN]:
+                    self.last_key_pressed = &#34;D&#34;
+                    self.key_queue.append(&#34;D&#34;)
+                if event.key in [K_w, K_UP]:
+                    self.last_key_pressed = &#34;U&#34;
+                    self.key_queue.append(&#34;U&#34;)
+                if event.key in [K_d, K_RIGHT]:
+                    self.last_key_pressed = &#34;R&#34;
+                    self.key_queue.append(&#34;R&#34;)
+                if event.key in [K_a, K_LEFT]:
+                    self.last_key_pressed = &#34;L&#34;
+                    self.key_queue.append(&#34;L&#34;)
+
+            # KEEP KEY PRESS ORDER (remove released from middle too)
+            if event.type==pygame.KEYUP:
+                if event.key in [K_s, K_DOWN]:
+                    self.key_queue.remove(&#34;D&#34;)
+                if event.key in [K_w, K_UP]:
+                    self.key_queue.remove(&#34;U&#34;)
+                if event.key in [K_d, K_RIGHT]:
+                    self.key_queue.remove(&#34;R&#34;)
+                if event.key in [K_a, K_LEFT]:
+                    self.key_queue.remove(&#34;L&#34;)
+        return True
+    
+    def get_first_of_remaining_pressed(self):
+        keys = pygame.key.get_pressed()
+
+        while(len(self.key_queue) &gt; 0):
+            match (self.key_queue[0]): 
+                case &#34;U&#34;:
+                    if keys[pygame.K_UP] or keys[pygame.K_w]:
+                        return (0,-1)
+                case &#34;D&#34;:
+                    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
+                        return (0,1)
+                case &#34;L&#34;:
+                    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+                        return (-1,0)
+                case &#34;R&#34;:
+                    if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+                        return (1,0)
+            
+            #in-valid front of queue items are removed
+            self.key_queue.pop(0)
+
+        return(0,0)
+
+    def get_last_direction_chosen(self):
+        match (self.last_key_pressed):
+            case &#34;U&#34;:
+                return (0,-1)
+            case &#34;D&#34;:
+                return (0,1)
+            case &#34;L&#34;:
+                return (-1,0)
+            case &#34;R&#34;:
+                return (1,0)
+        return (0,0)
+
+    def clean_queue(self):
+        self.key_queue = []
+        
+</code></pre><p>Now lets import it into our myapp.py</p>
+<pre tabindex="0"><code>from mygame_library import *
+</code></pre><p>and when we run our code to test we will get <strong>pycache</strong> files so lets add that folder to our .gitignore</p>
+<pre tabindex="0"><code>.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+__pycache__
+.vscode
+</code></pre><h3 id="continue-cleaning">Continue cleaning</h3>
+<p>move eat_food and grow_tail into our player class.</p>
+<h2 id="edge-checking-and-screen-scale-and-tail-objects">Edge checking and screen scale and tail objects</h2>
+<p>We want to scale the screen and check for edges.
+The edge checks are dependant on the scale of the screen.
+The game object textures will be drawn moving off the screen
+The game object textures will be drawn moving back on the screen/play area grid <!-- raw HTML omitted -->AT THE SAME TIME<!-- raw HTML omitted --></p>
+<p>Here is the code list of myapp.py <a href="#code-explanantion">with explanation below</a></p>
+<pre tabindex="0"><code>import math
+import random
+import pygame
+from pygame.locals import *
+#from game_classes import *
+from mygame_library import *
+
+
+#### HARD CODED VALUES
+BLACK = (0,0,0)
+WHITE = (255,255,255)
+STANDARD_IMAGE_SIZE = (80,80)
+ASPECT = (10,7)
+SCALESIZE = 0.5
+TILESIZE = (STANDARD_IMAGE_SIZE[0] * SCALESIZE, STANDARD_IMAGE_SIZE[1] * SCALESIZE)
+# Max frame rate
+FPS = 60
+
+#### global style variables
+start_speed = 0.4 * SCALESIZE
+# set window size
+screen_size = width, height = (STANDARD_IMAGE_SIZE[0] * ASPECT[0], STANDARD_IMAGE_SIZE[0] * ASPECT[1]) # 800,560 if 80x80
+screen = pygame.display.set_mode(screen_size)
+
+
+
+class GameObject():
+    start_move_pos = (0,0)
+    end_move_pos = (0,0)
+    direction = (0,0)
+    min = (0,0)
+    max = (0,0)
+    boundary_check = &#34;none&#34;
+    last_end_move_pos = (0,0)
+    
+    def __init__(self, speed, tilesize, img_file, screen_size):
+        self.tilesize = tilesize
+        self.image = pygame.image.load(img_file)
+        self.image = pygame.transform.scale_by(self.image, 0.5 )
+        self.rect = self.image.get_rect()
+        self.rect.center = tilesize[0]/2, tilesize[1]/2
+        self.start_move_pos = self.rect.center
+        self.speed = speed
+        self.max = screen_size
+
+
+
+    def is_end_of_move(self, dt_distance):
+        return abs(math.dist(self.rect.center, self.end_move_pos)) &lt;= abs(dt_distance)
+    
+    def keep_moving(self, dt_distance):
+        velocity = (self.direction[0] * dt_distance, self.direction[1] * dt_distance)
+        self.rect = self.rect.move(velocity)
+
+    # normalize direction
+    def fix_direction(self, end, start=(0,0)):
+        dx = end[0] - start[0]
+        dy = end[1] - start[1]
+        if dx &gt; 0: dx = 1
+        if dx &lt; 0: dx = -1
+        if dy &gt; 0: dy = 1
+        if dy &lt; 0: dy = -1
+
+        return (dx, dy)
+    
+    def get_tile_center_positions(self):
+        return (x_tile_pos,y_tile_pos) 
+
+    #currently only works with 4 directions
+    def check_boundaries(self):
+        x_pos,y_pos = self.get_tile_center_positions()
+        
+        if self.boundary_check != &#34;none&#34;:
+            return
+        
+        end_move_pos = self.end_move_pos
+
+        if self.rect.left &lt;= 0 and self.direction[0] &lt; 0:
+            self.set_boundary_check(&#34;left&#34;)
+            end_move_pos = (x_pos[len(x_pos) -1] + self.tilesize[0], self.rect.center[1])
+            
+        if self.rect.right &gt;= self.max[0] and self.direction[0] &gt; 0:
+            self.set_boundary_check(&#34;right&#34;)
+            end_move_pos = (x_pos[0] - self.tilesize[0], self.rect.center[1])
+
+        if self.rect.top &lt;= 0 and self.direction[1] &lt; 0:
+            self.set_boundary_check(&#34;top&#34;)
+            end_move_pos = (self.rect.center[0], y_pos[len(y_pos) -1] + self.tilesize[1])
+
+        if self.rect.bottom &gt;= self.max[1] and self.direction[1] &gt; 0:
+            self.set_boundary_check(&#34;bottom&#34;)
+            end_move_pos = (self.rect.center[0], y_pos[0] - self.tilesize[1])
+
+        if self.boundary_check in [&#34;left&#34;,&#34;right&#34;,&#34;top&#34;,&#34;bottom&#34;]:
+            self.setup_next_move(self.direction, end_move_pos)
+
+    def set_boundary_check(self, side):
+        self.boundary_check = side
+
+    def draw_alter_ego(self,rect,image,screen):
+
+        # Draw echo/ghost/disapearing-character  Rect(left, top, width, height)
+        if (self.boundary_check == &#34;left&#34;):
+            shifted_rect = pygame.Rect(rect[0] - self.max[0], rect[1], rect[2], rect[3])
+        elif (self.boundary_check == &#34;right&#34;):
+            shifted_rect = pygame.Rect(rect[0] + self.max[0], rect[1], rect[2], rect[3])
+        elif (self.boundary_check == &#34;top&#34;):
+            shifted_rect = pygame.Rect(rect[0], rect[1] - self.max[1], rect[2], rect[3])
+        elif (self.boundary_check == &#34;bottom&#34;):
+            shifted_rect = pygame.Rect(rect[0], rect[1] + self.max[1], rect[2], rect[3])
+
+        if (self.boundary_check in [&#34;left&#34;, &#34;right&#34;, &#34;bottom&#34;, &#34;top&#34;]):
+            screen.blit(image, shifted_rect)
+
+
+    def update(self, screen):
+        screen.blit(self.image,self.rect)
+
+
+class Player(GameObject):
+    def __init__(self, speed, tilesize, screen_size):
+        super().__init__(speed, tilesize, &#34;assets/player/blue_body_squircle.png&#34;, screen_size)
+
+        self.face_image = pygame.image.load(&#34;assets/player/face_a.png&#34;)
+        self.face_image = pygame.transform.scale_by(self.face_image, 0.5 )
+        self.face_rect = self.face_image.get_rect()
+        self.face_rect.center = self.rect.center
+        self.end_move_pos = (self.start_move_pos[0] + self.direction[0] * self.tilesize[0], self.start_move_pos[1] + self.direction[1] * self.tilesize[1])
+
+
+    def eat_food(self, food_rect):
+        if (self.rect.center == food_rect.center):
+            x = random.randrange(0, 20)
+            y = random.randrange(0, 14)
+            food_rect.center = (self.tilesize[0] * x + self.tilesize[0] * SCALESIZE) , (self.tilesize[1] * y + self.tilesize[1] * SCALESIZE)
+            return True
+        return False
+    
+    def grow_tail(self, screen_size, start_speed, Tail, player, player_tail):
+        t = Tail(start_speed, self.tilesize, screen_size)
+        if (len(player_tail) &gt; 0):
+            f = player_tail[len(player_tail) - 1]
+            t.rect.center = f.rect.center
+            t.end_move_pos = f.rect.center
+            t.start_move_pos = f.rect.center
+            t.object_to_follow = f
+        else:
+            t.rect.center = player.rect.center
+            t.end_move_pos = player.rect.center
+            t.start_move_pos = player.rect.center
+            t.object_to_follow = player
+        player_tail.append(t)
+
+    def setup_next_move(self, direction, end_move_pos):
+        self.last_end_move_pos = self.end_move_pos
+
+        self.direction = self.fix_direction(direction)
+        self.rect.center = end_move_pos
+        self.start_move_pos = end_move_pos
+        self.end_move_pos = (self.start_move_pos[0] + self.direction[0] * self.tilesize[0], self.start_move_pos[1] + self.direction[1] * self.tilesize[1])
+
+
+    def move(self, dt_distance, new_direction, def_direction, continuous):
+        direction = self.direction
+        if direction != (0,0) or new_direction != (0,0):
+
+            if (self.is_end_of_move(dt_distance)):
+                self.set_boundary_check(&#34;none&#34;)
+                if (continuous and new_direction == (0,0)):
+                    direction = def_direction
+                else:
+                    direction = new_direction
+                self.setup_next_move(direction, self.end_move_pos)
+                return True
+
+            else:
+                #keep moving we are not there yet
+                self.check_boundaries()
+                self.keep_moving(dt_distance)
+
+        return False
+
+    def update(self,screen):
+        super().update(screen)
+        self.face_rect.center = self.rect.center
+        screen.blit(self.face_image, self.face_rect)
+
+        self.draw_alter_ego(self.rect,self.image,screen)
+        self.draw_alter_ego(self.face_rect,self.face_image,screen)
+        
+
+
+class Tail(GameObject):
+    def __init__(self, speed, tilesize, screen_size):
+        super().__init__(speed, tilesize, &#34;assets/player/blue_body_circle.png&#34;, screen_size)
+    
+    def complete_move(self):
+        self.last_end_move_pos = self.end_move_pos
+
+        self.rect.center = self.end_move_pos
+        self.start_move_pos = self.end_move_pos
+        self.end_move_pos = self.object_to_follow.last_end_move_pos           
+        self.direction = self.fix_direction(self.end_move_pos, self.start_move_pos)
+
+    def follow(self, dt_distance):
+        self.check_boundaries()
+        self.keep_moving(dt_distance)
+
+    def move(self, move_start, dt_distance):
+        if move_start:
+            t.complete_move()
+        else:
+            self.check_boundaries()
+            t.follow(dt_distance)
+        
+    def update(self,screen):
+        super().update(screen)
+
+
+# START OF GAME CODE
+
+
+#### build background - background is used to clear each frame ####
+background = pygame.Surface.copy(screen)
+background.fill(WHITE)
+
+# draw grid on background
+x_tile_pos = []
+y_tile_pos = []
+for y in range(0, height, int(TILESIZE[0])):
+    y_tile_pos.append(y + int(TILESIZE[0])/2)
+    pygame.draw.line(background, BLACK, (0,y), (width,y))
+for x in range(0, width, int(TILESIZE[1])):
+    x_tile_pos.append(x + int(TILESIZE[1])/2)
+    pygame.draw.line(background, BLACK, (x,0), (x,height))
+
+screen.blit(background,(0,0))
+#### end background ####
+
+# Early update the display for background
+pygame.display.update()
+
+
+
+player = Player(start_speed, TILESIZE, screen_size)
+player_tail = []
+
+#food
+food = pygame.image.load(&#34;assets/food/tile_coin.png&#34;)
+food = pygame.transform.scale_by(food, 0.5 )
+food_rect = food.get_rect()
+food_rect.center = (TILESIZE[0] * 9 + TILESIZE[0]/2) , (TILESIZE[1] * 9 + TILESIZE[1]/2)
+
+# Initialize the pygame code
+pygame.init()
+clock = pygame.time.Clock()
+FPS = 60
+
+#speed = 10
+# control variable
+game_running = True
+
+
+#initialize the classes
+held_keys = KeyInput()
+delta_time = DeltaTime()
+
+continuous = True
+keypress_for_partialtime = False
+
+# control variable
+game_running = True
+
+#game loop
+while game_running:
+    clock.tick(FPS)
+
+    # indicating the number of miliseconds since the last time that piece of code was run
+    dt = delta_time.loop_time()
+    
+    dt_distance = player.speed * dt
+
+    game_running = held_keys.getEvents()
+
+    direction = player.direction
+    new_direction = held_keys.get_first_of_remaining_pressed()
+    def_direction = held_keys.get_last_direction_chosen()
+ 
+    # do we have a direction?
+    move_start = player.move(dt_distance,new_direction,def_direction,continuous)
+    for t in player_tail:
+        t.move(move_start, dt_distance)
+
+    if player.eat_food(food_rect):
+        player.grow_tail(screen_size, start_speed, Tail, player, player_tail)
+        
+
+    #clear the display
+    screen.blit(background,(0,0))
+
+    # place image on the screen
+    screen.blit(food, food_rect)
+    
+    for t in player_tail:
+        t.update(screen)
+    
+    player.update(screen)
+
+    player.face_rect.center = player.rect.center
+    screen.blit(player.face_image, player.face_rect)
+
+    # apply changes
+    pygame.display.update()
+
+
+# quit the pygame window
+pygame.quit()
+#the app exits
+</code></pre><h2 id="code-explanantion">code explanantion</h2>
+<p>After the imports and variables we have the GameObject, the player, and the tail.
+Then after that we have our game setup and the game loop.</p>
+<p>The GameObject contains all the code we thought was common to the player and the tail.
+This would be</p>
+<ul>
+<li>grid movement including direction and speed</li>
+<li>the code that loads and stores the texture and scale</li>
+</ul>
+<h2 id="walkthrough">walkthrough</h2>
+<h3 id="gameobject">GameObject</h3>
+<p>The variables are initialized.
+Next we check if we are equal to or less than 1 move to the end position. That determines end of move.</p>
+<p>Keep moving simply moves the object between start and end. This could be done many ways, but this one gives us a great deal of control.</p>
+<p>fix direction makes sure it is 0,1,-1 in any direction. additional vector math would be required for 8 directions to prevent fast diagonal speeds.</p>
+<p>Tile center is pretty much just that. We use it for most of our positions. You could use top left etc if you wanted, but would need to adjust logic.</p>
+<p>Check_boundaries is used while moving and will call setup_next_move if it will cross a boundary.  Setup next move will move us past the far edge and setup the move onto the board.</p>
+<p>draw_alter_ego draws us moving off the board at the same time we are drawn moving on. i.e. two textures drawn.</p>
+<p>update does the drawing when called</p>
+<h3 id="player">Player</h3>
+<p>gets values for the GameObject</p>
+<p>eat food checks to see if we are in the same position as the food and returns true if we are. It also returns false if we are not.</p>
+<p>grow_tail makes a new tail piece and places it at the end of player_tail.</p>
+<p>start next move sets our start at the last end, and uses direction to determine the next end position</p>
+<p>Move grabs the direction check if we are at the end of a move and setup up the next move or keeps moving if not at the end. True is returned only if new move started.</p>
+<p>Update determines what is to be drawn.</p>
+<h3 id="tail">Tail</h3>
+<p>set the texture</p>
+<p>complete move is a function which is called if move needs to be completed and next move is set up</p>
+<p>follow is called by move when its not the start of a move (move_start is passed in)</p>
+<p>update determine what should be drawn, in this case just the default texture.</p>
+<p>The code loop has been with us the whole time. we use it to get key input and pass the info on, we also request checks for eating food and update calls.</p>
+<p>I saw a function getting called twice before being used. Did you notice? it was check_boundaries()</p>
+<p>OK next post we will fix the screen wrap. The tail does not follow around the screen correctly.</p>
+<p>Then we will check for the worm head colliding with its tail. We will simply end the game when the worm bites itself.</p>
+<p><a href="/posts/pygame/worm-8/">Prev Post</a> - <a href="/posts/">Next Post</a></p>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

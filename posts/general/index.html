@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="utf-8" />
+    <title>Game Experiments</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="author" content="Richard Porteous">
+    <meta name="description" content="Various coding tutorials">
+    <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
+
+    
+    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    
+    <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="https://richard-porteous.github.io/favicon.ico" />
+
+
+
+<script type="text/javascript">
+    var azbalacSettingHeaderMoveTitle = 'false';
+</script>
+<script src="https://richard-porteous.github.io/js/jquery-3.4.1.min.js"></script>
+<script src="https://richard-porteous.github.io/js/functions.js"></script><style>body {}.footer-container { background-color: #29281f; }.footer-container { color: #f9fcf9; }</style>
+
+
+
+<link id="typography-header-title-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A800"><style id="typography-title" type="text/css">#site-header-text a {
+        font-family: Exo;
+    }#site-header-text a {
+        font-size: 50px; 
+    }</style>
+
+<link id="typography-header-subtitle-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo%3A600"><style id="typography-subtitle" type="text/css">#site-description {
+        font-family: Exo;
+    }#site-description {
+        font-size: 30px; 
+    }</style>
+
+<style id="typography-body" type="text/css"></style>
+
+<style id="typography-navbar" type="text/css">nav#navbarMain {
+        font-size: 20px; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: 20px;
+    }</style>
+
+<link id="typography-headline-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><style id="typography-headline" type="text/css">h1, h2, h3, h4, h5, h6 {
+                font-family: Open Sans; 
+            }</style>
+
+
+
+    
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '#000000',
+            'transp': '0'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+                background: "#000000";  
+            background:  rgba(0,0,0,0.00);
+            
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: 0px;
+        }
+    </style>
+    
+    
+    <style type="text/css">
+        #site-header-container-overlay {
+        
+            left: 20px;
+        
+        
+            top: 20px;
+        
+        }
+    </style>
+    
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="header" role="banner" style="">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above"><a href="https://richard-porteous.github.io/" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 510w">
+                        <source media="(max-width: 575.98px)" srcset="https://richard-porteous.github.io/img/header_background.jpg 476w">
+                        <img id="site-header-image" src="https://richard-porteous.github.io/img/header_background.jpg" style="max-width: 100%; width: 100%">
+                </picture>
+                </a>
+
+                <div id="site-header-container-overlay" class="position-absolute  fixed-top ">
+                    <div id="site-header-box-title" class=" d-flex justify-content-start ">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="color: #FFFFFF;" href="https://richard-porteous.github.io/">Game Experiments</a></h1>
+                    </div>
+                    
+                    <div id="site-header-box-subtitle" class=" d-flex justify-content-start ">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="color: #EEEEFF;">Learn with me</h2>
+                    </div>
+                </div>
+                
+             
+            </div>
+
+    
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 navbar-dark bg-primary" role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  " id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/">
+      
+      Home
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/posts/">
+      
+      Blog
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+
+  
+  <li class="nav-item ">
+    <a class="nav-link" href="/about/">
+      
+      About
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  
+</ul>
+             
+            </div>
+        
+            
+    </nav> 
+    
+
+
+
+      </header>
+    </div> 
+</div>
+
+
+    <div id="main">
+        <div class="container">
+            <div class="row"><div class="col-md" id="content">
+<main>
+    <article>
+        <header>
+            <h1></h1>
+        </header>
+        
+        
+    </article>
+
+    
+
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-9/'> Our first pygame - screen wrap - post 9</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-22T16:29:03-07:00">22.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Get some things out the way The file is starting to get too big. Lets move out some of the &lsquo;helper&rsquo; functions into thier own file.
+Lets create another file and name it mygame_library.py and place the following in it
+import pygamefrom pygame.locals import *# time based movement requires delta timeclass DeltaTime():def __init__(self):self.last_loop = pygame.time.get_ticks()self.dt = 0def loop_time(self) -&gt; int:time_now_ms = pygame.time.get_ticks()dt = time_now_ms - self.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-9/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - screen wrap - post 9</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/'> Using microsoft powershell</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-20T10:49:43-07:00">20.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Microsoft Powershell is NOT Windows Powershell I&rsquo;ve never liked windows powershell while others have sworn by it. I stuck with cmd and ignored windows powershell with a vengance. OK, OK, I did try it for a month or two, but found it slowing me down and in places being an obstruction. Perhaps it was more &ldquo;when&rdquo; and &ldquo;what&rdquo;, but I wasn&rsquo;t happy.
+So why would I try Microsoft Powershell? Well, I discovered they are different.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/general/windows/using_microsoft_powershell/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Using microsoft powershell</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-8/'> Our first pygame - tails follow head - part 8</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-20T10:33:02-07:00">20.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Decisions about the Code The direction is normalized. Well in this case -1 or 0 or 1. It cannot contain distance as we use directions in calculations that expect only 0 and +/- 1.
+The end move position is calculated outside the class in the game loop, and the result is currently passed to the head. To move this code we need to store the tile size in the base class, everything else already belongs to the base class.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-8/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - tails follow head - part 8</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-7/'> Our first pygame part 7</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-19T11:40:22-07:00">19.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  What we have so far We have a head with a face that can eat food but leaves droppings at each place it has eaten at. Lets address that.
+What do we want to do?
+make the tail follow the head tail can be added at head or at last tail piece (changes logic and appearance of the game only very slightly) reuse the code from the player for the tail wherever possible prevent messy code fix the class names to be consitant with the standard i.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-7/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame part 7</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-6/'> Our first pygame - continuous movement - part 6</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-18T14:45:00-07:00">18.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  continuous movement The game Worm should have the worm moving even when you don&rsquo;t have any keys pressed, unless the game has paused.
+So we will make a small change to allow the worm to keep moving in its last direction selected.
+First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-6/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - continuous movement - part 6</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-5/'> Our first pygame - grid movement - part 5 </a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-17T17:35:57-07:00">17.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Quick refactor before starting I mentioned in the last post we should do something with speed. Its used as a global inside the input class and I don&rsquo;t like that. The original idea is to pass it in, but that wont work well because it is going to be used with delta time.
+So here is a better idea. We will remove it.
+replace speed inside our input class with 1 remove speed from being initialized before its needed Now we replace a small bit of code:
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-5/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - grid movement - part 5 </span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-4/'> Our first pygame part 4</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-06T15:19:13-07:00">06.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Input is not smart enough We are going to add a key queue so we can keep track of the order of keys ben pressed or in our case the order of the keys currently held down.
+We also want to move more of the input logic out the game and into the input class.
+we add self.key_queue = [] to init then we change each keydown part something like this
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-4/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame part 4</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/hugo/site-on-github/'> Hugo site on github</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-04T10:59:46-07:00">04.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Steps we follow create 2 github repositories. name.github.io and hugoblog Get Hugo and git Create the hugo site locally init git for hugoblog and add public as a git submodule Add a theme (possibly as a submodule) go to the example site folder and copy the files if necessary, rename config.toml to hugo.toml if the posts use the yaml (&mdash;) format not toml add a posts archetype Now Hugo makes static sites but its development sure isn&rsquo;t static Page Links can create your first post ## Run hugo server and take a look check existing content remove or replace default content Test and fix site Hubble bubble, toil and trouble Publish Different Theme Conclusion Create the github repositories I have a post on using GIT.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/hugo/site-on-github/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Hugo site on github</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-3/'> Our first pygame - Refactoring - part 3</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Refactor Let’s move the keypress code into its own class.
+class keyisdown():def __init__(self) -&gt; None:self.leftkey = Falseself.rightkey = Falseself.upkey = Falseself.downkey = Falsedef getEvents(self):for event in pygame.event.get():if event.type == QUIT:return Falseif event.type==pygame.KEYDOWN:if event.key == K_ESCAPE:return Falseif event.key in [K_s, K_DOWN]:self.downkey = Trueif event.key in [K_w, K_UP]:self.upkey = Trueif event.key in [K_d, K_RIGHT]:self.rightkey = Trueif event.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-3/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Refactoring - part 3</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-2/'> Our first pygame - part 2</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Now we get to play a little. Lets simply draw a simple background and then download some premade shapes that we can move around.
+First head over to kenney.nl and get the following images to follow along. The files we want are in the png/default folder. The larger images are 80x80. If you are adventurous try other images.
+I&rsquo;m going to use individual 2d png files for each item to start.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-2/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - part 2</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/general/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/general/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/general/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    
+   
+</main>
+
+
+                </div></div>
+        </div>
+    </div>
+
+    
+        <div class="footer-container" style="">
+    <div class="container">
+        <footer>
+
+            <div class="row">
+            
+            
+                
+                    <div class="col">
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+                    <div class="col">
+    
+</div>
+                
+            
+
+            </div>
+        </footer>
+    </div>
+</div>
+    
+    
+        
+<div class="subfooter-container">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+
+            
+            
+                
+                        <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>.</p>
+
+
+                
+            
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div id="media-width-detection-element"></div>
+
+<script src="https://richard-porteous.github.io/js/popper.min.js"></script>
+<script src="https://richard-porteous.github.io/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
