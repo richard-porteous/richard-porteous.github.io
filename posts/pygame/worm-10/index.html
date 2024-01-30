@@ -2,7 +2,7 @@
 <html lang="en_US">
 <head>
     <meta charset="utf-8" />
-    <title>Tags | Game Experiments</title>
+    <title>Our First Pygame 10 | Game Experiments</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -199,70 +199,81 @@
     <div id="main">
         <div class="container">
             <div class="row"><div class="col-md" id="content">
-<main>
-  <div>
-   <h1>Tags</h1>
-   
-    
-        
 
 
 
-<article class="mb-5 post">
-  <header>
 
-    <h2><a href='https://richard-porteous.github.io/tags/post/'> Post</a> </h2>
+
+<h1>Our First Pygame 10</h1>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-23T16:02:46-07:00">23.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
-  </header>
-  
 
-  <footer>
-  
-  </footer>
-</article>
-    
+
+  <h2 id="fixing-screen-wrap">Fixing screen wrap</h2>
+<p>To make the screen work I needed to sit down and sletch and talk through my logic.
+I needed to keep track of the movement in the tail in the same way I kept track in the head.</p>
+<p>I placed these in gameobject before the init (mostly last_start_move_pos,last_direction,last_boundary_check), some of the rest are from the player.</p>
+<pre tabindex="0"><code>    start_move_pos = (0,0)
+    end_move_pos = (0,0)
+    direction = (0,0)
+    min = (0,0)
+    max = (0,0)
+    boundary_check = &#34;none&#34;
+    last_end_move_pos = (0,0)
+    last_start_move_pos = (0,0)
+    last_direction = (0,0)
+    last_boundary_check = &#34;none&#34;
+</code></pre><p>and we change setup next move to look like this (same fields again)</p>
+<pre tabindex="0"><code>    def setup_next_move(self, direction, end_move_pos):
+        self.last_end_move_pos = self.end_move_pos
+        self.last_start_move_pos = self.start_move_pos
+        self.last_direction = self.direction
+        self.last_boundary_check = self.boundary_check
+
+        self.direction = self.fix_direction(direction)
+        self.rect.center = end_move_pos
+        self.start_move_pos = end_move_pos
+        self.end_move_pos = (self.start_move_pos[0] + self.direction[0] * self.tilesize[0], self.start_move_pos[1] + self.direction[1] * self.tilesize[1])
+</code></pre><p>then in move in the end of move check we move/add this to just before the return</p>
+<pre tabindex="0"><code>self.set_boundary_check(&#34;none&#34;)
+</code></pre><p>and in complete move we change the function to the following</p>
+<pre tabindex="0"><code>    def complete_move(self):
+        self.last_end_move_pos = self.end_move_pos
+        self.last_start_move_pos = self.start_move_pos
+        self.last_direction = self.direction
+        self.last_boundary_check = self.boundary_check
         
+        self.rect.center = self.object_to_follow.last_start_move_pos
+        self.start_move_pos = self.object_to_follow.last_start_move_pos
+        self.end_move_pos = self.object_to_follow.last_end_move_pos
+        self.boundary_check = self.object_to_follow.last_boundary_check
+           
+        self.direction = self.object_to_follow.last_direction
+</code></pre><p>in the tail move we remove</p>
+<pre tabindex="0"><code>self.check_boundaries()
+</code></pre><p>and in the tail update at the end we add</p>
+<pre tabindex="0"><code>self.draw_alter_ego(self.rect,self.image,screen)
+</code></pre><p>I think thats it. So we made some fields available to the tail that the player was using and the follow is slightly simpler than its equivalent in the player head.</p>
+<h2 id="ok-now-we-want-the-head-to-bite-the-tail-if-it-collides-and-end-the-game">Ok now we want the head to bite the tail if it collides and end the game.</h2>
+<p>So we add this in the gameobject init</p>
+<pre tabindex="0"><code>        self.collide_rect = Rect(self.rect[0] + self.rect[2]/2, self.rect[1] + self.rect[3]/2, self.rect[2]/2, self.rect[3]/2) #left,top,width,height
+        self.just_created = True
+</code></pre><p>we add this in the player</p>
+<pre tabindex="0"><code>    def collide(self, tails):
+        for t in tails:
+            if pygame.Rect.colliderect(self.collide_rect, t.collide_rect) and t.just_created == False:
+                return True
+        return False
+</code></pre><p>we set the fields in player for every move</p>
+<pre tabindex="0"><code>self.collide_rect.center = self.rect.center
+</code></pre><p>and see if we are colliding at the end of the game loop</p>
+<pre tabindex="0"><code>    if player.collide(player_tail):
+        game_running = False
+</code></pre><p>You can get the git plus all changes from <a href="https://github.com/richard-porteous/my-app">https://github.com/richard-porteous/my-app</a></p>
+<p><a href="/posts/pygame/worm-9/">Prev Post</a> - <a href="/posts/">Back to Blog</a></p>
 
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/tags/blog/'> Blog</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-22T16:29:03-07:00">22.01.2024</time> - 
-     </div>
-  </header>
-  
-
-  <footer>
-  
-  </footer>
-</article>
-    
-        
-
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/tags/text/'> Text</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-22T16:29:03-07:00">22.01.2024</time> - 
-     </div>
-  </header>
-  
-
-  <footer>
-  
-  </footer>
-</article>
-    
-  </div>
-</main>
 
                 </div></div>
         </div>

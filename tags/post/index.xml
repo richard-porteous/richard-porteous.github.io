@@ -6,8 +6,15 @@
     <description>Recent content in Post on Game Experiments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Mon, 22 Jan 2024 16:29:03 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jan 2024 16:02:46 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/tags/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Our First Pygame 10</title>
+      <link>https://richard-porteous.github.io/posts/pygame/worm-10/</link>
+      <pubDate>Tue, 23 Jan 2024 16:02:46 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/pygame/worm-10/</guid>
+      <description>Fixing screen wrap To make the screen work I needed to sit down and sletch and talk through my logic. I needed to keep track of the movement in the tail in the same way I kept track in the head.&#xA;I placed these in gameobject before the init (mostly last_start_move_pos,last_direction,last_boundary_check), some of the rest are from the player.&#xA;start_move_pos = (0,0)&#xD;end_move_pos = (0,0)&#xD;direction = (0,0)&#xD;min = (0,0)&#xD;max = (0,0)&#xD;boundary_check = &amp;#34;none&amp;#34;&#xD;last_end_move_pos = (0,0)&#xD;last_start_move_pos = (0,0)&#xD;last_direction = (0,0)&#xD;last_boundary_check = &amp;#34;none&amp;#34; and we change setup next move to look like this (same fields again)</description>
+    </item>
     <item>
       <title>Our first pygame - screen wrap - post 9</title>
       <link>https://richard-porteous.github.io/posts/pygame/worm-9/</link>

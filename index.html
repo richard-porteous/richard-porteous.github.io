@@ -226,6 +226,31 @@
 <article class="mb-5 post">
   <header>
 
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-10/'> Our First Pygame 10</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-23T16:02:46-07:00">23.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Fixing screen wrap To make the screen work I needed to sit down and sletch and talk through my logic. I needed to keep track of the movement in the tail in the same way I kept track in the head.
+I placed these in gameobject before the init (mostly last_start_move_pos,last_direction,last_boundary_check), some of the rest are from the player.
+start_move_pos = (0,0)end_move_pos = (0,0)direction = (0,0)min = (0,0)max = (0,0)boundary_check = &#34;none&#34;last_end_move_pos = (0,0)last_start_move_pos = (0,0)last_direction = (0,0)last_boundary_check = &#34;none&#34; and we change setup next move to look like this (same fields again)
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-10/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our First Pygame 10</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+        
+
+
+
+<article class="mb-5 post">
+  <header>
+
     <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-9/'> Our first pygame - screen wrap - post 9</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-22T16:29:03-07:00">22.01.2024</time> - 
