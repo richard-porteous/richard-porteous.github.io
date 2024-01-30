@@ -97,7 +97,7 @@
       <link>https://richard-porteous.github.io/posts/pygame/worm-1/</link>
       <pubDate>Thu, 10 Aug 2023 13:19:30 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/pygame/worm-1/</guid>
-      <description>Pygame Installation Refer to Using Python to get python installed and set up a virtial environment. You need python 3 to continue&#xA;Install PyGame Create a folder named mygame create a virtual environment inside activate the virtual environment&#xA;run this command&#xA;python3 -m pip install pygame&#xD;or&#xD;python3 -m pip install -U pygame --user The above is essential otherwise you will not be able to run this code.&#xA;I understand it links around a bit.</description>
+      <description>Some coding required this post is fast paced - sorry I rewrote it 3 times and go bored. If you are a beginner to coding this may not be the best place to start. Try one of the others.&#xA;We want to use PyGame Pygame and Monogame are very similar - and yet different. As you start you will see a lot of similarities, except you are using pyhon in PyGame and C# in MonoGame.</description>
     </item>
     <item>
       <title>Using python</title>
