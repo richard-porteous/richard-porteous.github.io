@@ -256,6 +256,10 @@ I needed to keep track of the movement in the tail in the same way I kept track 
 </code></pre><p>and in the tail update at the end we add</p>
 <pre tabindex="0"><code>self.draw_alter_ego(self.rect,self.image,screen)
 </code></pre><p>I think thats it. So we made some fields available to the tail that the player was using and the follow is slightly simpler than its equivalent in the player head.</p>
+<blockquote>
+<p>The name &ldquo;draw alto ego&rdquo; is just me trying to be funny.
+I rename it later.</p>
+</blockquote>
 <h2 id="ok-now-we-want-the-head-to-bite-the-tail-if-it-collides-and-end-the-game">Ok now we want the head to bite the tail if it collides and end the game.</h2>
 <p>So we add this in the gameobject init</p>
 <pre tabindex="0"><code>        self.collide_rect = Rect(self.rect[0] + self.rect[2]/2, self.rect[1] + self.rect[3]/2, self.rect[2]/2, self.rect[3]/2) #left,top,width,height

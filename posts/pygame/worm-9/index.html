@@ -325,10 +325,16 @@ __pycache__
 </code></pre><h3 id="continue-cleaning">Continue cleaning</h3>
 <p>move eat_food and grow_tail into our player class.</p>
 <h2 id="edge-checking-and-screen-scale-and-tail-objects">Edge checking and screen scale and tail objects</h2>
-<p>We want to scale the screen and check for edges.
-The edge checks are dependant on the scale of the screen.
-The game object textures will be drawn moving off the screen
-The game object textures will be drawn moving back on the screen/play area grid <!-- raw HTML omitted -->AT THE SAME TIME<!-- raw HTML omitted --></p>
+<ul>
+<li>We want to scale the screen and check for edges.</li>
+<li>The edge checks are dependant on the scale of the screen.</li>
+<li>The game object textures will be drawn moving off the screen</li>
+<li>The game object textures will be drawn moving back on the screen/play area grid <!-- raw HTML omitted -->AT THE SAME TIME<!-- raw HTML omitted --></li>
+</ul>
+<blockquote>
+<p>Game engines like Gamemaker dont draw a second image. they detect when the image goes off screen and give you an option of how far off the screen before it reappears on the other side. (there may be other options)
+This is a common way to handle screen wrap,so feel free to do that.</p>
+</blockquote>
 <p>Here is the code list of myapp.py <a href="#code-explanantion">with explanation below</a></p>
 <pre tabindex="0"><code>import math
 import random

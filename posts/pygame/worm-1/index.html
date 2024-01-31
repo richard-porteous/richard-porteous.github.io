@@ -212,12 +212,15 @@
 
 
   <h2 id="some-coding-required">Some coding required</h2>
-<p>this post is fast paced - sorry I rewrote it 3 times and go bored. If you are a beginner to coding this may not be the best place to start. Try one of the others.</p>
+<p>For the first 10 posts of this series we don&rsquo;t cover detail as most of this is common to the other tutorials out there. The exceptions being the screen wrap and the delta movement, which are explained to some degree. The delta movement is common to game programming in general, the screen wrap has different implementations.</p>
+<p>Everything gets re-evaluated in each new game we build with the resulting libraries of reuseable code.</p>
 <h2 id="we-want-to-use-pygame">We want to use PyGame</h2>
 <p>Pygame and Monogame are very similar - and yet different. As you start you will see a lot of similarities, except you are using pyhon in PyGame and C# in MonoGame. There are some things in pygame not in monogame and vice versa.</p>
+<blockquote>
 <p>“Vice versa (literally &rsquo;turn around&rsquo; or &rsquo;the other way around&rsquo; in Latin)”</p>
+</blockquote>
 <h2 id="pygame-installation">Pygame Installation</h2>
-<p>Refer to <strong><a href="/posts/python/using_python/">Using Python</a></strong> to get python installed and set up a virtial environment. You need python 3 to continue</p>
+<p>Refer to <strong><a href="/posts/python/using_python/">Using Python</a></strong> to get python installed and set up a virtial environment. You will need python 3 to continue, and you will need to know how to create a virtual environment.</p>
 <h2 id="install-pygame">Install PyGame</h2>
 <p>Create a folder named mygame
 create a virtual environment inside
@@ -226,20 +229,17 @@ activate the virtual environment</p>
 <pre tabindex="0"><code>python3 -m pip install pygame
 or
 python3 -m pip install -U pygame --user
-</code></pre><blockquote>
-<p>The above is essential otherwise you will not be able to run this code.</p>
-<p>I understand it links around a bit. I just dont want to repeat the info over and over.</p>
-</blockquote>
+</code></pre><p>For our purposes and in the virtual environment the two command about are about identical as needed.</p>
 <p>anyway now we have our folder, environment, and pygame</p>
 <p>type</p>
 <pre tabindex="0"><code>$ python
 &gt;&gt; import pygame
-</code></pre><p>don&rsquo;t type the $ or the &raquo;
-if you have no errors you can quit the terminal</p>
+</code></pre><p>don&rsquo;t type the $ or the &raquo;</p>
+<p>if you have no errors you can quit the terminal.</p>
 <h2 id="starting-our-pygame-game">Starting our PyGame game</h2>
 <p>All Pygame games share some code in common. Setup, game-loop, user-input, audio etc. etc.
 We will start building our game and then reuse code as we go. We will refactor this code library into something reusable as we go.</p>
-<p>I&rsquo;m using VSCode with the python and the Git Graph plugin. (pylance is included with the python plugin). It makes editing the code simpler to use an IDE, though using a texteditor is perfectly fine.</p>
+<p>I&rsquo;m using <a href="https://code.visualstudio.com/download">VSCode</a> with the python and the Git Graph and python plugin (pylance is included with the python plugin). It makes editing the code simpler to use an IDE, though using a texteditor and <a href="https://github.com/PowerShell/PowerShell/?tab=readme-ov-file#get-powershell">microsoft powershell 7</a> is perfectly fine.</p>
 <p>Assuming we are new to games or pygame or python we will begin simply by creating an object that moves and interacts with the environment.</p>
 <p>
 <img src="./img/screen-shot.png" alt="Our first game"  /></p>

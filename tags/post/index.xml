@@ -41,14 +41,14 @@
       <link>https://richard-porteous.github.io/posts/pygame/worm-7/</link>
       <pubDate>Fri, 19 Jan 2024 11:40:22 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/pygame/worm-7/</guid>
-      <description>What we have so far We have a head with a face that can eat food but leaves droppings at each place it has eaten at. Lets address that.&#xA;What do we want to do?&#xA;make the tail follow the head tail can be added at head or at last tail piece (changes logic and appearance of the game only very slightly) reuse the code from the player for the tail wherever possible prevent messy code fix the class names to be consitant with the standard i.</description>
+      <description>What we have so far Make the tail follow We have a head with a face that can eat food but leaves droppings at each place it has eaten at. Lets address that.&#xA;What do we want to do?&#xA;make the tail follow the head tail can be added at head or at last tail piece (changes logic and appearance of the game only very slightly) reuse the code from the player for the tail wherever possible prevent messy code fix the class names to be consitant with the standard i.</description>
     </item>
     <item>
       <title>Our first pygame - continuous movement - part 6</title>
       <link>https://richard-porteous.github.io/posts/pygame/worm-6/</link>
       <pubDate>Thu, 18 Jan 2024 14:45:00 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/pygame/worm-6/</guid>
-      <description>continuous movement The game Worm should have the worm moving even when you don&amp;rsquo;t have any keys pressed, unless the game has paused.&#xA;So we will make a small change to allow the worm to keep moving in its last direction selected.&#xA;First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving.</description>
+      <description>continuous movement The game Worm should have the worm moving even when you don&amp;rsquo;t have any keys pressed, unless the game has paused.&#xA;I continue using one tial at a time movement. It may be simpler to simply move in a direction, and only track the tile change when a turn is requested or when the end of the screen is reached.&#xA;So we will make a small change to allow the worm to keep moving in its last direction selected.</description>
     </item>
     <item>
       <title>Our first pygame - grid movement - part 5 </title>
@@ -90,7 +90,7 @@
       <link>https://richard-porteous.github.io/posts/pygame/worm-1/</link>
       <pubDate>Thu, 10 Aug 2023 13:19:30 -0700</pubDate>
       <guid>https://richard-porteous.github.io/posts/pygame/worm-1/</guid>
-      <description>Some coding required this post is fast paced - sorry I rewrote it 3 times and go bored. If you are a beginner to coding this may not be the best place to start. Try one of the others.&#xA;We want to use PyGame Pygame and Monogame are very similar - and yet different. As you start you will see a lot of similarities, except you are using pyhon in PyGame and C# in MonoGame.</description>
+      <description>Some coding required For the first 10 posts of this series we don&amp;rsquo;t cover detail as most of this is common to the other tutorials out there. The exceptions being the screen wrap and the delta movement, which are explained to some degree. The delta movement is common to game programming in general, the screen wrap has different implementations.&#xA;Everything gets re-evaluated in each new game we build with the resulting libraries of reuseable code.</description>
     </item>
     <item>
       <title>Using python</title>

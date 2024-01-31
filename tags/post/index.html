@@ -319,7 +319,7 @@ The end move position is calculated outside the class in the game loop, and the 
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  What we have so far We have a head with a face that can eat food but leaves droppings at each place it has eaten at. Lets address that.
+  What we have so far Make the tail follow We have a head with a face that can eat food but leaves droppings at each place it has eaten at. Lets address that.
 What do we want to do?
 make the tail follow the head tail can be added at head or at last tail piece (changes logic and appearance of the game only very slightly) reuse the code from the player for the tail wherever possible prevent messy code fix the class names to be consitant with the standard i.
 
@@ -346,8 +346,8 @@ make the tail follow the head tail can be added at head or at last tail piece (c
      </div>
   </header>
   continuous movement The game Worm should have the worm moving even when you don&rsquo;t have any keys pressed, unless the game has paused.
+I continue using one tial at a time movement. It may be simpler to simply move in a direction, and only track the tile change when a turn is requested or when the end of the screen is reached.
 So we will make a small change to allow the worm to keep moving in its last direction selected.
-First we need to keep track of the last key pressed - regardless of the last key released. Why? Well I thought it was nice to be able to tap a key then release the one doing the current moving.
 
   <footer>
   
@@ -498,8 +498,8 @@ I&rsquo;m going to use individual 2d png files for each item to start.
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
      </div>
   </header>
-  Some coding required this post is fast paced - sorry I rewrote it 3 times and go bored. If you are a beginner to coding this may not be the best place to start. Try one of the others.
-We want to use PyGame Pygame and Monogame are very similar - and yet different. As you start you will see a lot of similarities, except you are using pyhon in PyGame and C# in MonoGame.
+  Some coding required For the first 10 posts of this series we don&rsquo;t cover detail as most of this is common to the other tutorials out there. The exceptions being the screen wrap and the delta movement, which are explained to some degree. The delta movement is common to game programming in general, the screen wrap has different implementations.
+Everything gets re-evaluated in each new game we build with the resulting libraries of reuseable code.
 
   <footer>
   
