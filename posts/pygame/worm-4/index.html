@@ -254,9 +254,10 @@
 i.e.</p>
 <pre tabindex="0"><code>def __init__(self, speed) -&gt; None:
     self.speed = speed
-</code></pre><p>BUT We refrain from this just yet. We are going to stick with a global - and yes Globals can be very bad.</p>
+</code></pre><p>BUT &hellip; not just yet. We are going to stick with a global - and yes Globals can be very bad.</p>
 <h2 id="delta-time">Delta Time</h2>
 <p>I mentioned in an earlier post that movement would not be smooth or consistant and that I would show a simple way to fix that.</p>
+<h3 id="we-could-write-our-own-delta-time">We could write our own Delta-Time</h3>
 <pre tabindex="0"><code># time based movement requires delta time
 class deltatime():
 
@@ -279,7 +280,15 @@ class deltatime():
     dt = delta_time.loop_time()
     print(dt) #remove this line when coding your game
 </code></pre><p>If you run your code now, you&rsquo;ll see a lot of small integers being displayed to the terminal. That would be the time of each loop and because we aren&rsquo;t doing anything else the looping is fast i.e. in milliseconds or less.</p>
-<p>Remove the temporary code. Replace it with this above the input.</p>
+<h3 id="or-we-could-use-the-built-in">Or we could use the built in</h3>
+<blockquote>
+<p>clock.tick(60)</p>
+<p>dt = clock.get_time()</p>
+</blockquote>
+<p>Get time simply counts the time in mili seconds between the last two clock ticks.
+So we set a max frame rate then we can still use delta time or dt</p>
+<p>The second is way easier. For now I&rsquo;m going to use one or the other, both smooth out the movement unless something very very annoyingly ignores everthing and grabs all the cpu, then our code delays for a lot longer and our character will eventually jump to where they would have been. This could be good or very bad. I may set a max dt where I just ignore the value and use the expected amount. IDK, this would depend on the game.</p>
+<p>Remove the temporary code. Replace it with this (or its alternative) above the input.</p>
 <pre tabindex="0"><code>    # indicating the number of miliseconds since the last time that piece of code was run
     dt = delta_time.loop_time()
     speed = 0.7 * dt

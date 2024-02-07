@@ -217,6 +217,30 @@
 <article class="mb-5 post">
   <header>
 
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-3/'> Our first pygame - Refactoring - part 3</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  Refactor Let’s move the keypress code into its own class.
+class keyisdown():def __init__(self) -&gt; None:self.leftkey = Falseself.rightkey = Falseself.upkey = Falseself.downkey = Falsedef getEvents(self):for event in pygame.event.get():if event.type == QUIT:return Falseif event.type==pygame.KEYDOWN:if event.key == K_ESCAPE:return Falseif event.key in [K_s, K_DOWN]:self.downkey = Trueif event.key in [K_w, K_UP]:self.upkey = Trueif event.key in [K_d, K_RIGHT]:self.rightkey = Trueif event.
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-3/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Refactoring - part 3</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
     <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-2/'> Our first pygame - part 2</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-09-11T13:19:37-07:00">11.09.2023</time> - 

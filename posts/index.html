@@ -217,6 +217,31 @@
 <article class="mb-5 post">
   <header>
 
+    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-11/'> Our first pygame - move reusable code out - part 11</a> </h2>
+
+    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-31T14:01:47-07:00">31.01.2024</time> - 
+    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
+     </div>
+  </header>
+  IMPORTANT We jump into coding so we can learn, BUT we don&rsquo;t know what we already have from the language, from the library, and we don&rsquo;t know what other libraries are available.
+It is wise once past a cetain level of understanding to STOP, and take a look around.
+We should evaluate anything that is already in the game. What can be replaced by what is offered? What is reusable for later projects?
+
+  <footer>
+  
+  <a href='https://richard-porteous.github.io/posts/pygame/worm-11/'>  
+  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - move reusable code out - part 11</span><span class="meta-nav"> »</span></span>
+  </a>
+  
+  </footer>
+</article>
+    
+
+
+
+<article class="mb-5 post">
+  <header>
+
     <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-10/'> Our First Pygame - Fix wrap, bite me - part 10</a> </h2>
 
     <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2024-01-23T16:02:46-07:00">23.01.2024</time> - 
@@ -427,30 +452,6 @@ we add self.key_queue = [] to init then we change each keydown part something li
   
   <a href='https://richard-porteous.github.io/posts/hugo/site-on-github/'>  
   <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Hugo site on github</span><span class="meta-nav"> »</span></span>
-  </a>
-  
-  </footer>
-</article>
-    
-
-
-
-<article class="mb-5 post">
-  <header>
-
-    <h2><a href='https://richard-porteous.github.io/posts/pygame/worm-3/'> Our first pygame - Refactoring - part 3</a> </h2>
-
-    <div class="post-meta"><span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">Date: </span><time datetime="2023-11-10T13:19:53-07:00">10.11.2023</time> - 
-    <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">Author: </span> Richard Porteous
-     </div>
-  </header>
-  Refactor Let’s move the keypress code into its own class.
-class keyisdown():def __init__(self) -&gt; None:self.leftkey = Falseself.rightkey = Falseself.upkey = Falseself.downkey = Falsedef getEvents(self):for event in pygame.event.get():if event.type == QUIT:return Falseif event.type==pygame.KEYDOWN:if event.key == K_ESCAPE:return Falseif event.key in [K_s, K_DOWN]:self.downkey = Trueif event.key in [K_w, K_UP]:self.upkey = Trueif event.key in [K_d, K_RIGHT]:self.rightkey = Trueif event.
-
-  <footer>
-  
-  <a href='https://richard-porteous.github.io/posts/pygame/worm-3/'>  
-  <span class="btn  btn-outline-primary">Read more <span class="screen-reader-text">on Our first pygame - Refactoring - part 3</span><span class="meta-nav"> »</span></span>
   </a>
   
   </footer>

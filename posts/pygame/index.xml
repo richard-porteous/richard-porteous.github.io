@@ -6,8 +6,15 @@
     <description>Recent content on Game Experiments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Tue, 23 Jan 2024 16:02:46 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jan 2024 14:01:47 -0700</lastBuildDate>
     <atom:link href="https://richard-porteous.github.io/posts/pygame/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Our first pygame - move reusable code out - part 11</title>
+      <link>https://richard-porteous.github.io/posts/pygame/worm-11/</link>
+      <pubDate>Wed, 31 Jan 2024 14:01:47 -0700</pubDate>
+      <guid>https://richard-porteous.github.io/posts/pygame/worm-11/</guid>
+      <description>IMPORTANT We jump into coding so we can learn, BUT we don&amp;rsquo;t know what we already have from the language, from the library, and we don&amp;rsquo;t know what other libraries are available.&#xA;It is wise once past a cetain level of understanding to STOP, and take a look around.&#xA;We should evaluate anything that is already in the game. What can be replaced by what is offered? What is reusable for later projects?</description>
+    </item>
     <item>
       <title>Our First Pygame - Fix wrap, bite me - part 10</title>
       <link>https://richard-porteous.github.io/posts/pygame/worm-10/</link>
