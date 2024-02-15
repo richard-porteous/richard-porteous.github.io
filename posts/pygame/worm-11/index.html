@@ -231,10 +231,10 @@ larger than they should and some may be broken after.</p>
 </blockquote>
 <p>I do fix some bugs - even though the essence of reactoring is not to change behaviour.</p>
 <h2 id="optimization-basics">Optimization basics</h2>
-<p>Games have what they call - a tight loop. A tight loop is commonly a loop which is runs many times in <!-- raw HTML omitted -->succession<!-- raw HTML omitted -->.
-
-<img src="./img/succession-synonyms.png" alt=""  />
-In any other app the tight loop could add several minutes or hours of waiting.</p>
+<p>Games have what they call - a tight loop. A tight loop is commonly a loop which is runs many times in <!-- raw HTML omitted -->succession<!-- raw HTML omitted -->.</p>
+<p>
+<img src="./img/succession-synonyms.png" alt=""  /></p>
+<p>In any other app the tight loop could add several minutes or hours of waiting.</p>
 <p>The game loop is designed to run tasks repeatedly to make our game responsive. If we add slow code to it, we have lag or animation stutter. There are ways around much of this - we call this optimization. Slow code can be moved out of the loop or update on its own thread, or even in some cases replaced by faster code.</p>
 <p>Some of the calculations that are being used can be replaced by using pygame&rsquo;s Rect. I think I&rsquo;d like to use the pygame sprite because it has some of what we do already built in plus it already makes use of Rect.</p>
 <p>I&rsquo;m going to use the screen redraw not dirty sprites (declare small area of screen underneath the sprite as dirty i.e. it needs to be redrawn) is good for limited objects when a small portion of the screen needs redrawing but not for many objects or background moves. Worm starts out as a few objects but soon becomes long enough to fill the screen.</p>
@@ -266,7 +266,7 @@ If it does what you want it may be good to use. One word of caution, Other peopl
 </ul>
 <p>We don&rsquo;t use convert on the image, though it would be more efficient. We do know we have a set colored background.
 We also don&rsquo;t use group yet.</p>
-<p>To stick with the group naming of functions we will have to address my use of the name update and move of my functions when we implement that.</p>
+<p>To stick with the sprite group naming of functions, we will change &ldquo;update&rdquo; to draw and &ldquo;move&rdquo; to update soon.</p>
 <h3 id="create-the-food">create the food</h3>
 <pre tabindex="0"><code>#food
 food = 
