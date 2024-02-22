@@ -12,7 +12,7 @@
     <meta name="keywords" content="blog, site, tutorials, coding, software, programming">
 
     
-    <link href="https://richard-porteous.github.io/css/bootswatch/lux.min.css" rel="stylesheet">
+    <link href="https://richard-porteous.github.io/css/bootswatch/solar.min.css" rel="stylesheet">
     
     <link href="https://richard-porteous.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://richard-porteous.github.io/css/custom.css" rel="stylesheet">
@@ -212,8 +212,8 @@
 
 
   <h2 id="fixing-screen-wrap">Fixing screen wrap</h2>
-<p>To make the screen work I needed to sit down and sletch and talk through my logic.
-I needed to keep track of the movement in the tail in the same way I kept track in the head.</p>
+<p>To make the screen work I needed to sit down, sketch, and talk through my logic.
+I should keep track of the movement in the tail in the same way I kept track in the head.</p>
 <p>I placed these in gameobject before the init (mostly last_start_move_pos,last_direction,last_boundary_check), some of the rest are from the player.</p>
 <pre tabindex="0"><code>    start_move_pos = (0,0)
     end_move_pos = (0,0)
@@ -236,9 +236,9 @@ I needed to keep track of the movement in the tail in the same way I kept track 
         self.rect.center = end_move_pos
         self.start_move_pos = end_move_pos
         self.end_move_pos = (self.start_move_pos[0] + self.direction[0] * self.tilesize[0], self.start_move_pos[1] + self.direction[1] * self.tilesize[1])
-</code></pre><p>then in move in the end of move check we move/add this to just before the return</p>
+</code></pre><p>then in &ldquo;move&rdquo; in the end of move check we move/add this to just before the return</p>
 <pre tabindex="0"><code>self.set_boundary_check(&#34;none&#34;)
-</code></pre><p>and in complete move we change the function to the following</p>
+</code></pre><p>and in complete_move we change the function to the following</p>
 <pre tabindex="0"><code>    def complete_move(self):
         self.last_end_move_pos = self.end_move_pos
         self.last_start_move_pos = self.start_move_pos
