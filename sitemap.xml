@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://richard-porteous.github.io/posts/</loc>
+    <lastmod>2024-02-07T14:25:51-07:00</lastmod>
+  </url><url>
     <loc>https://richard-porteous.github.io/posts/pygame/</loc>
     <lastmod>2024-01-31T14:01:47-07:00</lastmod>
   </url><url>
@@ -9,9 +12,6 @@
     <lastmod>2024-01-31T14:01:47-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/tags/post/</loc>
-    <lastmod>2024-01-31T14:01:47-07:00</lastmod>
-  </url><url>
-    <loc>https://richard-porteous.github.io/posts/</loc>
     <lastmod>2024-01-31T14:01:47-07:00</lastmod>
   </url><url>
     <loc>https://richard-porteous.github.io/tags/</loc>
